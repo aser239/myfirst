@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private Boolean bPwdSwitch = false;
-    private EditText etPwd;
+    private EditText etPwd;//密码
     private EditText etAcc;
     private CheckBox cbRememberpwd;
     private TextView tvenroll;

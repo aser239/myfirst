@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //跳转
         tvenroll = findViewById(R.id.enroll);
         tvenroll.setOnClickListener(new View.OnClickListener() {
             @Override

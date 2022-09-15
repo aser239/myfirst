@@ -70,54 +70,6 @@
             android:hint="@string/new_password"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mailbox"
-            android:textSize="30dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="22dp"
-            android:layout_marginLeft="50dp"/>
-        <EditText
-            android:id="@+id/input_enroll_mailbox"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="30dp"
-            android:maxLines="1"
-            android:hint="@string/new_mailbox"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/telephone_number"
-            android:textSize="30dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="22dp"
-            android:layout_marginLeft="50dp"/>
-        <EditText
-            android:id="@+id/input_enroll_phone"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="30dp"
-            android:maxLines="1"
-            android:hint="@string/new_phone"/>
-    </LinearLayout>
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context="com.example.myapplication.Activity.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,11 +43,12 @@
         android:layout_marginTop="48dp">
 
         <ImageView
-           android:layout_width="32dp"
-           android:layout_height="32dp"
-           android:layout_marginBottom="1dp"
-           android:layout_alignParentBottom="true"
-           android:src="@drawable/ic_baseline_person_outline_24"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="1dp"
+            android:src="@drawable/ic_baseline_person_outline_24" />
 
         <EditText
             android:id="@+id/et_acc"
@@ -57,6 +58,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="48dp"
             android:layout_marginEnd="48dp"
+
             android:layout_marginBottom="0dp"
             android:hint="@string/login_account_name"
             android:inputType="text"
@@ -73,7 +75,8 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="1dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="3dp"
             android:src="@drawable/ic_outline_lock_24" />
 
         <EditText
@@ -110,9 +113,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="40dp"
             android:layout_marginBottom="4dp"
-            android:text="remember password"
+            android:text="@string/remember_password"
             android:textColor="@color/colorPrimary" />
 
         <TextView
@@ -142,6 +145,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="@drawable/btn_left"
+            android:backgroundTint="@color/purple_500"
             android:text="@string/login"
             android:textColor="@android:color/white" />
     </RelativeLayout>

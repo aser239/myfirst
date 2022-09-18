@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EnrollActivity"
+    tools:context="com.example.myapplication.Activity.EnrollActivity"
     >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:background="@color/colorPrimary"
-            android:textSize="40sp"
             android:gravity="center"
             android:text="@string/Registration_screen"
-            />
+            android:textColor="@color/white"
+            android:textSize="40sp" />
 
     </RelativeLayout>
 
@@ -27,21 +27,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/account_name"
-            android:textSize="30dp"
-            android:textColor="@color/black"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="1dp"
+            android:src="@drawable/ic_baseline_person_outline_24" />
         <EditText
             android:id="@+id/input_enroll_account"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="30dp"
+            android:layout_marginStart="5dp"
             android:maxLines="1"
             android:hint="@string/new_account"/>
     </LinearLayout>
@@ -49,31 +47,76 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password"
-            android:textSize="30dp"
-            android:textColor="@color/black"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="22dp"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/ic_outline_lock_24" />
+
         <EditText
             android:id="@+id/input_enroll_password"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="22dp"
-            android:layout_marginLeft="5dp"
-            android:textSize="30dp"
-            android:maxLines="1"
-            android:hint="@string/new_password"/>
+            android:layout_weight="1"
+            android:hint="@string/new_password"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <ImageView
+            android:id="@+id/iv_pwd_switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22dp"
+            android:src="@drawable/ic_baseline_visibility_off_24" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="3dp"
+            android:src="@drawable/ic_outline_lock_24" />
+
+
+        <EditText
+            android:id="@+id/input_enroll_npassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="22dp"
+            android:layout_weight="1"
+            android:hint="@string/npassword"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <ImageView
+            android:id="@+id/iv_pwd_switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22dp"
+            android:src="@drawable/ic_baseline_visibility_off_24" />
+
+
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <Button
             android:id="@+id/bt_enroll"
@@ -82,6 +125,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_right"
+            android:backgroundTint="@color/purple_500"
             android:text="@string/enroll_account"
             android:textColor="@android:color/white" />
     </RelativeLayout>

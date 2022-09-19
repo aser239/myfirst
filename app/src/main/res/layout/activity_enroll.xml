@@ -7,20 +7,6 @@
     android:orientation="vertical"
     tools:context="com.example.myapplication.Activity.EnrollActivity"
     >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="@string/Registration_screen"
-            android:textColor="@color/white"
-            android:textSize="40sp" />
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

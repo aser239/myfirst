@@ -7,21 +7,6 @@
     android:orientation="vertical"
     tools:context="com.example.myapplication.Activity.LoginActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="@string/Login_screen"
-            android:textColor="@color/white"
-            android:textSize="40sp" />
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,11 +14,14 @@
         android:layout_marginTop="48dp"
         android:layout_weight="1">
 
-        <ImageView
-            android:layout_width="108dp"
-            android:layout_height="108dp"
-            android:layout_centerInParent="true"
-            android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/ClassOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/purple_500"
+            android:text="@string/MyClass"
+            android:textSize="200sp"
+            android:layout_marginTop="30dp"/>
 
     </RelativeLayout>
 

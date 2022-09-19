@@ -16,7 +16,10 @@
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/btn_left.xml" value="0.189" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/btn_right.xml" value="0.189" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.155" />
+        <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/ic_baseline_visibility_24.xml" value="0.1525" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.189" />
+        <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/ic_launcher_background.xml" value="0.154" />
+        <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.154" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/ic_outline_lock_24.xml" value="0.155" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/shap_circle.xml" value="0.189" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/shap_upload.xml" value="0.183" />
@@ -24,15 +27,18 @@
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_add_course.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_enroll.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_enter_course.xml" value="0.2390625" />
+        <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_enter_course_teacher.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_enter_sign_in.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_enter_user_center.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_get_course_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_modify_user_information.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_sign_in.xml" value="0.176" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_teacher_sign_in.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_upload.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/layout/activity_welcome.xml" value="0.25364583333333335" />
+        <entry key="..\:/Programming/My_Application/app/src/main/res/layout/enter_course_teacher.xml" value="0.2526041666666667" />
       </map>
     </option>
   </component>

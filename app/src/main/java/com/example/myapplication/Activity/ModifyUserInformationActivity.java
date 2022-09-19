@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.myapplication.R;
 
-public class EnterCourseActivity extends AppCompatActivity {
+public class ModifyUserInformationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_course_student);
+        setContentView(R.layout.activity_modify_user_information);
     }
 }

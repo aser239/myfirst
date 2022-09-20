@@ -1,14 +1,14 @@
 package com.example.myapplication.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.NetworkOnMainThreadException;
+
 import android.text.InputType;
-import android.util.Log;
+
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +19,7 @@ import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
 
 
-public class EnrollActivity extends AppCompatActivity implements View.OnClickListener{
+public class EnrollActivity extends AppCompatActivity{
 
     private EditText etname;
     private EditText password;
@@ -35,7 +35,7 @@ public class EnrollActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enroll);
 
-        etname = findViewById(R.id.input_enroll_account);
+        etname = findViewById(R.id.input_enroll_username);
         password =  findViewById(R.id.input_enroll_password);
         newpassword = findViewById(R.id.input_enroll_npassword);
         iv_pwd_switch1 = findViewById(R.id.iv_pwd_switch1);
@@ -69,24 +69,26 @@ public class EnrollActivity extends AppCompatActivity implements View.OnClickLis
         });
 
         //注册
-        btenroll.setOnClickListener(view -> {
-            String name = etname.getText().toString();
-            String password1 = password.getText().toString();
-            String password2 = newpassword.getText().toString();
-            if (password1.equals(password2)) {
-                Api.enroll(name, password1);
-                Toast.makeText(EnrollActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(EnrollActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }else {
-                    Toast.makeText(EnrollActivity.this,"两次密码输入不一致,请重新输入",Toast.LENGTH_SHORT).show();
-            }
+        btenroll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = etname.getText().toString();
+                String password1 = password.getText().toString();
+                String password2 = newpassword.getText().toString();
+
+                if (TextUtils.isEmpty(name)||TextUtils.isEmpty(password1)||TextUtils.isEmpty(password2)){
+                    Toast.makeText(EnrollActivity.this,"输入不能为空！",Toast.LENGTH_SHORT).show();
+                }else if (password1.equals(password2)){
+                    Api.enroll(name, password1);
+                    Toast.makeText(EnrollActivity.this,"注册成功！",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EnrollActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    }else {
+                        Toast.makeText(EnrollActivity.this,"两次密码输入不一致,请重新输入",Toast.LENGTH_SHORT).show();
+                    }
+                }
         });
 
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }

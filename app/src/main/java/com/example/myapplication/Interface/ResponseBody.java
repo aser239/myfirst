@@ -5,12 +5,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.Activity.EnrollActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -69,7 +69,7 @@ public  class ResponseBody <T> {
             //TODO 请求成功处理
             Type jsonType = new TypeToken<ResponseBody<Object>>(){}.getType();
             // 获取响应体的json串
-            String body = response.body().string();
+            String body = Objects.requireNonNull(response.body()).string();
             Log.d("info", body);
             // 解析json串到自己封装的状态
             ResponseBody<Object> dataResponseBody = gson.fromJson(body,jsonType);

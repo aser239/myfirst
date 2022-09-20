@@ -21,13 +21,13 @@
             android:layout_marginBottom="1dp"
             android:src="@drawable/ic_baseline_person_outline_24" />
         <EditText
-            android:id="@+id/input_enroll_account"
+            android:id="@+id/input_enroll_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginStart="5dp"
             android:maxLines="1"
-            android:hint="@string/new_account"/>
+            android:hint="@string/new_username"/>
     </LinearLayout>
 
     <LinearLayout

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ItemGroup">
+        <!--标题的文字-->
+        <attr name="title" format="string" />
+        <!--标题的字体大小-->
+        <attr name="title_size" format="dimension" />
+        <!--标题的字体颜色-->
+        <attr name="title_color" format="color" />
+        <!--输入框的内容-->
+        <attr name="edt_content" format="string" />
+        <!--输入框的字体大小-->
+        <attr name="edt_text_size" format="dimension" />
+        <!--输入框的字体颜色-->
+        <attr name="edt_text_color" format="color" />
+        <!--输入框提示的内容-->
+        <attr name="edt_hint_content" format="string" />
+        <!--输入框的提示字体的字体颜色-->
+        <attr name="edt_hint_text_color" format="color" />
+        <!--输入框是否可以编辑内容-->
+        <attr name="isEditable" format="boolean" />
+        <!--向的右箭头图标是否可见-->
+        <attr name="arrowRight_visible" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="titleBar">
+        <!--标题的文字-->
+        <attr name="title_txt" format="string" />
+        <!--标题的字体大小-->
+        <attr name="titleTxt_size" format="dimension" />
+        <!--字体颜色-->
+        <attr name="txt_color" format="color" />
+        <!--副标题的文字-->
+        <attr name="subtitle" format="string" />
+        <!--副标题的字体大小-->
+        <attr name="subtitle_size" format="dimension" />
+        <!--图标是否可见-->
+        <attr name="icon_visible" format="boolean" />
+    </declare-styleable>
+</resources>

@@ -86,12 +86,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="课程结束时间："
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
+
+            <EditText
+                android:id="@+id/et_stTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                />
+
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="时间选择器"/>
+                android:id="@+id/st_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:text="选择时间" />
         </LinearLayout>
 
         <LinearLayout

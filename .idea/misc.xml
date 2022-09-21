@@ -10,10 +10,23 @@
         <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2075" />
         <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/drawable/ic_outline_lock_24.xml" value="0.2075" />
-        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_enroll.xml" value="0.2" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_add_course.xml" value="0.264" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_enroll.xml" value="0.264" />
         <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_enroll1.xml" value="0.2341485507246377" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_enter_course_student.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_enter_course_teacher.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_enter_sign_in.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_enter_user_center.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_get_course_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_modify_user_information.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_personinfo.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_sign_in.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_teacher_sign_in.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_time.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_upload.xml" value="0.25364583333333335" />
+        <entry key="..\:/Androidtext/MyApplication4/app/src/main/res/layout/activity_welcome.xml" value="0.15896739130434784" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/btn_left.xml" value="0.189" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/btn_right.xml" value="0.189" />
         <entry key="..\:/Programming/My_Application/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.155" />

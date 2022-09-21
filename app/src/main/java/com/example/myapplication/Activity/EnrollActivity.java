@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.myapplication.Data.LoginData;
@@ -30,8 +32,9 @@ public class EnrollActivity extends AppCompatActivity{
     private Boolean bPwdSwitch2 = false;
     private ImageView iv_pwd_switch1;
     private ImageView iv_pwd_switch2;
-    private CheckBox cbStudent;
-    private CheckBox cbTeacher;
+    private RadioButton rbt_student;
+    private RadioButton rbt_teacher;
+    private RadioGroup radioGroup;
 
 
     @Override
@@ -44,8 +47,9 @@ public class EnrollActivity extends AppCompatActivity{
         newpassword = findViewById(R.id.input_enroll_npassword);
         iv_pwd_switch1 = findViewById(R.id.iv_pwd_switch1);
         iv_pwd_switch2 = findViewById(R.id.iv_pwd_switch2);
-        cbStudent = findViewById(R.id.cb_role_student);
-        cbTeacher = findViewById(R.id.cb_role_teacher);
+        radioGroup = findViewById(R.id.radiogroup);
+        rbt_student = findViewById(R.id.role_student);
+        rbt_teacher = findViewById(R.id.role_teacher);
 
         Button btenroll = findViewById(R.id.bt_enroll);
 
@@ -74,6 +78,8 @@ public class EnrollActivity extends AppCompatActivity{
             }
         });
 
+
+
         //注册
         btenroll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,14 +88,11 @@ public class EnrollActivity extends AppCompatActivity{
                 String password1 = password.getText().toString();
                 String password2 = newpassword.getText().toString();
                 int roleId = 0;
-                if (cbStudent.isChecked()){
-                    cbTeacher.setChecked(false);
+                if (rbt_student.isChecked()){
                     roleId = 0;
-                }else if (cbTeacher.isChecked()){
-                    cbStudent.setChecked(false);
+                }else if (rbt_teacher.isChecked()){
                     roleId = 1;
                 }
-
                 if (TextUtils.isEmpty(name)||TextUtils.isEmpty(password1)||TextUtils.isEmpty(password2)){
                     Toast.makeText(EnrollActivity.this,"输入不能为空！",Toast.LENGTH_SHORT).show();
                 }else if (password1.equals(password2)){

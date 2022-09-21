@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--标题栏-->
+    <com.example.myapplication.widget.TitleBar
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title_txt="个人资料"
+        app:titleTxt_size="8sp" />
+
+    <!--头像栏-->
+    <LinearLayout
+        android:id="@+id/ll_portrait"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            tools:text="头像" />
+
+        <com.example.myapplication.widget.RoundImageView
+            android:id="@+id/ri_portrait"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_baseline_account_circle_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="192dp"
+            android:text="修改头像"
+            android:textColor="@color/EdtColor"
+            tools:ignore="HardcodedText,RtlSymmetry" />
+
+    </LinearLayout>
+
+    <!--资料栏-->
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/name_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="陈某某"
+        app:edt_text_size="6sp"
+        app:title="姓名"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/id_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="2000301809"
+        app:edt_text_size="6sp"
+        app:title="学号"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/school_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="桂林电子科技大学"
+        app:edt_text_size="6sp"
+        app:title="学校"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/identity_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="学生"
+        app:edt_text_size="6sp"
+        app:title="身份"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/grade_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="大三"
+        app:edt_text_size="6sp"
+        app:title="年级"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/class_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="20003106"
+        app:edt_text_size="6sp"
+        app:title="班级"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/enrollment_time_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="2020-09"
+        app:edt_text_size="6sp"
+        app:title="入学时间"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/department_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="计算机与信息安全学院"
+        app:edt_text_size="6sp"
+        app:title="院系"
+        app:title_size="6sp" />
+
+    <com.example.myapplication.widget.ItemGroup
+        android:id="@+id/major_ig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:arrowRight_visible="true"
+        app:edt_hint_content="计算机科学与技术"
+        app:edt_text_size="6sp"
+        app:title="专业"
+        app:title_size="6sp" />
+
+</LinearLayout>

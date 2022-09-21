@@ -11,5 +11,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="WhiteSmoke">#F5F5F5</color>
-    <color name="EdtColor">#546E7A</color>
+    <color name="TextColor">#546E7A</color>
+    <color name="DodgerBlue">#1E90FF</color>
 </resources>

@@ -31,7 +31,7 @@ public class Api {
     public static  String appId = "d44f6a157edc4815b907124907b98e63";
     public static  String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
 
-    public static void enroll(String username,String password){
+    public static void enroll(String username,int roleId,String password){
         new Thread(() -> {
 
             // url路径
@@ -49,7 +49,7 @@ public class Api {
             // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
             Map<String, Object> bodyMap = new HashMap<>();
             bodyMap.put("password", password);
-            bodyMap.put("roleId", 0);
+            bodyMap.put("roleId", roleId);
             bodyMap.put("userName", username);
             // 将Map转换为字符串类型加入请求体中
             String body = gson.toJson(bodyMap);

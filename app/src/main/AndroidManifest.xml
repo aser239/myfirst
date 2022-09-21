@@ -17,6 +17,9 @@
         android:theme="@style/Theme.MyApplication.NoACtionBar"
         tools:targetApi="31">
         <activity
+            android:name=".StudentCourseAcitivity"
+            android:exported="false" />
+        <activity
             android:name=".ModifyUserInformationActivity"
             android:exported="false" />
         <activity

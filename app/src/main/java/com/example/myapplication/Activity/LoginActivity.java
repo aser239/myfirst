@@ -75,8 +75,6 @@ public class LoginActivity extends AppCompatActivity{
                 Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
                 finish();
-            }else {
-                Toast.makeText(LoginActivity.this, "用户不存在！", Toast.LENGTH_SHORT).show();
             }
         });
     }

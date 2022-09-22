@@ -32,7 +32,7 @@ public class Api {
     public static  Gson gson = new Gson();
     public static  String appId = "d44f6a157edc4815b907124907b98e63";
     public static  String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
-
+    public static int Code;
     public static void enroll(String username,int roleId,String password){
         new Thread(() -> {
 
@@ -187,6 +187,7 @@ public class Api {
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Course> dataResponseBody = gson.fromJson(body,jsonType);
+                        Code = dataResponseBody.getCode();
                         CourseData.AddCourse = dataResponseBody.getData();
                         Log.d("info", dataResponseBody.toString());
                     }

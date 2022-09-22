@@ -43,7 +43,7 @@
 
     <!--头像-->
     <LinearLayout
-        android:id="@+id/layout_portrait"
+        android:id="@+id/layout_avatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -51,7 +51,7 @@
         android:paddingBottom="10dp">
 
         <TextView
-            android:id="@+id/tv_portrait"
+            android:id="@+id/tv_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -61,14 +61,14 @@
             tools:text="头像" />
 
         <com.example.myapplication.widget.RoundImageView
-            android:id="@+id/ri_portrait"
+            android:id="@+id/ri_avatar"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="250dp"
             android:src="@drawable/ic_baseline_account_circle_24" />
 
         <ImageView
-            android:id="@+id/iv_portrait_arrowRight"
+            android:id="@+id/iv_avatar_arrowRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -84,54 +84,7 @@
         android:layout_height="1dp"
         android:background="@color/WhiteSmoke" />
 
-    <!--姓名-->
-    <LinearLayout
-        android:id="@+id/layout_name"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/WhiteSmoke"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            tools:text="姓名" />
-
-        <TextView
-            android:id="@+id/tv_name_info"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:paddingEnd="8dp"
-            android:textColor="@color/TextColor"
-            android:textSize="20sp"
-            tools:ignore="RtlSymmetry"
-            tools:text="text" />
-
-        <!--点击跳转或者弹出选择框-->
-        <ImageView
-            android:id="@+id/iv_arrow_right_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-            tools:ignore="ContentDescription" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/WhiteSmoke" />
-
-    <!--学号-->
+    <!--ID-->
     <LinearLayout
         android:id="@+id/layout_id"
         android:layout_width="match_parent"
@@ -147,7 +100,7 @@
             android:layout_marginStart="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            tools:text="学号" />
+            tools:text="ID" />
 
         <TextView
             android:id="@+id/tv_id_info"
@@ -162,6 +115,7 @@
             tools:ignore="RtlSymmetry"
             tools:text="text" />
 
+        <!--点击跳转或者弹出选择框-->
         <ImageView
             android:id="@+id/iv_arrow_right_id"
             android:layout_width="wrap_content"
@@ -177,9 +131,9 @@
         android:layout_height="1dp"
         android:background="@color/WhiteSmoke" />
 
-    <!--学校-->
+    <!--用户名-->
     <LinearLayout
-        android:id="@+id/layout_school"
+        android:id="@+id/layout_username"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/WhiteSmoke"
@@ -187,16 +141,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_school"
+            android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            tools:text="学校" />
+            tools:text="用户名" />
 
         <TextView
-            android:id="@+id/tv_school_info"
+            android:id="@+id/tv_username_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -209,7 +163,7 @@
             tools:text="text" />
 
         <ImageView
-            android:id="@+id/iv_arrow_right_school"
+            android:id="@+id/iv_arrow_right_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
@@ -223,9 +177,9 @@
         android:layout_height="1dp"
         android:background="@color/WhiteSmoke" />
 
-    <!--身份-->
+    <!--姓名-->
     <LinearLayout
-        android:id="@+id/layout_identity"
+        android:id="@+id/layout_realName"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/WhiteSmoke"
@@ -233,16 +187,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_identity"
+            android:id="@+id/tv_realName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            tools:text="身份" />
+            tools:text="姓名" />
 
         <TextView
-            android:id="@+id/tv_identity_info"
+            android:id="@+id/tv_realName_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -255,7 +209,7 @@
             tools:text="text" />
 
         <ImageView
-            android:id="@+id/iv_arrow_right_identity"
+            android:id="@+id/iv_arrow_right_realName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
@@ -269,9 +223,9 @@
         android:layout_height="1dp"
         android:background="@color/WhiteSmoke" />
 
-    <!--年级-->
+    <!--学号-->
     <LinearLayout
-        android:id="@+id/layout_grade"
+        android:id="@+id/layout_idNumber"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/WhiteSmoke"
@@ -279,16 +233,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_grade"
+            android:id="@+id/tv_idNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            tools:text="年级" />
+            tools:text="学号" />
 
         <TextView
-            android:id="@+id/tv_grade_info"
+            android:id="@+id/tv_idNumber_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -301,7 +255,7 @@
             tools:text="text" />
 
         <ImageView
-            android:id="@+id/iv_arrow_right_grade"
+            android:id="@+id/iv_arrow_right_idNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
@@ -315,9 +269,9 @@
         android:layout_height="1dp"
         android:background="@color/WhiteSmoke" />
 
-    <!--班级-->
+    <!--性别-->
     <LinearLayout
-        android:id="@+id/layout_class"
+        android:id="@+id/layout_gender"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/WhiteSmoke"
@@ -325,16 +279,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_class"
+            android:id="@+id/tv_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            tools:text="班级" />
+            tools:text="性别" />
 
         <TextView
-            android:id="@+id/tv_class_info"
+            android:id="@+id/tv_gender_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -347,7 +301,99 @@
             tools:text="text" />
 
         <ImageView
-            android:id="@+id/iv_arrow_right_class"
+            android:id="@+id/iv_arrow_right_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/WhiteSmoke" />
+
+    <!--院校-->
+    <LinearLayout
+        android:id="@+id/layout_collegeName"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/WhiteSmoke"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_collegeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            tools:text="院校" />
+
+        <TextView
+            android:id="@+id/tv_collegeName_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:paddingEnd="8dp"
+            android:textColor="@color/TextColor"
+            android:textSize="20sp"
+            tools:ignore="RtlSymmetry"
+            tools:text="text" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_right_collegeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/WhiteSmoke" />
+
+    <!--手机号-->
+    <LinearLayout
+        android:id="@+id/layout_phone"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/WhiteSmoke"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            tools:text="手机号" />
+
+        <TextView
+            android:id="@+id/tv_phone_info"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:paddingEnd="8dp"
+            android:textColor="@color/TextColor"
+            android:textSize="20sp"
+            tools:ignore="RtlSymmetry"
+            tools:text="text" />
+
+        <ImageView
+            android:id="@+id/iv_arrow_right_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
@@ -363,7 +409,7 @@
 
     <!--入学时间-->
     <LinearLayout
-        android:id="@+id/layout_enrollment_time"
+        android:id="@+id/layout_inSchoolTime"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/WhiteSmoke"
@@ -371,7 +417,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_enrollment_time"
+            android:id="@+id/tv_inSchoolTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -380,7 +426,7 @@
             tools:text="入学时间" />
 
         <TextView
-            android:id="@+id/tv_enrollment_time_info"
+            android:id="@+id/tv_inSchoolTime_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -393,7 +439,7 @@
             tools:text="text" />
 
         <ImageView
-            android:id="@+id/iv_arrow_right_enrollment_time"
+            android:id="@+id/iv_arrow_right_inSchoolTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"
@@ -407,9 +453,9 @@
         android:layout_height="1dp"
         android:background="@color/WhiteSmoke" />
 
-    <!--院系-->
+    <!--邮箱-->
     <LinearLayout
-        android:id="@+id/layout_department"
+        android:id="@+id/layout_email"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/WhiteSmoke"
@@ -417,16 +463,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_department"
+            android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            tools:text="院系" />
+            tools:text="邮箱" />
 
         <TextView
-            android:id="@+id/tv_department_info"
+            android:id="@+id/tv_email_info"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -439,53 +485,7 @@
             tools:text="text" />
 
         <ImageView
-            android:id="@+id/iv_arrow_right_department"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-            tools:ignore="ContentDescription" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/WhiteSmoke" />
-
-    <!--专业-->
-    <LinearLayout
-        android:id="@+id/layout_major"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/WhiteSmoke"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_major"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            tools:text="专业" />
-
-        <TextView
-            android:id="@+id/tv_major_info"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:paddingEnd="8dp"
-            android:textColor="@color/TextColor"
-            android:textSize="20sp"
-            tools:ignore="RtlSymmetry"
-            tools:text="text" />
-
-        <ImageView
-            android:id="@+id/iv_arrow_right_major"
+            android:id="@+id/iv_arrow_right_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="7dp"

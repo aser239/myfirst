@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--标题-->
     <LinearLayout
         android:id="@+id/layout_titleBar"
         android:layout_width="match_parent"
@@ -36,6 +35,7 @@
             tools:ignore="HardcodedText" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -78,6 +78,7 @@
             tools:ignore="ContentDescription" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -124,6 +125,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -169,6 +171,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -214,6 +217,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -259,6 +263,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -304,6 +309,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -349,6 +355,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -394,6 +401,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -439,6 +447,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -484,6 +493,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

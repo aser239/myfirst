@@ -75,35 +75,40 @@
                 android:text="跳转至图片上传" />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
+                android:id="@+id/tx_fiCourse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="课程结束时间："
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/et_stTime"
-                android:layout_width="wrap_content"
+                android:id="@+id/et_fiTime"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
+                android:layout_toStartOf="@+id/bt_fiTime"
+                android:layout_toEndOf="@+id/tx_fiCourse"
+
                 android:gravity="center"
-                android:layout_weight="1"
-                />
+                android:inputType="text"
+                android:maxLines="1" />
 
             <Button
-                android:id="@+id/st_time"
+                android:id="@+id/bt_fiTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_alignParentEnd="true"
                 android:text="选择时间" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_marginLeft="30dp"
@@ -119,6 +124,7 @@
                 android:text="课程简介："
                 android:textSize="30sp"
                 />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -144,7 +150,7 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -152,16 +158,30 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/tx_stCourse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="课程开始时间："
-                android:textSize="30sp"
+                android:textSize="20sp"
                 />
-            <Button
+
+            <EditText
+                android:id="@+id/et_stTime"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="时间选择器"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/bt_stTime"
+                android:layout_toEndOf="@+id/tx_stCourse"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <Button
+                android:id="@+id/bt_stTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="选择时间" />
+        </RelativeLayout>
 
 <!--        <LinearLayout
             android:layout_marginLeft="30dp"

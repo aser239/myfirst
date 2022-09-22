@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -24,10 +25,10 @@ import java.util.Locale;
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class TimeActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView txtDate;
-    private TextView txtTime;
+    private EditText etStTime;
+   // private TextView txtTime;
     private Button btnDate;
-    private Button btnTime;
+    private TextView txtDate;
     DateFormat format= DateFormat.getDateTimeInstance();
     Calendar calendar= Calendar.getInstance(Locale.CHINA);
 
@@ -36,12 +37,10 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_time);
-        btnDate= (Button) findViewById(R.id.btn_Date);
-        btnTime= (Button) findViewById(R.id.btn_Time);
-        txtDate= (TextView) findViewById(R.id.txtDate);
-        txtTime= (TextView) findViewById(R.id.txtTime);
+        btnDate= findViewById(R.id.btn_Date);
+        txtDate= findViewById(R.id.txtDate);
+        //etStTime = findViewById(R.id.et_stTime);
         btnDate.setOnClickListener(this);
-        btnTime.setOnClickListener(this);
     }
 
     /**
@@ -67,40 +66,37 @@ public class TimeActivity extends AppCompatActivity implements View.OnClickListe
                 , calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    /**
-     * 时间选择
-     * @param activity
-     * @param themeResId
-     * @param tv
-     * @param calendar
-     */
-    public static void showTimePickerDialog(Activity activity,int themeResId, final TextView tv, Calendar calendar) {
-        // Calendar c = Calendar.getInstance();
-        // 创建一个TimePickerDialog实例，并把它显示出来
-        // 解释一哈，Activity是context的子类
-        new TimePickerDialog( activity,themeResId,
-                // 绑定监听器
-                new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        tv.setText("您选择了：" + hourOfDay + "时" + minute  + "分");
-                    }
-                }
-                // 设置初始时间
-                , calendar.get(Calendar.HOUR_OF_DAY)
-                , calendar.get(Calendar.MINUTE)
-                // true表示采用24小时制
-                ,true).show();
-    }
+//    /**
+//     * 时间选择
+//     * @param activity
+//     * @param themeResId
+//     * @param tv
+//     * @param calendar
+//     */
+//    public static void showTimePickerDialog(Activity activity,int themeResId, final TextView tv, Calendar calendar) {
+//        // Calendar c = Calendar.getInstance();
+//        // 创建一个TimePickerDialog实例，并把它显示出来
+//        // 解释一哈，Activity是context的子类
+//        new TimePickerDialog( activity,themeResId,
+//                // 绑定监听器
+//                new TimePickerDialog.OnTimeSetListener() {
+//                    @Override
+//                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//                        tv.setText("您选择了：" + hourOfDay + "时" + minute  + "分");
+//                    }
+//                }
+//                // 设置初始时间
+//                , calendar.get(Calendar.HOUR_OF_DAY)
+//                , calendar.get(Calendar.MINUTE)
+//                // true表示采用24小时制
+//                ,true).show();
+//    }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_Date:
-                showDatePickerDialog(this,  4, txtDate, calendar);;
-                break;
-            case R.id.btn_Time:
-                showTimePickerDialog(this,  4, txtTime, calendar);
+                showDatePickerDialog(this,  4,txtDate, calendar);;
                 break;
             default:
                 break;

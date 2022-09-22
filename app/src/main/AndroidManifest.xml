@@ -72,6 +72,7 @@
         <activity android:name=".Activity.StudentCourseActivity" />
         <activity android:name=".Activity.TimeActivity" />
         <activity android:name=".Activity.AddCourseActivity" />
+        <activity android:name=".Activity.GetCourseListActivity" />
     </application>
 
 </manifest>

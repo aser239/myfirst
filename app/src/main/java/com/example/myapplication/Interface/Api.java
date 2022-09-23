@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -35,7 +34,6 @@ public class Api {
 
     public static void enroll(String username, int roleId, String password) {
         new Thread(() -> {
-
             // url路径
             String url = "http://47.107.52.7:88/member/sign/user/register";
 
@@ -77,7 +75,6 @@ public class Api {
 
     public static void login(String username, String password) {
         new Thread(() -> {
-
             // url路径
             String url = "http://47.107.52.7:88/member/sign/user/login";
 
@@ -93,7 +90,6 @@ public class Api {
             FormBody.Builder params = new FormBody.Builder();
             params.add("username", username); //添加url参数
             params.add("password", password); //添加url参数
-            // 将Map转换为字符串类型加入请求体中
 
             //请求组合创建
             Request request = new Request.Builder()
@@ -116,6 +112,7 @@ public class Api {
                         Type jsonType = new TypeToken<ResponseBody<Person>>() {
                         }.getType();
                         // 获取响应体的json串
+                        assert response.body() != null;
                         String body = response.body().string();
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
@@ -136,7 +133,6 @@ public class Api {
                                  String coursePhoto, String introduce, int endTime,
                                  String realName, int startTime) {
         new Thread(() -> {
-
             // url路径
             String url = "http://47.107.52.7:88/member/sign/course/teacher";
 
@@ -163,8 +159,8 @@ public class Api {
             String body = gson.toJson(bodyMap);
 
             MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
-            //请求组合创建
 
+            //请求组合创建
             Request request = new Request.Builder()
                     .url(url)
                     // 将请求头加至请求中
@@ -181,9 +177,8 @@ public class Api {
         }).start();
     }
 
-    public static void GetCourse(int current,int size) {
+    public static void GetCourse(int current, int size) {
         new Thread(() -> {
-
             // url路径
             String url = "http://47.107.52.7:88/member/sign/course/all";
 
@@ -203,8 +198,8 @@ public class Api {
             String body = gson.toJson(bodyMap);
 
             MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
-            //请求组合创建
 
+            //请求组合创建
             Request request = new Request.Builder()
                     .url(url)
                     // 将请求头加至请求中
@@ -225,13 +220,14 @@ public class Api {
                         Type jsonType = new TypeToken<ResponseBody<Course>>() {
                         }.getType();
                         // 获取响应体的json串
+                        assert response.body() != null;
                         String body = response.body().string();
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Course> dataResponseBody = gson.fromJson(body, jsonType);
                         CourseData.Course = dataResponseBody.getData();
                         Log.d("info", dataResponseBody.toString());
-                        Log.d("Course",CourseData.Course.getCourseName());
+                        Log.d("Course", CourseData.Course.getCourseName());
                     }
                 });
             } catch (NetworkOnMainThreadException ex) {
@@ -246,14 +242,13 @@ public class Api {
                                      String email, int inSchoolTime) {
         new Thread(() -> {
             // url路径
-            String url = "http://47.107.52.7:88/member/sign/course/teacher";
+            String url = "http://47.107.52.7:88/member/sign/user/update";
 
             // 请求头
             Headers headers = new Headers.Builder()
                     .add("Accept", "application/json, text/plain, */*")
                     .add("appId", appId)
                     .add("appSecret", appSecret)
-                    .add("Content-Type", "application/json")
                     .build();
 
             // 请求体

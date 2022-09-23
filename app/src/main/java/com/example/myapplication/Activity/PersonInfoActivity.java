@@ -17,6 +17,10 @@ public class PersonInfoActivity extends AppCompatActivity {
     private TextView tv_realName;
     private TextView tv_idNumber;
     private TextView tv_gender;
+    private TextView tv_collegeName;
+    private TextView tv_phone;
+    private TextView tv_inSchoolTime;
+    private TextView tv_email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,10 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_realName = findViewById(R.id.tv_realName_info);
         tv_idNumber = findViewById(R.id.tv_idNumber_info);
         tv_gender = findViewById(R.id.tv_gender_info);
+        tv_collegeName = findViewById(R.id.tv_collegeName_info);
+        tv_phone = findViewById(R.id.tv_phone_info);
+        tv_inSchoolTime = findViewById(R.id.tv_inSchoolTime_info);
+        tv_email = findViewById(R.id.tv_email_info);
     }
 
     private void initData(){
@@ -48,6 +56,21 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_username.setText(LoginData.loginUser.getUsername());
         tv_realName.setText(LoginData.loginUser.getRealName());
         tv_idNumber.setText(String.valueOf(LoginData.loginUser.getIdNumber()));
-        //if(LoginData.loginUser.get)
+        //if(LoginData.loginUser.)
+        tv_collegeName.setText(LoginData.loginUser.getCollegeName());
+        tv_phone.setText(LoginData.loginUser.getPhone());
+        //int[] tempDate = getIntNum(LoginData.loginUser.getInSchoolTime());
+        tv_email.setText(LoginData.loginUser.getEmail());
+    }
+
+    public static int[] getIntNum(int n){
+        int temp=n;
+        int mod=10;
+        int[] allNum=new int[String.valueOf(n).length()];
+        for (int i = 0; i < allNum.length; i++) {
+            allNum[i]=temp%mod;
+            temp=(temp-allNum[i])/mod;
+        }
+        return allNum;
     }
 }

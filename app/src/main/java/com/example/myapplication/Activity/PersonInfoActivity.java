@@ -33,8 +33,11 @@ public class PersonInfoActivity extends AppCompatActivity {
 
     private void init() {
         Button login_exit = findViewById(R.id.login_exit);
-        login_exit.setOnClickListener(v -> startActivity(new Intent(PersonInfoActivity.this,
-                LoginActivity.class)));
+        login_exit.setOnClickListener(v -> {
+            startActivity(new Intent(PersonInfoActivity.this,
+                    LoginActivity.class));
+            finish();
+        });
 
         ImageView personInfo_backward = findViewById(R.id.iv_backward);
         personInfo_backward.setOnClickListener(v -> startActivity(new Intent(PersonInfoActivity.this,
@@ -52,6 +55,8 @@ public class PersonInfoActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        TextView tv_avatar_title = findViewById(R.id.tv_avatar);
+        tv_avatar_title.setText("头像");
         final boolean is_man = true;  //判断是否为男性
         tv_id.setText(String.valueOf(LoginData.loginUser.getId()));
         tv_username.setText(LoginData.loginUser.getUsername());

@@ -17,43 +17,34 @@
         android:theme="@style/Theme.MyApplication.NoACtionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Message"
+            android:name=".Activity.TimeActivity"
             android:exported="false" />
         <activity
-            android:name=".TimeActivity"
+            android:name=".Activity.ModifyUserInformationActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentCourseAcitivity"
+            android:name=".Activity.EnterUserCenterActivity"
             android:exported="false" />
         <activity
-            android:name=".ModifyUserInformationActivity"
+            android:name=".Activity.EnterSignInActivity"
             android:exported="false" />
         <activity
-            android:name=".EnterUserCenterActivity"
+            android:name=".Activity.GetCourseListActivity"
             android:exported="false" />
         <activity
-            android:name=".EnterSignInActivity"
+            android:name=".Activity.TeacherSignInActivity"
             android:exported="false" />
         <activity
-            android:name=".EnterCourseActivity"
+            android:name=".Activity.AddCourseActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.UploadActivity"
             android:exported="false" />
         <activity
-            android:name=".GetCourseListActivity"
+            android:name=".Activity.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".TeacherSignInActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCourseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UploadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignInActivity"
+            android:name=".Activity.PersonInfoActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.LoginActivity"
@@ -73,9 +64,6 @@
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.TeacherCourseActivity" />
         <activity android:name=".Activity.StudentCourseActivity" />
-        <activity android:name=".Activity.TimeActivity" />
-        <activity android:name=".Activity.AddCourseActivity" />
-        <activity android:name=".Activity.GetCourseListActivity" />
         <activity android:name=".Activity.MessageActivity" />
     </application>
 

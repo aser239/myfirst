@@ -1,4 +1,4 @@
-package com.example.myapplication.widget;
+package com.example.myapplication.Widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

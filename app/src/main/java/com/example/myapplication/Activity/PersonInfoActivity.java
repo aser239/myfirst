@@ -1,5 +1,6 @@
 package com.example.myapplication.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -34,14 +35,18 @@ public class PersonInfoActivity extends AppCompatActivity {
     private void init() {
         Button login_exit = findViewById(R.id.login_exit);
         login_exit.setOnClickListener(v -> {
-            startActivity(new Intent(PersonInfoActivity.this,
-                    LoginActivity.class));
-            finish();
+            Intent intent = new Intent(PersonInfoActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
 
         ImageView personInfo_backward = findViewById(R.id.iv_backward);
-        personInfo_backward.setOnClickListener(v -> startActivity(new Intent(PersonInfoActivity.this,
-                MainActivity.class)));
+        personInfo_backward.setOnClickListener(v -> {
+            startActivity(new Intent(PersonInfoActivity.this,
+                    MainActivity.class));
+            finish();
+        });
 
         tv_id = findViewById(R.id.tv_id_info);
         tv_username = findViewById(R.id.tv_username_info);
@@ -54,9 +59,29 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_email = findViewById(R.id.tv_email_info);
     }
 
+    @SuppressLint("SetTextI18n")
     private void initData() {
         TextView tv_avatar_title = findViewById(R.id.tv_avatar);
         tv_avatar_title.setText("头像");
+        TextView tv_id_title = findViewById(R.id.tv_id);
+        tv_id_title.setText("ID");
+        TextView tv_username_title = findViewById(R.id.tv_username);
+        tv_username_title.setText("用户名");
+        TextView tv_realName_title = findViewById(R.id.tv_realName);
+        tv_realName_title.setText("性名");
+        TextView tv_idNumber_title = findViewById(R.id.tv_idNumber);
+        tv_idNumber_title.setText("学号");
+        TextView tv_gender_title = findViewById(R.id.tv_gender);
+        tv_gender_title.setText("性别");
+        TextView tv_collegeName_title = findViewById(R.id.tv_collegeName);
+        tv_collegeName_title.setText("院校");
+        TextView tv_phone_title = findViewById(R.id.tv_phone);
+        tv_phone_title.setText("手机号");
+        TextView tv_inSchoolTime_title = findViewById(R.id.tv_inSchoolTime);
+        tv_inSchoolTime_title.setText("入学时间");
+        TextView tv_email_title = findViewById(R.id.tv_email);
+        tv_email_title.setText("邮箱");
+
         final boolean is_man = true;  //判断是否为男性
         tv_id.setText(String.valueOf(LoginData.loginUser.getId()));
         tv_username.setText(LoginData.loginUser.getUsername());

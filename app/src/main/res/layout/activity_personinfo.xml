@@ -57,7 +57,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
             tools:text="头像" />
 
         <com.example.myapplication.widget.RoundImageView
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="3dp"
             android:padding="8dp"
             android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
             tools:ignore="ContentDescription" />
@@ -107,6 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="47dp"
             android:layout_weight="1"
             android:gravity="center_vertical|end"
             android:paddingEnd="8dp"
@@ -114,16 +115,6 @@
             android:textSize="20sp"
             tools:ignore="RtlSymmetry"
             tools:text="text" />
-
-        <!--点击跳转或者弹出选择框-->
-        <ImageView
-            android:id="@+id/iv_arrow_right_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <View
@@ -154,6 +145,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="47dp"
             android:layout_weight="1"
             android:gravity="center_vertical|end"
             android:paddingEnd="8dp"
@@ -162,14 +154,6 @@
             tools:ignore="RtlSymmetry"
             tools:text="text" />
 
-        <ImageView
-            android:id="@+id/iv_arrow_right_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="7dp"
-            android:padding="8dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
-            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <View

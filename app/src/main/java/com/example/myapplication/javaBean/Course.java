@@ -1,20 +1,47 @@
 package com.example.myapplication.javaBean;
 
+import java.util.Arrays;
+
 public class Course {
-    private String collegeName;
+    private int current;
+    private Arrays[] records;
+    private int size;
+    private int total;
     private String courseName;
     private String coursePhoto;
-    private String introduce;
-    private int endTime;
-    private String realName;
-    private int startTime;
+    private String collegeName;
+    private int courseId;
 
-    public String getCollegeName() {
-        return collegeName;
+    public int getCurrent() {
+        return current;
     }
 
-    public void setCollegeName(String collegeName) {
-        this.collegeName = collegeName;
+    public void setCurrent(int current) {
+        this.current = current;
+    }
+
+    public Arrays[] getRecords() {
+        return records;
+    }
+
+    public void setRecords(Arrays[] records) {
+        this.records = records;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public String getCourseName() {
@@ -33,48 +60,33 @@ public class Course {
         this.coursePhoto = coursePhoto;
     }
 
-    public int getEndTime() {
-        return endTime;
+    public String getCollegeName() {
+        return collegeName;
     }
 
-    public void setEndTime(int endTime) {
-        this.endTime = endTime;
+    public void setCollegeName(String collegeName) {
+        this.collegeName = collegeName;
     }
 
-    public String getIntroduce() {
-        return introduce;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public int getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     @Override
     public String toString() {
         return "Course{" +
-                "collegeName='" + collegeName + '\'' +
+                "current=" + current +
+                ", records=" + Arrays.toString(records) +
+                ", size=" + size +
+                ", total=" + total +
                 ", courseName='" + courseName + '\'' +
                 ", coursePhoto='" + coursePhoto + '\'' +
-                ", introduce='" + introduce + '\'' +
-                ", endTime=" + endTime +
-                ", realName=" + realName +
-                ", startTime=" + startTime +
+                ", collegeName='" + collegeName + '\'' +
+                ", courseId=" + courseId +
                 '}';
     }
 }

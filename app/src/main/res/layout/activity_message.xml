@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Activity.MessageActivity"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/addCourseReturnToCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返回"/>
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="院校名："
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tx_collegeName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是ListView的Item布局"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="课程名："
+                android:textSize="30sp"
+                />
+            <TextView
+                android:id="@+id/tx_courseName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是ListView的Item布局"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tx_fiCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="课程结束时间："
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tx_fiTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是ListView的Item布局"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:text="课程简介："
+                android:textSize="30sp"
+                />
+            <TextView
+                android:id="@+id/tx_introduce2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是ListView的Item布局"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前登录真实姓名："
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/tx_realName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是ListView的Item布局"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tx_stCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="课程开始时间："
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:id="@+id/tx_stTime2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是ListView的Item布局"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

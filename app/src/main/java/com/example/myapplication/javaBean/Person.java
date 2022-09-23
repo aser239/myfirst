@@ -8,6 +8,7 @@ public class Person {
     private String id;
     private String appKey;
     private int roleId;
+    private boolean gender;
     private String realName;
     private String idNumber;
     private String collegeName;
@@ -130,14 +131,23 @@ public class Person {
         this.lastUpdateTime = lastUpdateTime;
     }
 
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "username='" + userName + '\'' +
+                "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", id='" + id + '\'' +
                 ", appKey='" + appKey + '\'' +
                 ", roleId=" + roleId +
+                ", gender=" + gender +
                 ", realName='" + realName + '\'' +
                 ", idNumber='" + idNumber + '\'' +
                 ", collegeName='" + collegeName + '\'' +

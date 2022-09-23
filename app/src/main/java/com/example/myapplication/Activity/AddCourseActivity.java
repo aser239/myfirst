@@ -31,13 +31,13 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
     private Button btnDate1;
     private Button btnDate2;
     private Button btnAdd;
-    private EditText etCollegeName;
-    private EditText etCourseName;
-    private EditText etCoursePhoto;
-    private EditText etIntroduce;
-    private EditText etEndTime;
-    private EditText etRealName;
-    private EditText etStartTime;
+    public static EditText etCollegeName;
+    public static EditText etCourseName;
+    public static EditText etCoursePhoto;
+    public static EditText etIntroduce;
+    public static EditText etEndTime;
+    public static EditText etRealName;
+    public static EditText etStartTime;
 
     Calendar calendar= Calendar.getInstance(Locale.CHINA);
 
@@ -77,10 +77,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
 
                 Api.AddCourse(CollegeName,CourseName, CoursePhoto,Introduce,endTime,RealName,startTime);
 
-                if (Api.Code == 200){
-                    startActivity(new Intent(AddCourseActivity.this,GetCourseListActivity.class));
-                }
-
+                startActivity(new Intent(AddCourseActivity.this,GetCourseListActivity.class));
             }
         });
 

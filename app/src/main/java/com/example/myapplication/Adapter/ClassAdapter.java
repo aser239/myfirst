@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ClassAdapter extends BaseAdapter {
 
-    private LayoutInflater inflater;
+    private final LayoutInflater inflater;
     List<Course> listItem;
 
     public ClassAdapter(Context context,List<Course> listItem){
@@ -44,25 +44,25 @@ public class ClassAdapter extends BaseAdapter {
         ClassItemVH holder;
         if(convertView==null){
             holder = new ClassItemVH();
-            convertView = inflater.inflate(R.layout.activity_add_course,null);
-            holder.collegeName =  convertView.findViewById(R.id.et_collegeName);
-            holder.courseName = convertView.findViewById(R.id.et_courseName);
-            holder.coursePhoto = convertView.findViewById(R.id.et_photo);
-            holder.endTime  = convertView.findViewById(R.id.et_fiTime);
-            holder.introduce  = convertView.findViewById(R.id.et_introduce);
-            holder.realName  = convertView.findViewById(R.id.et_realName);
-            holder.startTime  = convertView.findViewById(R.id.et_stTime);
+            convertView = inflater.inflate(R.layout.list_item,parent,false);
+//            holder.collegeName =  convertView.findViewById(R.id.et_collegeName);
+            holder.courseName = convertView.findViewById(R.id.item_tv);
+//            holder.coursePhoto = convertView.findViewById(R.id.et_photo);
+//            holder.endTime  = convertView.findViewById(R.id.et_fiTime);
+//            holder.introduce  = convertView.findViewById(R.id.et_introduce);
+//            holder.realName  = convertView.findViewById(R.id.et_realName);
+//            holder.startTime  = convertView.findViewById(R.id.et_stTime);
             convertView.setTag(holder);
         }else{
             holder = (ClassItemVH)convertView.getTag();
         }
-        holder.collegeName.setText(listItem.get(position).getCollegeName());
+//        holder.collegeName.setText(listItem.get(position).getCollegeName());
         holder.courseName.setText(listItem.get(position).getCourseName());
-        holder.coursePhoto.setText(listItem.get(position).getCoursePhoto());
-        holder.endTime.setText(listItem.get(position).getEndTime());
-        holder.introduce.setText(listItem.get(position).getIntroduce());
-        holder.realName.setText(listItem.get(position).getRealName());
-        holder.startTime.setText(listItem.get(position).getStartTime());
+//        holder.coursePhoto.setText(listItem.get(position).getCoursePhoto());
+//        holder.endTime.setText(listItem.get(position).getEndTime());
+//        holder.introduce.setText(listItem.get(position).getIntroduce());
+//        holder.realName.setText(listItem.get(position).getRealName());
+//        holder.startTime.setText(listItem.get(position).getStartTime());
         return convertView;
     }
 }

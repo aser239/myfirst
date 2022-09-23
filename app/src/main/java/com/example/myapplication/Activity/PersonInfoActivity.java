@@ -21,6 +21,7 @@ public class PersonInfoActivity extends AppCompatActivity {
     private TextView tv_phone;
     private TextView tv_inSchoolTime;
     private TextView tv_email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,27 +51,23 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_email = findViewById(R.id.tv_email_info);
     }
 
-    private void initData(){
-        final boolean is_man = true;
+    private void initData() {
+        final boolean is_man = true;  //判断是否为男性
         tv_id.setText(String.valueOf(LoginData.loginUser.getId()));
         tv_username.setText(LoginData.loginUser.getUsername());
         tv_realName.setText(LoginData.loginUser.getRealName());
         tv_idNumber.setText(String.valueOf(LoginData.loginUser.getIdNumber()));
-        //if(LoginData.loginUser.)
+        if (LoginData.loginUser.getGender() == is_man) {
+            tv_gender.setText("男");
+        } else {
+            tv_gender.setText("女");
+        }
         tv_collegeName.setText(LoginData.loginUser.getCollegeName());
         tv_phone.setText(LoginData.loginUser.getPhone());
-        //int[] tempDate = getIntNum(LoginData.loginUser.getInSchoolTime());
+        String tempStringDate = String.valueOf(LoginData.loginUser.getInSchoolTime());
+        String realStringDate = tempStringDate.substring(0, 4) + "-" + tempStringDate.substring(4, 6) + "-" +
+                tempStringDate.substring(6, 8);
+        tv_inSchoolTime.setText(realStringDate);
         tv_email.setText(LoginData.loginUser.getEmail());
-    }
-
-    public static int[] getIntNum(int n){
-        int temp=n;
-        int mod=10;
-        int[] allNum=new int[String.valueOf(n).length()];
-        for (int i = 0; i < allNum.length; i++) {
-            allNum[i]=temp%mod;
-            temp=(temp-allNum[i])/mod;
-        }
-        return allNum;
     }
 }

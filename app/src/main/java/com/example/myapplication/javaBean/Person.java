@@ -19,19 +19,22 @@ public class Person {
     private String createTime;
     private String lastUpdateTime;
 
-    public Person(){}
+    public Person() {
+    }
 
-    public void setUsername(String username){
+    public void setUsername(String username) {
         this.userName = username;
     }
-    public String getUsername(){
+
+    public String getUsername() {
         return userName;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) {
         this.password = password;
     }
-    public String getPassword(){
+
+    public String getPassword() {
         return password;
     }
 
@@ -131,7 +134,7 @@ public class Person {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    public boolean isGender() {
+    public boolean getGender() {
         return gender;
     }
 
@@ -139,6 +142,7 @@ public class Person {
         this.gender = gender;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Person{" +

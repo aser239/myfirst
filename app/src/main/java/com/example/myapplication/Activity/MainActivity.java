@@ -32,14 +32,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        time = findViewById(R.id.time);
-        time.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,TimeActivity.class));
-            }
-        });
     }
 }

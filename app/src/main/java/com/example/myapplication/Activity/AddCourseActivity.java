@@ -31,6 +31,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
     private Button btnDate1;
     private Button btnDate2;
     private Button btnAdd;
+    private Button btSearch;
     public static EditText etCollegeName;
     public static EditText etCourseName;
     public static EditText etCoursePhoto;
@@ -50,6 +51,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         btnDate1 = findViewById(R.id.bt_fiTime);
         btnDate2 = findViewById(R.id.bt_stTime);
         btnAdd = findViewById(R.id.confirmAddCourse);
+        btSearch = findViewById(R.id.search);
 
         //txtDate= findViewById(R.id.txtDate);
         etEndTime = findViewById(R.id.et_fiTime);
@@ -77,10 +79,16 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
 
                 Api.AddCourse(CollegeName,CourseName, CoursePhoto,Introduce,endTime,RealName,startTime);
 
-                startActivity(new Intent(AddCourseActivity.this,GetCourseListActivity.class));
+
             }
         });
 
+        btSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AddCourseActivity.this,CourseListActivity.class));
+            }
+        });
     }
 
     /**

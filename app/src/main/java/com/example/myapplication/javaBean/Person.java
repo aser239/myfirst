@@ -15,7 +15,7 @@ public class Person {
     private String phone;
     private String email;
     private String avatar;
-    private String inSchoolTime;
+    private int inSchoolTime;
     private String createTime;
     private String lastUpdateTime;
 
@@ -107,11 +107,11 @@ public class Person {
         this.avatar = avatar;
     }
 
-    public String getInSchoolTime() {
+    public int getInSchoolTime() {
         return inSchoolTime;
     }
 
-    public void setInSchoolTime(String inSchoolTime) {
+    public void setInSchoolTime(int inSchoolTime) {
         this.inSchoolTime = inSchoolTime;
     }
 

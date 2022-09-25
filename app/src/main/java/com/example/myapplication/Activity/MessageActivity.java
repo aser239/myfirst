@@ -57,8 +57,40 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+        CourseListActivity courseListActivity = new CourseListActivity();
+        int courseId2 = courseListActivity.courseId;
+        System.out.println(courseId2);
 
-        Detail(CourseData.Course.getCourseId(), LoginData.loginUser.getId());
+        Detail(courseId2, LoginData.loginUser.getId());
+
+    }
+
+    public void init(){
+
+        etCollegeName2 = findViewById(R.id.tx_collegeName22);
+        etCourseName2 =  findViewById(R.id.tx_courseName22);
+        etCoursePhoto2 =  findViewById(R.id.tx_photo);
+        etIntroduce2 =  findViewById(R.id.tx_introduce22);
+        etEndTime2 =  findViewById(R.id.tx_fiTime22);
+        etRealName2 =  findViewById(R.id.tx_realName2);
+        etStartTime2 =  findViewById(R.id.tx_stTime2);
+        etId =  findViewById(R.id.tx_id);
+        etChoose =  findViewById(R.id.tx_choose);
+        etUserName =  findViewById(R.id.tx_userName);
+        etCreateTime =  findViewById(R.id.tx_CreateTime);
+        System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllll");
+        etCollegeName2.setText(CourseData.Detail.getCollegeName());
+
+        etCourseName2.setText(CourseData.Detail.getCourseName());
+        etCoursePhoto2.setText(CourseData.Detail.getCoursePhoto());
+        etIntroduce2.setText(CourseData.Detail.getIntroduce());
+        etEndTime2.setText(String.valueOf(CourseData.Detail.getEndTime()));
+        etRealName2.setText(CourseData.Detail.getRealName());
+        etStartTime2.setText(String.valueOf(CourseData.Detail.getStartTime()));
+        etId.setText(String.valueOf(CourseData.Detail.getId()));
+        etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
+        etUserName.setText(CourseData.Detail.getUserName());
+        etCreateTime.setText(String.valueOf(CourseData.Detail.getCreateTime()));
 
     }
 
@@ -110,6 +142,8 @@ public class MessageActivity extends AppCompatActivity {
                     // 解析json串到自己封装的状态
                     ResponseBody<CourseDetail> dataResponseBody = gson.fromJson(body, jsonType);
                     Log.d("详情：", dataResponseBody.getData().toString());
+                    CourseData.Detail=dataResponseBody.getData();
+                    init();
                 }
             });
         }

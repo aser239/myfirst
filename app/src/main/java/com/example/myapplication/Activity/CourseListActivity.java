@@ -43,6 +43,7 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
     private CollectionAdapter adapter;
     private List<Course> newsData;
     private ListView lvNewsList;
+    public static int courseId;
 
     public CourseListActivity() {
     }
@@ -116,6 +117,7 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
                     // 解析json串到自己封装的状态
                     ResponseBody<Records> dataResponseBody = gson.fromJson(body, jsonType);
                     Log.d("动态：", dataResponseBody.getData().getRecords().get(0).toString());
+                    System.out.println(courseId = dataResponseBody.getData().getRecords().get(0).getCourseId());
                     for (Course news:dataResponseBody.getData().getRecords()) {
                         adapter.add(news);
                     }

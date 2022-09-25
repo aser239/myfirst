@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 public class Person {
     private String userName;
     private String password;
-    private String id;
+    private int id;
     private String appKey;
     private int roleId;
     private boolean gender;
@@ -38,11 +38,11 @@ public class Person {
         return password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

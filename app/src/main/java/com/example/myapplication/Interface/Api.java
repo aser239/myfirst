@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.javaBean.Course;
+import com.example.myapplication.javaBean.CourseDetail;
 import com.example.myapplication.javaBean.Person;
 import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
@@ -123,7 +124,7 @@ public class Api {
                         ResponseBody<Person> dataResponseBody = gson.fromJson(body, jsonType);
                         LoginData.loginUser = dataResponseBody.getData();
                         Log.d("info", dataResponseBody.toString());
-                        Log.d("Person:", LoginData.loginUser.getId());
+                        Log.d("Person:", String.valueOf(LoginData.loginUser.getId()));
                         Log.d("Person:", LoginData.loginUser.getUsername());
                     }
                 });
@@ -158,7 +159,7 @@ public class Api {
             bodyMap.put("introduce", introduce);
             bodyMap.put("realName", realName);
             bodyMap.put("startTime", startTime);
-            bodyMap.put("userId", LoginData.loginUser.getId());
+            bodyMap.put("userId", String.valueOf(LoginData.loginUser.getId()));
             bodyMap.put("userName", LoginData.loginUser.getUsername());
             // 将Map转换为字符串类型加入请求体中
             String body = gson.toJson(bodyMap);
@@ -181,6 +182,8 @@ public class Api {
             }
         }).start();
     }
+
+
 
 
     public static void AlterUserInfo(String collegeName, String realName,

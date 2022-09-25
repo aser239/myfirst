@@ -76,10 +76,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                 String Introduce = etIntroduce.getText().toString();
                 String RealName = etRealName.getText().toString();
 
-
                 Api.AddCourse(CollegeName,CourseName, CoursePhoto,Introduce,endTime,RealName,startTime);
-
-
             }
         });
 

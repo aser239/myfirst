@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity{
             if (LoginData.loginUser!=null){
                 Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                finish();
             }
         });
     }

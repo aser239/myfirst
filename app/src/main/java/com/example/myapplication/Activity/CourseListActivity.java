@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Interface.Api;
@@ -33,7 +36,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-public class CourseListActivity extends AppCompatActivity {
+public class CourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
 
     private CollectionViewModel mViewModel;
@@ -49,10 +52,13 @@ public class CourseListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
         lvNewsList = findViewById(R.id.lv_news_list222);
+
+        lvNewsList.setOnItemClickListener(this);
         initData();
+
     }
 
-    public void initData() {
+    private void initData() {
         newsData = new ArrayList<>();
         adapter = new CollectionAdapter(CourseListActivity.this,
                 R.layout.list_item, newsData);
@@ -108,7 +114,7 @@ public class CourseListActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
                     // 解析json串到自己封装的状态
-                    ResponseBody<Records> dataResponseBody = new Gson().fromJson(body, jsonType);
+                    ResponseBody<Records> dataResponseBody = gson.fromJson(body, jsonType);
                     Log.d("动态：", dataResponseBody.getData().getRecords().get(0).toString());
                     for (Course news:dataResponseBody.getData().getRecords()) {
                         adapter.add(news);
@@ -119,4 +125,9 @@ public class CourseListActivity extends AppCompatActivity {
             });
         }
     };
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        startActivity(new Intent(CourseListActivity.this,MessageActivity.class));
+    }
 }

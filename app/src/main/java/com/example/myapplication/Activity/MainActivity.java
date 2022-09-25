@@ -16,7 +16,6 @@ import com.example.myapplication.R;
 public class MainActivity extends AppCompatActivity {
     private Button course;
     private Button time;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,25 +25,12 @@ public class MainActivity extends AppCompatActivity {
         course.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (LoginData.loginUser.getRoleId() == 0) {
-                    startActivity(new Intent(MainActivity.this, StudentCourseActivity.class));
-                } else if (LoginData.loginUser.getRoleId() == 1) {
-                    startActivity(new Intent(MainActivity.this, TeacherCourseActivity.class));
+                if (LoginData.loginUser.getRoleId() == 0){
+                    startActivity(new Intent(MainActivity.this,StudentCourseActivity.class));
+                }else if (LoginData.loginUser.getRoleId() == 1){
+                    startActivity(new Intent(MainActivity.this,TeacherCourseActivity.class));
                 }
             }
         });
-
-        time = findViewById(R.id.time);
-        time.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TimeActivity.class));
-            }
-        });
-
-        Button personInfo = findViewById(R.id.bt_enterUserCenter);
-        personInfo.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,
-                PersonInfoActivity.class)));
     }
 }

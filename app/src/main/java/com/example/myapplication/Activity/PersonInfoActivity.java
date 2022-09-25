@@ -13,6 +13,7 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
 
 public class PersonInfoActivity extends AppCompatActivity {
+    public static final String Info_String = "com.example.Activity.Info";
     private TextView tv_id;
     private TextView tv_username;
     private TextView tv_realName;
@@ -57,6 +58,13 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_phone = findViewById(R.id.tv_phone_info);
         tv_inSchoolTime = findViewById(R.id.tv_inSchoolTime_info);
         tv_email = findViewById(R.id.tv_email_info);
+
+        ImageView iv_name = findViewById(R.id.iv_arrow_right_realName);
+        iv_name.setOnClickListener(v -> {
+            Intent intent = new Intent(PersonInfoActivity.this, AlterActivity.class);
+            intent.putExtra(Info_String, "姓名");
+            startActivity(intent);
+        });
     }
 
     @SuppressLint("SetTextI18n")

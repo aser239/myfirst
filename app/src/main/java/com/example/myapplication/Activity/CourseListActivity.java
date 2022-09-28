@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapter.CollectionAdapter;
+import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
@@ -44,6 +45,7 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
     private List<Course> newsData;
     private ListView lvNewsList;
     public static int courseId;
+    public static String courseName;
 
     public CourseListActivity() {
     }
@@ -107,7 +109,7 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
 
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
-            Log.d("动态：", body);
+            Log.d("课程列表：", body);
 
             runOnUiThread(new Runnable() {
                 @Override
@@ -116,8 +118,9 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
                     Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
                     // 解析json串到自己封装的状态
                     ResponseBody<Records> dataResponseBody = gson.fromJson(body, jsonType);
-                    Log.d("动态：", dataResponseBody.getData().getRecords().get(0).toString());
-                    System.out.println(courseId = dataResponseBody.getData().getRecords().get(0).getCourseId());
+                    Log.d("课程列表：", dataResponseBody.getData().getRecords().get(0).toString());
+                    courseId = dataResponseBody.getData().getRecords().get(0).getCourseId();
+                    courseName = dataResponseBody.getData().getRecords().get(0).getCourseName();
                     for (Course news:dataResponseBody.getData().getRecords()) {
                         adapter.add(news);
                     }
@@ -130,6 +133,12 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        startActivity(new Intent(CourseListActivity.this,MessageActivity.class));
+        if (LoginData.loginUser.getRoleId()==0){
+            int courseId3 = courseId;
+            System.out.println(courseId3);
+            Api.SelectCourse(courseId3,LoginData.loginUser.getId());
+        }else if (LoginData.loginUser.getRoleId()==1) {
+            startActivity(new Intent(CourseListActivity.this, MessageActivity.class));
+        }
     }
 }

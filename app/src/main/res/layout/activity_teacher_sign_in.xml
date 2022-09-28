@@ -9,26 +9,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="返回"/>
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/txStTime33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="签到开始时间："
-            android:textSize="30sp"
-            />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="时间选择器"/>
-    </LinearLayout>
+            android:textSize="20sp" />
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/tx_stTime33"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/bt_stTime33"
+            android:layout_toEndOf="@+id/txStTime33"
+            android:gravity="center"
+            android:maxLines="1"
+            android:selectAllOnFocus="true" />
+
+        <Button
+            android:id="@+id/bt_stTime33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="选择时间" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
@@ -36,16 +51,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/txFiTime33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="签到结束时间："
-            android:textSize="30sp"
+            android:textSize="20sp"
             />
-        <Button
+
+        <TextView
+            android:id="@+id/tx_fiTime33"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="时间选择器"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+
+            android:layout_toStartOf="@+id/bt_fiTime33"
+            android:layout_toEndOf="@+id/txFiTime33"
+            android:gravity="center"
+            android:maxLines="1"
+            android:selectAllOnFocus="true" />
+
+        <Button
+            android:id="@+id/bt_fiTime33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="选择时间" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_marginLeft="30dp"
@@ -61,6 +91,7 @@
             android:textSize="30sp"
             />
         <EditText
+            android:id="@+id/Addr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -80,6 +111,7 @@
             android:textSize="30sp"
             />
         <EditText
+            android:id="@+id/et_CourseID"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -100,6 +132,7 @@
             android:textSize="30sp"
             />
         <EditText
+            android:id="@+id/et_courseName2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -119,6 +152,7 @@
             android:textSize="30sp"
             />
         <EditText
+            android:id="@+id/Signpassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -138,6 +172,7 @@
             android:textSize="30sp"
             />
         <EditText
+            android:id="@+id/people"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -157,6 +192,7 @@
             android:textSize="30sp"
             />
         <EditText
+            android:id="@+id/userId"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
@@ -171,6 +207,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:id="@+id/StartSign"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="发起签到"/>

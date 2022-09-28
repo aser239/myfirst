@@ -117,10 +117,10 @@
 
                 android:layout_toStartOf="@+id/bt_fiTime"
                 android:layout_toEndOf="@+id/tx_fiCourse"
-                android:selectAllOnFocus="true"
                 android:gravity="center"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:selectAllOnFocus="true" />
 
             <Button
                 android:id="@+id/bt_fiTime"

@@ -57,8 +57,8 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
-        CourseListActivity courseListActivity = new CourseListActivity();
-        int courseId2 = courseListActivity.courseId;
+
+        int courseId2 = CourseListActivity.courseId;
         System.out.println(courseId2);
 
         Detail(courseId2, LoginData.loginUser.getId());

@@ -39,6 +39,8 @@
         <activity android:name=".Activity.StudentCourseActivity" />
         <activity android:name=".Activity.AddCourseActivity" />
         <activity android:name=".Activity.MessageActivity" />
+        <activity android:name=".Activity.StudentSignInActivity" />
+        <activity android:name=".Activity.TeacherSignInActivity" />
     </application>
 
 </manifest>

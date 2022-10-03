@@ -1,4 +1,4 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.TeacherActivity;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,16 +14,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Interface.Api;
-import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Course;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
-import okhttp3.Response;
-
+//老师选课
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class AddCourseActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -68,8 +67,9 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(View v) {
                // etCoursePhoto.setText("https://guet-lab.oss-cn-hangzhou.aliyuncs.com/api/2022/09/22/777f78b9-4b7d-401f-986a-7bc61f903201.jpg");
-                int endTime = Integer.parseInt(etEndTime.getText().toString());
-                int startTime = Integer.parseInt(etStartTime.getText().toString());
+                long endTime = Long.parseLong(etEndTime.getText().toString());
+                long startTime = Long.parseLong(etStartTime.getText().toString());
+
                 String CoursePhoto = etCoursePhoto.getText().toString();
                 String CollegeName = etCollegeName.getText().toString();
                 String CourseName = etCourseName.getText().toString();
@@ -83,7 +83,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         btSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddCourseActivity.this,CourseListActivity.class));
+                startActivity(new Intent(AddCourseActivity.this, TeacherCourseListActivity.class));
             }
         });
     }
@@ -102,7 +102,13 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 // 此处得到选择的时间，可以进行你想要的操作
-                Time.setText(year+""+ (monthOfYear+ 1)+""+ ""+dayOfMonth);
+                String month = add0(String.valueOf(monthOfYear+1));
+                String day = add0(String.valueOf(dayOfMonth));
+                try {
+                    Time.setText(dateToStamp(year+"-"+month+"-"+day));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
                 // 设置初始日期
@@ -124,6 +130,21 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                 break;
         }
 
+    }
+
+    //时间转换时间戳
+    public static String dateToStamp(String s) throws ParseException {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = simpleDateFormat.parse(s);
+        long ts = date.getTime();
+        res = String.valueOf(ts);
+        return res;
+    }
+
+    //补足月份、日期
+    public static String add0(String m){
+        return Integer.parseInt(m)>10?m: "0"+m;
     }
 
 }

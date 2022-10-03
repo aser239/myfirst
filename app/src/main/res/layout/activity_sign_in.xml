@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.StudentSignInActivity"
+    tools:context=".StudentActivity.StudentSignInActivity"
     android:orientation="vertical"
     android:background="#009688">
 
@@ -21,17 +21,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
             android:layout_gravity="center_horizontal"
-            android:text="用户ID:"
+            android:text="用户ID："
             android:textSize="35sp"/>
 
         <EditText
-            android:id="@+id/UserID11"
+            android:id="@+id/tv_sign_in_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="center_horizontal"
+            android:inputType="text"/>
     </LinearLayout>
 
     <LinearLayout
@@ -42,17 +43,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:text="签到id:"
+            android:textSize="35sp"/>
+
+        <EditText
+            android:id="@+id/course_Main_Id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:inputType="text"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
             android:layout_gravity="center_horizontal"
             android:text="签到码:"
             android:textSize="35sp"/>
 
         <EditText
-            android:id="@+id/SignPassword11"
+            android:id="@+id/tv_sign_in_psw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="center_horizontal"
+            android:inputType="text"/>
     </LinearLayout>
 
 

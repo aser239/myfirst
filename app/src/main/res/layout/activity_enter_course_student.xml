@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.StudentCourseActivity">
+    tools:context=".StudentActivity.StudentCourseActivity">
 
     <Button
         android:id="@+id/returnMainActivity"
@@ -13,7 +13,7 @@
         android:text="返回"/>
 
     <Button
-        android:id="@+id/enterSelectCourse"
+        android:id="@+id/enterSelectCourse111"
         android:text="学生选课"
         android:textSize="30sp"
         android:layout_marginRight="30dp"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
     <Button
-        android:id="@+id/enterDropCourse"
+        android:id="@+id/enterDropCourse111"
         android:text="学生退课"
         android:textSize="30sp"
         android:layout_marginRight="30dp"
@@ -37,7 +37,7 @@
 
 
     <Button
-        android:id="@+id/enterCourseList"
+        android:id="@+id/enterCourseList111"
         android:text="学生查看课程列表"
         android:textSize="30sp"
         android:layout_marginRight="30dp"

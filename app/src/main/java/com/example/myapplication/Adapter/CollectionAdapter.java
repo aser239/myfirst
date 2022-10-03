@@ -7,14 +7,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
-import com.example.myapplication.Activity.CourseListActivity;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.R;
 

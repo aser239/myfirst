@@ -32,11 +32,11 @@ import okhttp3.Response;
 
 public class Api {
     public static Gson gson = new Gson();
-    public static String appId = "d44f6a157edc4815b907124907b98e63";
-    public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
+//    public static String appId = "d44f6a157edc4815b907124907b98e63";
+//    public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
 
-//    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
-//    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
+    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
+    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
 
     public static void enroll(String username, int roleId, String password) {
         new Thread(() -> {
@@ -137,9 +137,9 @@ public class Api {
         }).start();
     }
 
-    public static void AddCourse(String collegeName, String courseName,
-                                 String coursePhoto, String introduce, int endTime,
-                                 String realName, int startTime) {
+    public static void  AddCourse(String collegeName, String courseName,
+                                 String coursePhoto, String introduce, long endTime,
+                                 String realName, long startTime) {
         new Thread(() -> {
 
             // url路径
@@ -229,8 +229,8 @@ public class Api {
         }).start();
     }
 
-    public static void Sign(int beginTime, String courseAddr,
-                                 int courseId, String courseName, int endTime,
+    public static void Sign(long beginTime, String courseAddr,
+                                 int courseId, String courseName, long endTime,
                                  int signCode, int total,int userId) {
         new Thread(() -> {
 

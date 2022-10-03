@@ -17,7 +17,10 @@
         android:theme="@style/Theme.MyApplication.NoACtionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.CourseListActivity"
+            android:name=".SignInformation"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.TeacherCourseListActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.LoginActivity"
@@ -35,12 +38,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.TeacherCourseActivity" />
-        <activity android:name=".Activity.StudentCourseActivity" />
-        <activity android:name=".Activity.AddCourseActivity" />
+        <activity android:name=".TeacherActivity.TeacherCourseActivity" />
+        <activity android:name=".StudentActivity.StudentCourseActivity" />
+        <activity android:name=".TeacherActivity.AddCourseActivity" />
         <activity android:name=".Activity.MessageActivity" />
-        <activity android:name=".Activity.StudentSignInActivity" />
-        <activity android:name=".Activity.TeacherSignInActivity" />
+        <activity android:name=".StudentActivity.StudentSignInActivity" />
+        <activity android:name=".TeacherActivity.TeacherSignInActivity" />
+        <activity android:name=".StudentActivity.StudentCourseListActivity" />
+        <activity android:name=".StudentActivity.StudentListActivity" />
+        <activity android:name=".TeacherActivity.SignInformationActivity" />
     </application>
 
 </manifest>

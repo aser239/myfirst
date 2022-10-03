@@ -10,35 +10,53 @@
     <Button
         android:id="@+id/bt_enterCourse"
         android:text="课程"
-        android:textSize="50sp"
+        android:textSize="30sp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="30dp"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="wrap_content"/>
+
     <Button
         android:id="@+id/bt_enterSignIn"
-        android:text="签到"
-        android:textSize="50sp"
-        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:text="签到"
+        android:textSize="30sp" />
+
     <Button
         android:id="@+id/bt_enterUserCenter"
         android:text="用户中心"
-        android:textSize="50sp"
+        android:textSize="30sp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="60dp"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/bt_enterUserCenter22222"
+        android:text="学生签到列表"
+        android:textSize="30sp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/bt_enterUserCenter333"
+        android:text="老师查看签到"
+        android:textSize="30sp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.TeacherActivity;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.example.myapplication.R;
 
+//老师端界面
 public class TeacherCourseActivity extends AppCompatActivity {
 
     private Button addCourse;
@@ -23,7 +24,7 @@ public class TeacherCourseActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TeacherCourseActivity.this,AddCourseActivity.class));
+                startActivity(new Intent(TeacherCourseActivity.this, AddCourseActivity.class));
             }
         });
     }

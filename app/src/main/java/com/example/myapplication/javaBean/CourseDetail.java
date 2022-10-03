@@ -4,14 +4,15 @@ public class CourseDetail {
     private String collegeName;
     private String courseName;
     private String coursePhoto;
-    private double createTime;
-    private int endTime;
+    private long createTime;
+    private long endTime;
     private boolean hasSelect;
     private int id;
     private String introduce;
     private String realName;
-    private int startTime;
+    private long startTime;
     private String userName;
+
 
     public String getCollegeName() {
         return collegeName;
@@ -37,19 +38,19 @@ public class CourseDetail {
         this.coursePhoto = coursePhoto;
     }
 
-    public double getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(double createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 
-    public int getEndTime() {
+    public long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(int endTime) {
+    public void setEndTime(long endTime) {
         this.endTime = endTime;
     }
 
@@ -85,11 +86,11 @@ public class CourseDetail {
         this.realName = realName;
     }
 
-    public int getStartTime() {
+    public long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(int startTime) {
+    public void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 

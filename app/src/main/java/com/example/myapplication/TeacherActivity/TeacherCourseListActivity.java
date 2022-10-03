@@ -1,4 +1,4 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.TeacherActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,8 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.example.myapplication.Activity.MessageActivity;
 import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
@@ -36,8 +36,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
-public class CourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+//已添加的课程列表
+public class TeacherCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
 
     private CollectionViewModel mViewModel;
@@ -47,7 +47,7 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
     public static int courseId;
     public static String courseName;
 
-    public CourseListActivity() {
+    public TeacherCourseListActivity() {
     }
 
     @Override
@@ -63,7 +63,7 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
 
     private void initData() {
         newsData = new ArrayList<>();
-        adapter = new CollectionAdapter(CourseListActivity.this,
+        adapter = new CollectionAdapter(TeacherCourseListActivity.this,
                 R.layout.list_item, newsData);
 
         lvNewsList.setAdapter(adapter);
@@ -138,7 +138,7 @@ public class CourseListActivity extends AppCompatActivity implements AdapterView
             System.out.println(courseId3);
             Api.SelectCourse(courseId3,LoginData.loginUser.getId());
         }else if (LoginData.loginUser.getRoleId()==1) {
-            startActivity(new Intent(CourseListActivity.this, MessageActivity.class));
+            startActivity(new Intent(TeacherCourseListActivity.this, MessageActivity.class));
         }
     }
 }

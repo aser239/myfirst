@@ -1,14 +1,11 @@
 package com.example.myapplication.Activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.myapplication.Data.CourseData;
@@ -16,28 +13,23 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Course;
+import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
 import com.example.myapplication.javaBean.CourseDetail;
-import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Headers;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
+//某个课的详情
 public class MessageActivity extends AppCompatActivity {
 
     private TextView etCollegeName2;
@@ -58,7 +50,7 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        int courseId2 = CourseListActivity.courseId;
+        int courseId2 = TeacherCourseListActivity.courseId;
         System.out.println(courseId2);
 
         Detail(courseId2, LoginData.loginUser.getId());
@@ -78,7 +70,6 @@ public class MessageActivity extends AppCompatActivity {
         etChoose =  findViewById(R.id.tx_choose);
         etUserName =  findViewById(R.id.tx_userName);
         etCreateTime =  findViewById(R.id.tx_CreateTime);
-        System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllll");
         etCollegeName2.setText(CourseData.Detail.getCollegeName());
 
         etCourseName2.setText(CourseData.Detail.getCourseName());

@@ -1,4 +1,4 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.TeacherActivity;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,16 +19,20 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
+//老师端发起签到
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class TeacherSignInActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btFiTime;
     private Button btStTime;
     private Button StartSign;
-    private TextView txFiTime;
-    private TextView txStTime;
+    private EditText etFiTime;
+    private EditText etStTime;
     private EditText CourseAddr;
     private EditText total;
     private EditText courseId;
@@ -50,8 +54,8 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
         btFiTime = findViewById(R.id.bt_fiTime33);
         StartSign = findViewById(R.id.StartSign);
 
-        txStTime =  findViewById(R.id.tx_stTime33);
-        txFiTime = findViewById(R.id.tx_fiTime33);
+        etStTime =  findViewById(R.id.et_stTime33);
+        etFiTime = findViewById(R.id.et_fiTime33);
 
         CourseAddr = findViewById(R.id.Addr);
         total = findViewById(R.id.people);
@@ -63,15 +67,20 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
         btStTime.setOnClickListener(this);
         btFiTime.setOnClickListener(this);
         System.out.println("661");
-//        int StartTime = Integer.parseInt(txStTime.getText().toString());
-//        int EndTime = Integer.parseInt(txFiTime.getText().toString());
-
 
 
         StartSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Api.Sign(1137,"123",209,"4354354",1300,520,1,344);
+                 long endTime2 = Long.parseLong(etFiTime.getText().toString());
+                 long startTime2 = Long.parseLong(etStTime.getText().toString());
+                 String addr = CourseAddr.getText().toString();
+                 int CourseID = CourseData.Detail.getId();
+                 String CourseName = CourseData.Detail.getCourseName();
+                 int Code = Integer.parseInt(signCode.getText().toString());
+                 int userID2 = Integer.parseInt(userId.getText().toString());
+
+                Api.Sign(startTime2,addr,CourseID,CourseName, endTime2,Code,1,userID2);
             }
         });
     }
@@ -86,8 +95,9 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
 
     public static void showTimePickerDialog(Activity activity, int themeResId, final TextView tv, Calendar calendar) {
         String year = String.valueOf(calendar.get(java.util.Calendar.YEAR));
-        String month = String.valueOf(calendar.get(java.util.Calendar.MONTH)+1);
-        String day = String.valueOf(calendar.get(java.util.Calendar.DAY_OF_MONTH));
+        String month = add0(String.valueOf(calendar.get(java.util.Calendar.MONTH)+1));
+        String day = add0(String.valueOf(calendar.get(java.util.Calendar.DAY_OF_MONTH)));
+
         // Calendar c = Calendar.getInstance();
         // 创建一个TimePickerDialog实例，并把它显示出来
         // 解释一哈，Activity是context的子类
@@ -99,7 +109,13 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
                         String hour = String.valueOf(hourOfDay);
                         String Minute = String.valueOf(minute);
                         System.out.println("66");
-                      tv.setText( year+month+day+hour+Minute);
+
+                        try {
+                            tv.setText(dateToStamp(year+"-"+month+"-"+day+" "+hour+":"+Minute+":"+"00"));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
                 // 设置初始时间
@@ -114,13 +130,30 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_fiTime33:
-                showTimePickerDialog(this,  4, txFiTime, calendar);;
+                showTimePickerDialog(this,  4, etFiTime, calendar);;
                 break;
             case R.id.bt_stTime33:
-                showTimePickerDialog(this,  4, txStTime, calendar);
+                showTimePickerDialog(this,  4, etStTime, calendar);
                 break;
             default:
                 break;
         }
+    }
+
+    //时间转换时间戳
+    public static String dateToStamp(String s) throws ParseException {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = simpleDateFormat.parse(s);
+        long ts = date.getTime();
+        res = String.valueOf(ts);
+        return res;
+    }
+
+
+
+    //补足月份、日期
+    public static String add0(String m){
+        return Integer.parseInt(m)>10?m: "0"+m;
     }
 }

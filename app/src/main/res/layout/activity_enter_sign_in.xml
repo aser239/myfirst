@@ -11,7 +11,7 @@
         android:text="返回"/>
 
     <Button
-        android:id="@+id/enterSelectCourse"
+        android:id="@+id/enterSelectCourse222"
         android:text="学生在线签到"
         android:textSize="40sp"
         android:layout_marginRight="30dp"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
     <Button
-        android:id="@+id/enterDropCourse"
+        android:id="@+id/enterDropCourse222"
         android:text="教师端发起签到"
         android:textSize="40sp"
         android:layout_marginRight="30dp"
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
     <Button
-        android:id="@+id/enterCourseList"
+        android:id="@+id/enterCourseList222"
         android:text="教师获取签到界面数据信息"
         android:textSize="40sp"
         android:layout_marginRight="30dp"

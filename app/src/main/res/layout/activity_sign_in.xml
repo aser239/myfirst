@@ -50,7 +50,7 @@
             android:textSize="35sp"/>
 
         <EditText
-            android:id="@+id/course_Main_Id"
+            android:id="@+id/signId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

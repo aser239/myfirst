@@ -8,6 +8,7 @@ import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
@@ -37,6 +38,7 @@ public class StudentListActivity extends AppCompatActivity {
 
 
     private Button btdian;
+    private EditText courseId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +46,12 @@ public class StudentListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_list);
 
         btdian = findViewById(R.id.btdian);
-        int courseId4 = TeacherCourseListActivity.courseId;
-        System.out.println(courseId4);
+        courseId = findViewById(R.id.Cousrid222);
         btdian.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                int courseId4 = Integer.parseInt(courseId.getText().toString());
                 Student(courseId4,1,1,0, LoginData.loginUser.getId());
             }
         });

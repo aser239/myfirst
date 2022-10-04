@@ -34,7 +34,7 @@ public class StudentSignInActivity extends AppCompatActivity {
 
 
     private EditText tv_sign_in_id;
-    private EditText course_Main_Id;
+    private EditText SignId;
     private EditText tv_sign_in_psw;
     private Button bt_sign_in;
     private Button signInReturnToMainActivity;
@@ -48,7 +48,7 @@ public class StudentSignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         tv_sign_in_id = findViewById(R.id.tv_sign_in_id);
-        course_Main_Id = findViewById(R.id.course_Main_Id);
+        SignId = findViewById(R.id.signId);
         tv_sign_in_psw = findViewById(R.id.tv_sign_in_psw);
         bt_sign_in = findViewById(R.id.bt_sign_in);
         signInReturnToMainActivity = findViewById(R.id.signInReturnToMainActivity);
@@ -57,7 +57,7 @@ public class StudentSignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int signcode = Integer.parseInt(tv_sign_in_psw.getText().toString());
-                int signid = CourseData.Record.getRecords2().get(0).getUserSignId();
+                int signid = Integer.parseInt(SignId.getText().toString());
                 s_SignIn(signcode, LoginData.loginUser.getId(), signid);
             }
         });

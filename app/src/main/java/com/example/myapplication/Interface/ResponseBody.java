@@ -19,7 +19,6 @@ import okhttp3.Response;
 public  class ResponseBody <T> {
 
     private static final Gson gson = new Gson();
-
     /**
      * 业务响应码
      */
@@ -74,6 +73,7 @@ public  class ResponseBody <T> {
             // 解析json串到自己封装的状态
             ResponseBody<Object> dataResponseBody = gson.fromJson(body,jsonType);
             Log.d("info", dataResponseBody.toString());
+
         }
     };
 

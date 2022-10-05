@@ -52,15 +52,14 @@ public class CollectionAdapter extends ArrayAdapter<Course> {
             view = convertView;
             vh = (ViewHolder) view.getTag();
         }
-        Glide.with(mContext).load(goodUrls)
-                .into(vh.ivImage);
+        Glide.with(mContext).load(goodUrls).into(vh.ivImage);
         vh.txCourseName.setText(CourseName);
         return view;
     }
 
 
 
-    class ViewHolder {
+    static class ViewHolder {
         ImageView ivImage;
         TextView txCourseName;
 

@@ -13,12 +13,12 @@ import android.widget.ListView;
 
 import com.example.myapplication.Activity.MessageActivity;
 import com.example.myapplication.Adapter.CollectionAdapter;
+import com.example.myapplication.Adapter.UnfinishCourseAdapter;
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.ViewHolder.CollectionViewModel;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
@@ -37,45 +37,44 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-//已添加的课程列表
-public class TeacherCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    public static final String COURSE_MESSAGE_STRING = "com.example.myapplication.Activity.COURSE_INFO";
-    public static boolean COURSE_MESSAGE_FLAG = false;
-    private CollectionAdapter adapter;
-    private List<Course> newsData;
-    private ListView lvNewsList;
+public class UnfinishedCourseActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    public static final String UNFINISHED_MESSAGE_STRING = "com.example.myapplication.Activity.UNFINISHED_INFO";
+    public static boolean UNFINISHED_MESSAGE_FLAG = false;
+    private UnfinishCourseAdapter adapter3;
+    private List<Course> newsData3;
+    private ListView lvNewsList3;
     public static int courseId;
     private ResponseBody<Records> dataResponseBody;
 
-    public TeacherCourseListActivity() {
+    public UnfinishedCourseActivity() {
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_list);
-        lvNewsList = findViewById(R.id.lv_news_list222);
+        setContentView(R.layout.activity_unfinished);
+        lvNewsList3 = findViewById(R.id.lv_news_list44);
 
         initData();
-        lvNewsList.setOnItemClickListener(this);
+        lvNewsList3.setOnItemClickListener(this);
 
     }
 
     private void initData() {
-        newsData = new ArrayList<>();
-        adapter = new CollectionAdapter(TeacherCourseListActivity.this,
-                R.layout.list_item, newsData);
+        newsData3 = new ArrayList<>();
+        adapter3 = new UnfinishCourseAdapter(UnfinishedCourseActivity.this,
+                R.layout.list_item3, newsData3);
 
-        lvNewsList.setAdapter(adapter);
-        getMyCourses(1,5);
+        lvNewsList3.setAdapter(adapter3);
+        MyCourses(1,5, LoginData.loginUser.getId());
 
     }
 
-    public void getMyCourses(int current, int size) {
+
+    public void MyCourses(int current, int size,int userId) {
         // url路径
-        String url = "http://47.107.52.7:88/member/sign/course/all?"+
+        String url = "http://47.107.52.7:88/member/sign/course/teacher/unfinished?"+
                 "current=" + current +
-                "&size=" + size;
+                "&size=" + size+"&userId="+userId;
         // 请求头
         Headers headers = new Headers.Builder()
                 .add("appId", Api.appId)
@@ -109,7 +108,7 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
 
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
-            Log.d("课程列表：", body);
+            Log.d("未结课程列表：", body);
 
             runOnUiThread(new Runnable() {
                 @Override
@@ -118,10 +117,11 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
                     Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
                     // 解析json串到自己封装的状态
                     dataResponseBody = gson.fromJson(body, jsonType);
+
                     for (Course news:dataResponseBody.getData().getRecords()) {
-                        adapter.add(news);
+                        adapter3.add(news);
                     }
-                    adapter.notifyDataSetChanged();
+                    adapter3.notifyDataSetChanged();
                 }
             });
         }
@@ -129,17 +129,11 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (LoginData.loginUser.getRoleId()==0){
-            int courseId3 = courseId;
-            System.out.println(courseId3);
-            Api.SelectCourse(courseId3,LoginData.loginUser.getId());
-        }else if (LoginData.loginUser.getRoleId()==1) {
-            Log.d("课程列表：", dataResponseBody.getData().getRecords().get(position).toString());
-            courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
-            Intent intent = new Intent(TeacherCourseListActivity.this, MessageActivity.class);
-            intent.putExtra(COURSE_MESSAGE_STRING,Integer.toString(courseId));
-            TeacherCourseListActivity.COURSE_MESSAGE_FLAG = true;
-            startActivity(intent);
-        }
+        Log.d("课程列表：", dataResponseBody.getData().getRecords().get(position).toString());
+        courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
+        Intent intent = new Intent(UnfinishedCourseActivity.this, MessageActivity.class);
+        intent.putExtra(UNFINISHED_MESSAGE_STRING,Integer.toString(courseId));
+        UnfinishedCourseActivity.UNFINISHED_MESSAGE_FLAG = true;
+        startActivity(intent);
     }
 }

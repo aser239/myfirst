@@ -86,6 +86,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                 startActivity(new Intent(AddCourseActivity.this, TeacherCourseListActivity.class));
             }
         });
+
     }
 
     /**

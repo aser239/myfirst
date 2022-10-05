@@ -3,6 +3,7 @@ package com.example.myapplication.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
@@ -14,6 +15,7 @@ import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
 import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
+import com.example.myapplication.TeacherActivity.UnfinishedCourseActivity;
 import com.example.myapplication.javaBean.CourseDetail;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,26 +52,35 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        int courseId2 = TeacherCourseListActivity.courseId;
-        System.out.println(courseId2);
+        //int courseId2 = TeacherCourseListActivity.courseId;
+        //System.out.println(courseId2);
 
-        Detail(courseId2, LoginData.loginUser.getId());
-
+        if (TeacherCourseListActivity.COURSE_MESSAGE_FLAG) {
+            TeacherCourseListActivity.COURSE_MESSAGE_FLAG = false;
+            Intent intent = getIntent();
+            int info = Integer.parseInt(intent.getStringExtra(TeacherCourseListActivity.COURSE_MESSAGE_STRING));
+            Detail(info, LoginData.loginUser.getId());
+        } else if (UnfinishedCourseActivity.UNFINISHED_MESSAGE_FLAG) {
+            UnfinishedCourseActivity.UNFINISHED_MESSAGE_FLAG = false;
+            Intent intent = getIntent();
+            int info = Integer.parseInt(intent.getStringExtra(UnfinishedCourseActivity.UNFINISHED_MESSAGE_STRING));
+            Detail(info, LoginData.loginUser.getId());
+        }
     }
 
-    public void init(){
+    public void init() {
 
         etCollegeName2 = findViewById(R.id.tx_collegeName22);
-        etCourseName2 =  findViewById(R.id.tx_courseName22);
-        etCoursePhoto2 =  findViewById(R.id.tx_photo);
-        etIntroduce2 =  findViewById(R.id.tx_introduce22);
-        etEndTime2 =  findViewById(R.id.tx_fiTime22);
-        etRealName2 =  findViewById(R.id.tx_realName2);
-        etStartTime2 =  findViewById(R.id.tx_stTime2);
-        etId =  findViewById(R.id.tx_id);
-        etChoose =  findViewById(R.id.tx_choose);
-        etUserName =  findViewById(R.id.tx_userName);
-        etCreateTime =  findViewById(R.id.tx_CreateTime);
+        etCourseName2 = findViewById(R.id.tx_courseName22);
+        etCoursePhoto2 = findViewById(R.id.tx_photo);
+        etIntroduce2 = findViewById(R.id.tx_introduce22);
+        etEndTime2 = findViewById(R.id.tx_fiTime22);
+        etRealName2 = findViewById(R.id.tx_realName2);
+        etStartTime2 = findViewById(R.id.tx_stTime2);
+        etId = findViewById(R.id.tx_id);
+        etChoose = findViewById(R.id.tx_choose);
+        etUserName = findViewById(R.id.tx_userName);
+        etCreateTime = findViewById(R.id.tx_CreateTime);
         etCollegeName2.setText(CourseData.Detail.getCollegeName());
 
         etCourseName2.setText(CourseData.Detail.getCourseName());
@@ -87,7 +98,7 @@ public class MessageActivity extends AppCompatActivity {
 
     public void Detail(int courseId, int userId) {
         // url路径
-        String url = "http://47.107.52.7:88/member/sign/course/detail?"+
+        String url = "http://47.107.52.7:88/member/sign/course/detail?" +
                 "courseId=" + courseId +
                 "&userId=" + userId;
         // 请求头
@@ -112,6 +123,7 @@ public class MessageActivity extends AppCompatActivity {
             ex.printStackTrace();
         }
     }
+
     public final Callback callback = new Callback() {
         @Override
         public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -129,11 +141,12 @@ public class MessageActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     Gson gson = new Gson();
-                    Type jsonType = new TypeToken<ResponseBody<CourseDetail>>() {}.getType();
+                    Type jsonType = new TypeToken<ResponseBody<CourseDetail>>() {
+                    }.getType();
                     // 解析json串到自己封装的状态
                     ResponseBody<CourseDetail> dataResponseBody = gson.fromJson(body, jsonType);
                     Log.d("详情：", dataResponseBody.getData().toString());
-                    CourseData.Detail=dataResponseBody.getData();
+                    CourseData.Detail = dataResponseBody.getData();
                     init();
                 }
             });

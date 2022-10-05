@@ -105,7 +105,7 @@ public class StudentListActivity extends AppCompatActivity {
                     }.getType();
                     // 解析json串到自己封装的状态
                     ResponseBody<Records2> dataResponseBody = gson.fromJson(body, jsonType);
-                    CourseData.Record = dataResponseBody.getData();
+                    CourseData.Records2 = dataResponseBody.getData();
                 }
             });
         }

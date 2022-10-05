@@ -50,6 +50,8 @@
         <activity android:name=".StudentActivity.StudentCourseListActivity" />
         <activity android:name=".StudentActivity.StudentListActivity" />
         <activity android:name=".TeacherActivity.SignInformationActivity" />
+        <activity android:name=".Activity.UploadActivity" />
+        <activity android:name=".TeacherActivity.UnfinishedCourseActivity" />
     </application>
 
 </manifest>

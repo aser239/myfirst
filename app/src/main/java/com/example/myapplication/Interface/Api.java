@@ -40,12 +40,10 @@ public class Api {
     public static String appId = "aaf3870a62654c53829ee7593d2ee194";
     public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
 
-    public static void enroll(String username, int roleId, String password) {
+    public static void Enroll(String username, int roleId, String password) {
         new Thread(() -> {
-
             // url路径
             String url = "http://47.107.52.7:88/member/sign/user/register";
-
             // 请求头
             Headers headers = new Headers.Builder()
                     .add("Accept", "application/json, text/plain, */*")
@@ -53,7 +51,6 @@ public class Api {
                     .add("appSecret", appSecret)
                     .add("Content-Type", "application/json")
                     .build();
-
             // 请求体
             // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
             Map<String, Object> bodyMap = new HashMap<>();
@@ -82,26 +79,21 @@ public class Api {
         }).start();
     }
 
-    public static void login(String username, String password) {
+    public static void Login(String username, String password) {
         new Thread(() -> {
-
             // url路径
             String url = "http://47.107.52.7:88/member/sign/user/login";
-
             // 请求头
             Headers headers = new Headers.Builder()
                     .add("Accept", "application/json, text/plain, */*")
                     .add("appId", appId)
                     .add("appSecret", appSecret)
                     .build();
-
             // 请求体
             // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
             FormBody.Builder params = new FormBody.Builder();
             params.add("username", username); //添加url参数
             params.add("password", password); //添加url参数
-            // 将Map转换为字符串类型加入请求体中
-
             //请求组合创建
             Request request = new Request.Builder()
                     .url(url)
@@ -123,14 +115,13 @@ public class Api {
                         Type jsonType = new TypeToken<ResponseBody<Person>>() {
                         }.getType();
                         // 获取响应体的json串
-                        String body = response.body().string();
+                        String body = Objects.requireNonNull(response.body()).string();
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Person> dataResponseBody = gson.fromJson(body, jsonType);
+                        MsgData.loginMsgData = new Msg(dataResponseBody.getCode(),dataResponseBody.getMsg());
                         LoginData.loginUser = dataResponseBody.getData();
-                        //Log.d("info", dataResponseBody.toString());
-                        //Log.d("Person:", String.valueOf(LoginData.loginUser.getId()));
-                        Log.d("Person:", LoginData.loginUser.getUsername());
+                        Log.d("info", dataResponseBody.toString());
                     }
                 });
             } catch (NetworkOnMainThreadException ex) {

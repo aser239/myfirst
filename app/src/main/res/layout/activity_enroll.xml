@@ -1,33 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.myapplication.Activity.EnrollActivity"
-    >
+    tools:context="com.example.myapplication.Activity.EnrollActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/tv_enroll"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal|center"
+            android:text="注册"
+            android:textColor="@android:color/black"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_person_pin_24"
+            tools:ignore="ContentDescription" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="1dp"
-            android:src="@drawable/ic_baseline_person_outline_24" />
+            android:src="@drawable/ic_baseline_person_outline_24"
+            tools:ignore="ContentDescription" />
+
         <EditText
             android:id="@+id/input_enroll_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="50dp"
+            android:hint="@string/new_username"
             android:maxLines="1"
-            android:hint="@string/new_username"/>
+            android:textColorHint="#757575"
+            tools:ignore="Autofill,TextFields,TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,7 +74,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="3dp"
-            android:src="@drawable/ic_outline_lock_24" />
+            android:src="@drawable/ic_outline_lock_24"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/input_enroll_password"
@@ -52,15 +86,17 @@
             android:layout_weight="1"
             android:hint="@string/new_password"
             android:inputType="textPassword"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColorHint="#757575"
+            tools:ignore="Autofill,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/iv_pwd_switch1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_baseline_visibility_off_24" />
-
+            android:src="@drawable/ic_baseline_visibility_off_24"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,28 +110,29 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="3dp"
-            android:src="@drawable/ic_outline_lock_24" />
-
+            android:src="@drawable/ic_outline_lock_24"
+            tools:ignore="ContentDescription" />
 
         <EditText
-            android:id="@+id/input_enroll_npassword"
+            android:id="@+id/input_enroll_nPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="22dp"
             android:layout_weight="1"
-            android:hint="@string/npassword"
+            android:hint="@string/nPassword"
             android:inputType="textPassword"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColorHint="#757575"
+            tools:ignore="Autofill,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/iv_pwd_switch2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="22dp"
-            android:src="@drawable/ic_baseline_visibility_off_24" />
-
-
+            android:src="@drawable/ic_baseline_visibility_off_24"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <RelativeLayout
@@ -104,10 +141,11 @@
         android:layout_marginTop="10dp">
 
         <RadioGroup
-            android:id="@+id/radiogroup"
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
 
             <RadioButton
                 android:id="@+id/role_student"
@@ -115,9 +153,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginBottom="4dp"
-                android:text="@string/student"
                 android:checked="true"
-                android:textColor="@color/colorPrimary" />
+                android:text="@string/student"
+                android:textColor="@color/colorPrimary"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <RadioButton
                 android:id="@+id/role_teacher"
@@ -126,17 +165,24 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="4dp"
                 android:text="@string/teacher"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                tools:ignore="TouchTargetSizeCheck" />
 
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="已有账号？点击此登录"
+                android:textColor="@color/purple_500"
+                tools:ignore="HardcodedText,RelativeOverlap" />
         </RadioGroup>
-
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/bt_enroll"

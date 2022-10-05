@@ -10,7 +10,7 @@ public class Person {
     private int roleId;
     private boolean gender;
     private String realName;
-    private String idNumber;
+    private int idNumber;
     private String collegeName;
     private String phone;
     private String email;
@@ -70,11 +70,11 @@ public class Person {
         this.realName = realName;
     }
 
-    public String getIdNumber() {
+    public int getIdNumber() {
         return idNumber;
     }
 
-    public void setIdNumber(String idNumber) {
+    public void setIdNumber(int idNumber) {
         this.idNumber = idNumber;
     }
 

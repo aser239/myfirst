@@ -17,7 +17,10 @@
         android:theme="@style/Theme.MyApplication.NoACtionBar"
         tools:targetApi="31">
         <activity
-            android:name=".SignInformation"
+            android:name=".Activity.AlterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PersonInfoActivity"
             android:exported="false" />
         <activity
             android:name=".TeacherActivity.TeacherCourseListActivity"

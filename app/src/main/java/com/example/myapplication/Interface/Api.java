@@ -7,8 +7,10 @@ import androidx.annotation.NonNull;
 
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
+import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.javaBean.CourseDetail;
+import com.example.myapplication.javaBean.Msg;
 import com.example.myapplication.javaBean.Person;
 import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
@@ -32,11 +34,11 @@ import okhttp3.Response;
 
 public class Api {
     public static Gson gson = new Gson();
-    public static String appId = "d44f6a157edc4815b907124907b98e63";
-    public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
+    //public static String appId = "d44f6a157edc4815b907124907b98e63";
+    //public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
 
-//    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
-//    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
+    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
+    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
 
     public static void enroll(String username, int roleId, String password) {
         new Thread(() -> {
@@ -126,8 +128,8 @@ public class Api {
                         // 解析json串到自己封装的状态
                         ResponseBody<Person> dataResponseBody = gson.fromJson(body, jsonType);
                         LoginData.loginUser = dataResponseBody.getData();
-                        Log.d("info", dataResponseBody.toString());
-                        Log.d("Person:", String.valueOf(LoginData.loginUser.getId()));
+                        //Log.d("info", dataResponseBody.toString());
+                        //Log.d("Person:", String.valueOf(LoginData.loginUser.getId()));
                         Log.d("Person:", LoginData.loginUser.getUsername());
                     }
                 });
@@ -284,8 +286,7 @@ public class Api {
                                      String email, int inSchoolTime) {
         new Thread(() -> {
             // url路径
-            String url = "http://47.107.52.7:88/member/sign/course/teacher";
-
+            String url = "http://47.107.52.7:88/member/sign/user/update";
             // 请求头
             Headers headers = new Headers.Builder()
                     .add("Accept", "application/json, text/plain, */*")
@@ -293,7 +294,6 @@ public class Api {
                     .add("appSecret", appSecret)
                     .add("Content-Type", "application/json")
                     .build();
-
             // 请求体
             // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
             Map<String, Object> bodyMap = new HashMap<>();
@@ -334,12 +334,11 @@ public class Api {
                         }.getType();
                         // 获取响应体的json串
                         assert response.body() != null;
-                        String body = response.body().string();
+                        String body = Objects.requireNonNull(response.body()).string();
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Person> dataResponseBody = gson.fromJson(body, jsonType);
-
-                        LoginData.Alter = dataResponseBody.getData();
+                        MsgData.alterMsgData = new Msg(dataResponseBody.getCode(),dataResponseBody.getMsg());
                         Log.d("info", dataResponseBody.toString());
                     }
                 });

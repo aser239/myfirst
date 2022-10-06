@@ -3,6 +3,7 @@ package com.example.myapplication.StudentActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
@@ -10,11 +11,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.myapplication.Activity.MessageActivity2;
+import com.example.myapplication.Activity.MessageActivity3;
 import com.example.myapplication.Adapter.StudentCourseAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
+import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
@@ -34,24 +38,24 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class StudentCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    private StudentCourseAdapter mViewModel2;
+    public static final String STUDENTCOURSE_MESSAGE_STRING = "com.example.myapplication.Activity.STUDENTCOURSE_INFO";
     private StudentCourseAdapter adapter2;
     private List<Course> newsData2;
     private ListView lvNewsList2;
+    public static int courseId;
     private ResponseBody<Records> dataResponseBody;
 
     public StudentCourseListActivity(){
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_course_list);
-
         lvNewsList2 = findViewById(R.id.lv_news_list3);
 
         initData2();
+        lvNewsList2.setOnItemClickListener(this);
     }
 
     private void initData2() {
@@ -125,6 +129,9 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
+        Intent intent = new Intent(StudentCourseListActivity.this, MessageActivity3.class);
+        intent.putExtra(STUDENTCOURSE_MESSAGE_STRING,Integer.toString(courseId));
+        startActivity(intent);
     }
 }

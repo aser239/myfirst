@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 
+import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
@@ -34,7 +35,7 @@ public class SignInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_information);
 
-        page(241,412);
+        page(CourseData.Detail.getId(), LoginData.loginUser.getId());
     }
 
     public static void page(int courseId, int userId) {

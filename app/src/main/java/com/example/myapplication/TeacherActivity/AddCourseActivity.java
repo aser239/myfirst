@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.example.myapplication.Activity.UploadActivity;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
 
@@ -31,6 +32,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
     private Button btnDate2;
     private Button btnAdd;
     private Button btSearch;
+    private Button btPhoto;
     public static EditText etCollegeName;
     public static EditText etCourseName;
     public static EditText etCoursePhoto;
@@ -51,6 +53,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         btnDate2 = findViewById(R.id.bt_stTime);
         btnAdd = findViewById(R.id.confirmAddCourse);
         btSearch = findViewById(R.id.search);
+        btPhoto = findViewById(R.id.bt_photo);
 
         //txtDate= findViewById(R.id.txtDate);
         etEndTime = findViewById(R.id.et_fiTime);
@@ -62,6 +65,14 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         etCoursePhoto = findViewById(R.id.et_photo);
         btnDate1.setOnClickListener(this);
         btnDate2.setOnClickListener(this);
+
+        btPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AddCourseActivity.this, UploadActivity.class));
+                etCoursePhoto.setText(UploadActivity.URL);
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +138,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.bt_stTime:
                 showDatePickerDialog(this,4, etStartTime, calendar);
+
             default:
                 break;
         }

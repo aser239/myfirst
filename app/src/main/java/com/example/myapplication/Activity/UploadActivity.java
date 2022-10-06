@@ -17,13 +17,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Course;
-import com.example.myapplication.javaBean.Picture;
-import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -33,7 +31,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Type;
-import java.net.URL;
 import java.util.Objects;
 
 import okhttp3.Call;
@@ -85,6 +82,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
                     upload.setOnClickListener(v->{
                         AvatarUpload(file);
+                        finish();
                     });
                 }
             }
@@ -197,6 +195,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     ResponseBody<Object> dataResponseBody = gson.fromJson(body, jsonType);
                     LoginData.picture = dataResponseBody.getData();
                     URL = (String) LoginData.picture;
+                    PersonInfoActivity.urlphoto = URL;
                 }
             });
         }

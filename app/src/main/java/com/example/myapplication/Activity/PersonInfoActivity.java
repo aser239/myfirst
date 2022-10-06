@@ -13,8 +13,6 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
 
-import java.net.URL;
-
 public class PersonInfoActivity extends AppCompatActivity {
     public static final String MESSAGE_STRING = "com.example.myapplication.Activity.PERSON_INFO";
     private TextView tv_id;
@@ -26,8 +24,9 @@ public class PersonInfoActivity extends AppCompatActivity {
     private TextView tv_phone;
     private TextView tv_inSchoolTime;
     private TextView tv_email;
-    private ImageView photo;
-    String urlphoto;
+    private  ImageView avatar;
+    public static String urlphoto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +34,7 @@ public class PersonInfoActivity extends AppCompatActivity {
 
         Init();
         InitData();
+        System.out.println(urlphoto);
     }
 
     private void Init() {
@@ -63,10 +63,7 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_phone = findViewById(R.id.tv_phone_info);
         tv_inSchoolTime = findViewById(R.id.tv_inSchoolTime_info);
         tv_email = findViewById(R.id.tv_email_info);
-        photo = findViewById(R.id.ri_avatar);
-
-
-
+        avatar = findViewById(R.id.ri_avatar);
 
         ImageView iv_avatar = findViewById(R.id.iv_avatar_arrowRight);
         iv_avatar.setOnClickListener(v -> {
@@ -76,9 +73,6 @@ public class PersonInfoActivity extends AppCompatActivity {
             //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             startActivity(intent);
-            urlphoto = UploadActivity.URL;
-            System.out.println(urlphoto);
-            Glide.with(this).load(urlphoto).into(photo);
         });
 
         ImageView iv_realName = findViewById(R.id.iv_arrow_right_realName);
@@ -161,6 +155,7 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_username.setText(LoginData.loginUser.getUsername());
         tv_realName.setText(LoginData.loginUser.getRealName());
         tv_idNumber.setText(String.valueOf(LoginData.loginUser.getIdNumber()));
+
         if (LoginData.loginUser.getGender()) {
             tv_gender.setText("男");
         } else {
@@ -177,5 +172,6 @@ public class PersonInfoActivity extends AppCompatActivity {
             tv_inSchoolTime.setText(realStringDate);
         }
         tv_email.setText(LoginData.loginUser.getEmail());
+
     }
 }

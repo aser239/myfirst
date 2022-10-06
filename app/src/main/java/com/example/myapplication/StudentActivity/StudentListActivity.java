@@ -46,7 +46,7 @@ public class StudentListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_list);
 
         btdian = findViewById(R.id.btdian);
-        courseId = findViewById(R.id.Cousrid222);
+        courseId = findViewById(R.id.et_CourseID22);
         btdian.setOnClickListener(new View.OnClickListener() {
 
             @Override

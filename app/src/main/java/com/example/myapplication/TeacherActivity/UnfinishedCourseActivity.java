@@ -129,7 +129,6 @@ public class UnfinishedCourseActivity extends AppCompatActivity implements Adapt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.d("课程列表：", dataResponseBody.getData().getRecords().get(position).toString());
         courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
         Intent intent = new Intent(UnfinishedCourseActivity.this, MessageActivity.class);
         intent.putExtra(UNFINISHED_MESSAGE_STRING,Integer.toString(courseId));

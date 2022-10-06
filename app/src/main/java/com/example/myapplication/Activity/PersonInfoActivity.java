@@ -42,13 +42,6 @@ public class PersonInfoActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ImageView personInfo_backward = findViewById(R.id.iv_backward);
-        personInfo_backward.setOnClickListener(v -> {
-            startActivity(new Intent(PersonInfoActivity.this,
-                    MainActivity.class));
-            finish();
-        });
-
         tv_id = findViewById(R.id.tv_id_info);
         tv_username = findViewById(R.id.tv_username_info);
         tv_realName = findViewById(R.id.tv_realName_info);

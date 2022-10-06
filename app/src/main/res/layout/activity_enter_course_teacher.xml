@@ -14,15 +14,16 @@
 
     <Button
         android:id="@+id/enterTeacherHaveClassList"
-        android:text="教师已结课课程列表"
-        android:textSize="30sp"
-        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:text="教师已结课课程列表"
+        android:textSize="30sp" />
+
     <Button
         android:id="@+id/enterTeacherHaveNotClassList"
         android:text="教师未结课课程列表"

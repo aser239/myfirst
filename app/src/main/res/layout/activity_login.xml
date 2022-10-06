@@ -8,12 +8,18 @@
     tools:context="com.example.myapplication.Activity.LoginActivity">
 
 
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="248dp"
         android:layout_marginTop="48dp"
         android:layout_weight="1">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/ic_enroll"/>
 
     </RelativeLayout>
 
@@ -125,9 +131,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/btn_left"
-            android:backgroundTint="@color/purple_500"
+            android:background="@drawable/btn_right"
             android:text="@string/login"
+            android:textSize="16sp"
             android:textColor="@android:color/white" />
     </RelativeLayout>
 

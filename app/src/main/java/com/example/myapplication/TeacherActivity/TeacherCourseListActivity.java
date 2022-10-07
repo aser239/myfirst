@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.myapplication.Activity.MessageActivity;
+import com.example.myapplication.Activity.MessageActivity2;
 import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
@@ -40,7 +41,6 @@ import okhttp3.Response;
 //已添加的课程列表
 public class TeacherCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     public static final String COURSE_MESSAGE_STRING = "com.example.myapplication.Activity.COURSE_INFO";
-    public static boolean COURSE_MESSAGE_FLAG = false;
     private CollectionAdapter adapter;
     private List<Course> newsData;
     private ListView lvNewsList;
@@ -135,11 +135,9 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
             System.out.println(courseId3);
             Api.SelectCourse(courseId3,LoginData.loginUser.getId());
         }else if (LoginData.loginUser.getRoleId()==1) {
-            Log.d("课程列表：", dataResponseBody.getData().getRecords().get(position).toString());
             courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
-            Intent intent = new Intent(TeacherCourseListActivity.this, MessageActivity.class);
+            Intent intent = new Intent(TeacherCourseListActivity.this, MessageActivity2.class);
             intent.putExtra(COURSE_MESSAGE_STRING,Integer.toString(courseId));
-            TeacherCourseListActivity.COURSE_MESSAGE_FLAG = true;
             startActivity(intent);
         }
     }

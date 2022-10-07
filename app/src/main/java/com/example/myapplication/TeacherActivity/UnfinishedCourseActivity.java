@@ -39,7 +39,6 @@ import okhttp3.Response;
 
 public class UnfinishedCourseActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     public static final String UNFINISHED_MESSAGE_STRING = "com.example.myapplication.Activity.UNFINISHED_INFO";
-    public static boolean UNFINISHED_MESSAGE_FLAG = false;
     private UnfinishCourseAdapter adapter3;
     private List<Course> newsData3;
     private ListView lvNewsList3;
@@ -132,7 +131,6 @@ public class UnfinishedCourseActivity extends AppCompatActivity implements Adapt
         courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
         Intent intent = new Intent(UnfinishedCourseActivity.this, MessageActivity.class);
         intent.putExtra(UNFINISHED_MESSAGE_STRING,Integer.toString(courseId));
-        UnfinishedCourseActivity.UNFINISHED_MESSAGE_FLAG = true;
         startActivity(intent);
     }
 }

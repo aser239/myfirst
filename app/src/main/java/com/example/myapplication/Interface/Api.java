@@ -275,6 +275,65 @@ public class Api {
         }).start();
     }
 
+    public static void delete(int courseId,int userId){
+        new Thread(() -> {
+
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/course/teacher?"+"courseId="+courseId+"&userId="+userId;
+
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("appId", Api.appId)
+                    .add("appSecret",  Api.appSecret)
+                    .add("Accept", "application/json, text/plain, */*")
+                    .build();
+
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .delete()
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(ResponseBody.callback);
+            }catch (NetworkOnMainThreadException ex){
+                ex.printStackTrace();
+            }
+        }).start();
+    }
+
+    public static void quit(int courseId,int userId){
+        new Thread(() -> {
+
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/course/student/drop?"+"courseId="+courseId+"&userId="+userId;
+
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("appId", Api.appId)
+                    .add("appSecret", Api.appSecret)
+                    .add("Accept", "application/json, text/plain, */*")
+                    .build();
+
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .delete()
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(ResponseBody.callback);
+            }catch (NetworkOnMainThreadException ex){
+                ex.printStackTrace();
+            }
+        }).start();
+    }
 
     public static void AlterUserInfo(String collegeName, String realName,
                                      boolean gender, String phone, String avatar,

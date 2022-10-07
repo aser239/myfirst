@@ -20,7 +20,6 @@ import com.example.myapplication.TeacherActivity.TeacherSignInActivity;
 public class MainActivity extends AppCompatActivity {
     private Button course;
     private Button Sign;
-    private Button btboo;
     private Button teaSign;
 
 
@@ -51,14 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 }else if (LoginData.loginUser.getRoleId() == 1){
                     startActivity(new Intent(MainActivity.this, TeacherSignInActivity.class));
                 }
-            }
-        });
-
-        btboo = findViewById(R.id.bt_enterUserCenter22222);
-        btboo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, StudentListActivity.class));
             }
         });
 

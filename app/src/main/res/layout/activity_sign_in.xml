@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentActivity.StudentSignInActivity"
-    android:orientation="vertical"
-    android:background="#009688">
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/signInReturnToMainActivity"
@@ -80,14 +79,21 @@
             android:inputType="text"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/bt_enterUserCenter22222"
+        android:text="学生签到列表"
+        android:textSize="30sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/bt_sign_in"
         android:background="@drawable/shap_circle"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_gravity="center_horizontal"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_marginTop="50dp"
         android:text="签到"
         android:textSize="50sp"
         android:textColor="#ff66aa"/>

@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class CollectionAdapter extends ArrayAdapter<Course> {

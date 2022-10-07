@@ -1,4 +1,5 @@
 package com.example.myapplication.TeacherActivity;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.example.myapplication.Activity.UploadActivity;
+import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
 
@@ -25,7 +27,7 @@ import java.util.Locale;
 
 //老师选课
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class AddCourseActivity extends AppCompatActivity implements View.OnClickListener{
+public class AddCourseActivity extends AppCompatActivity implements View.OnClickListener {
 
     // private TextView txtTime;
     private Button btnDate1;
@@ -41,7 +43,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
     public static EditText etRealName;
     public static EditText etStartTime;
 
-    Calendar calendar= Calendar.getInstance(Locale.CHINA);
+    Calendar calendar = Calendar.getInstance(Locale.CHINA);
 
 
     @Override
@@ -59,7 +61,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         etEndTime = findViewById(R.id.et_fiTime);
         etStartTime = findViewById(R.id.et_stTime);
         etCollegeName = findViewById(R.id.et_collegeName);
-        etCourseName =  findViewById(R.id.et_courseName);
+        etCourseName = findViewById(R.id.et_courseName);
         etIntroduce = findViewById(R.id.et_introduce);
         etRealName = findViewById(R.id.et_realName);
         etCoursePhoto = findViewById(R.id.et_photo);
@@ -69,15 +71,18 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         btPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AddCourseActivity.this, UploadActivity.class));
-                etCoursePhoto.setText(UploadActivity.URL);
+                UploadActivity.isClickCoursePicture = true;
+                Intent intent = new Intent(AddCourseActivity.this, UploadActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // etCoursePhoto.setText("https://guet-lab.oss-cn-hangzhou.aliyuncs.com/api/2022/09/22/777f78b9-4b7d-401f-986a-7bc61f903201.jpg");
+                // etCoursePhoto.setText("https://guet-lab.oss-cn-hangzhou.aliyuncs.com/api/2022/09/22/777f78b9-4b7d-401f-986a-7bc61f903201.jpg");
                 long endTime = Long.parseLong(etEndTime.getText().toString());
                 long startTime = Long.parseLong(etStartTime.getText().toString());
 
@@ -87,7 +92,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                 String Introduce = etIntroduce.getText().toString();
                 String RealName = etRealName.getText().toString();
 
-                Api.AddCourse(CollegeName,CourseName, CoursePhoto,Introduce,endTime,RealName,startTime);
+                Api.AddCourse(CollegeName, CourseName, CoursePhoto, Introduce, endTime, RealName, startTime);
             }
         });
 
@@ -100,8 +105,12 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
 
     }
 
+    public static void CoursePhoto(EditText photo,String Url){
+        photo.setText(Url);
+    }
     /**
      * 日期选择
+     *
      * @param activity
      * @param themeResId
      * @param Time
@@ -114,10 +123,10 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 // 此处得到选择的时间，可以进行你想要的操作
-                String month = add0(String.valueOf(monthOfYear+1));
+                String month = add0(String.valueOf(monthOfYear + 1));
                 String day = add0(String.valueOf(dayOfMonth));
                 try {
-                    Time.setText(dateToStamp(year+"-"+month+"-"+day));
+                    Time.setText(dateToStamp(year + "-" + month + "-" + day));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -129,15 +138,15 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                 , calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_fiTime:
-                showDatePickerDialog(this,  4, etEndTime, calendar);;
+                showDatePickerDialog(this, 4, etEndTime, calendar);
+                ;
                 break;
             case R.id.bt_stTime:
-                showDatePickerDialog(this,4, etStartTime, calendar);
+                showDatePickerDialog(this, 4, etStartTime, calendar);
 
             default:
                 break;
@@ -156,8 +165,8 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
     }
 
     //补足月份、日期
-    public static String add0(String m){
-        return Integer.parseInt(m)>10?m: "0"+m;
+    public static String add0(String m) {
+        return Integer.parseInt(m) > 10 ? m : "0" + m;
     }
 
 }

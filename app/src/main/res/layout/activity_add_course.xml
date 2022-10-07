@@ -101,9 +101,7 @@
                 android:gravity="center"
                 android:inputType="text"
                 android:maxLines="1"
-                android:text="https://guet-lab.oss-cn-hangzhou.aliyuncs.com/api/2022/10/06/c28c3cb4-a285-41ce-bca7-b28fe4fb5cb0.jpg"
                 android:selectAllOnFocus="true" />
-
             <Button
                 android:id="@+id/bt_photo"
                 android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.myapplication.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,6 +22,8 @@ import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
+import com.example.myapplication.TeacherActivity.AddCourseActivity;
+import com.example.myapplication.javaBean.Picture;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,7 +41,9 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     private Uri picUri;
     private Button bt_upload;
     public static String URL;
+    public static boolean isClickCoursePicture = false;
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +73,11 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                             bt_upload.setOnClickListener(v -> {
                                 Api.PictureUpload(file);
                                 try {
-                                    Thread.sleep(500);
+                                    Thread.sleep(750);
                                     //System.out.println(PictureData.tempAvatar.getURL());
-                                    if (PictureData.tempAvatar.getURL() != null) {
-                                        if (PersonInfoActivity.isClickAvatar) {
+                                    if (PersonInfoActivity.isClickAvatar) {
+                                        PersonInfoActivity.isClickAvatar = false;
+                                        if (PictureData.tempAvatar.getURL() != null) {
                                             //System.out.println("123");
                                             AlterActivity.LoadData("头像", PictureData.tempAvatar.getURL());
                                             try {
@@ -91,13 +97,26 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                                                 e.printStackTrace();
                                             }
                                         } else {
-                                            Toast.makeText(UploadActivity.this, "修改成功！",
+                                            Toast.makeText(UploadActivity.this, "修改失败！",
                                                     Toast.LENGTH_SHORT).show();
                                         }
-                                    } else {
-                                        Toast.makeText(UploadActivity.this, "修改失败！",
-                                                Toast.LENGTH_SHORT).show();
                                     }
+                                    System.out.println("123");
+                                    System.out.println(PictureData.coursePicture.getURL());
+                                    if (UploadActivity.isClickCoursePicture) {
+                                        UploadActivity.isClickCoursePicture = false;
+                                        if (PictureData.coursePicture.getURL() != null) {
+                                            AddCourseActivity.CoursePhoto(AddCourseActivity.etCoursePhoto, PictureData.coursePicture.getURL());
+                                            Toast.makeText(UploadActivity.this, "修改成功！",
+                                                    Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else {
+                                            Toast.makeText(UploadActivity.this, "修改失败！",
+                                                    Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    }
+                                    System.out.println(PictureData.coursePicture.getURL());
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

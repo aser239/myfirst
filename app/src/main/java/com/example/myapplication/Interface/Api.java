@@ -5,16 +5,13 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.Data.CourseData;
+import com.example.myapplication.Activity.PersonInfoActivity;
+import com.example.myapplication.Activity.UploadActivity;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Data.PictureData;
-import com.example.myapplication.javaBean.Course;
-import com.example.myapplication.javaBean.CourseDetail;
 import com.example.myapplication.javaBean.Msg;
 import com.example.myapplication.javaBean.Person;
-import com.example.myapplication.javaBean.Picture;
-import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -275,41 +272,11 @@ public class Api {
         }).start();
     }
 
-    public static void delete(int courseId,int userId){
+    public static void delete(int courseId, int userId) {
         new Thread(() -> {
 
             // url路径
-            String url = "http://47.107.52.7:88/member/sign/course/teacher?"+"courseId="+courseId+"&userId="+userId;
-
-            // 请求头
-            Headers headers = new Headers.Builder()
-                    .add("appId", Api.appId)
-                    .add("appSecret",  Api.appSecret)
-                    .add("Accept", "application/json, text/plain, */*")
-                    .build();
-
-            //请求组合创建
-            Request request = new Request.Builder()
-                    .url(url)
-                    // 将请求头加至请求中
-                    .headers(headers)
-                    .delete()
-                    .build();
-            try {
-                OkHttpClient client = new OkHttpClient();
-                //发起请求，传入callback进行回调
-                client.newCall(request).enqueue(ResponseBody.callback);
-            }catch (NetworkOnMainThreadException ex){
-                ex.printStackTrace();
-            }
-        }).start();
-    }
-
-    public static void quit(int courseId,int userId){
-        new Thread(() -> {
-
-            // url路径
-            String url = "http://47.107.52.7:88/member/sign/course/student/drop?"+"courseId="+courseId+"&userId="+userId;
+            String url = "http://47.107.52.7:88/member/sign/course/teacher?" + "courseId=" + courseId + "&userId=" + userId;
 
             // 请求头
             Headers headers = new Headers.Builder()
@@ -329,7 +296,37 @@ public class Api {
                 OkHttpClient client = new OkHttpClient();
                 //发起请求，传入callback进行回调
                 client.newCall(request).enqueue(ResponseBody.callback);
-            }catch (NetworkOnMainThreadException ex){
+            } catch (NetworkOnMainThreadException ex) {
+                ex.printStackTrace();
+            }
+        }).start();
+    }
+
+    public static void quit(int courseId, int userId) {
+        new Thread(() -> {
+
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/course/student/drop?" + "courseId=" + courseId + "&userId=" + userId;
+
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("appId", Api.appId)
+                    .add("appSecret", Api.appSecret)
+                    .add("Accept", "application/json, text/plain, */*")
+                    .build();
+
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .delete()
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(ResponseBody.callback);
+            } catch (NetworkOnMainThreadException ex) {
                 ex.printStackTrace();
             }
         }).start();
@@ -446,10 +443,16 @@ public class Api {
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Object> dataResponseBody = gson.fromJson(body, jsonType);
-                        PictureData.avatar = dataResponseBody.getData();
-                        //System.out.println(PictureData.avatar);
-                        PictureData.tempAvatar.setURL(PictureData.avatar.toString());
-                        //System.out.println("123");
+                        PictureData.picture = dataResponseBody.getData();
+                        System.out.println(PictureData.picture);
+                        System.out.println("123");
+                        if (PersonInfoActivity.isClickAvatar) {
+                            PictureData.tempAvatar.setURL(PictureData.picture.toString());
+                        }
+                        if (UploadActivity.isClickCoursePicture) {
+                            PictureData.coursePicture.setURL(PictureData.picture.toString());
+                        }
+                        System.out.println(PictureData.coursePicture.getURL());
                     }
                 });
             } catch (NetworkOnMainThreadException ex) {

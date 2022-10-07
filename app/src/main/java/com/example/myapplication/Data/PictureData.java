@@ -3,6 +3,7 @@ package com.example.myapplication.Data;
 import com.example.myapplication.javaBean.Picture;
 
 public class PictureData {
-    public static Object avatar = null;
+    public static Object picture = null;
     public static Picture tempAvatar = new Picture();
+    public static Picture coursePicture = new Picture();
 }

@@ -1,13 +1,13 @@
 package com.example.myapplication.javaBean;
 
 public class Picture {
-    private String URL;
+    private String url;
 
     public String getURL() {
-        return URL;
+        return url;
     }
 
-    public void setURL(String URL) {
-        this.URL = URL;
+    public void setURL(String url) {
+        this.url = url;
     }
 }

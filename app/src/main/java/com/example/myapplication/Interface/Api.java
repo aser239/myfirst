@@ -8,10 +8,12 @@ import androidx.annotation.NonNull;
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Data.MsgData;
+import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.javaBean.CourseDetail;
 import com.example.myapplication.javaBean.Msg;
 import com.example.myapplication.javaBean.Person;
+import com.example.myapplication.javaBean.Picture;
 import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -39,8 +41,8 @@ public class Api {
     public static String appId = "d44f6a157edc4815b907124907b98e63";
     public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
 
-//    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
-//    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
+    //public static String appId = "aaf3870a62654c53829ee7593d2ee194";
+    //public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
 
     public static void Enroll(String username, int roleId, String password) {
         new Thread(() -> {
@@ -121,9 +123,9 @@ public class Api {
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Person> dataResponseBody = gson.fromJson(body, jsonType);
-                        MsgData.loginMsgData = new Msg(dataResponseBody.getCode(),dataResponseBody.getMsg());
+                        MsgData.loginMsgData = new Msg(dataResponseBody.getCode(), dataResponseBody.getMsg());
                         LoginData.loginUser = dataResponseBody.getData();
-                        Log.d("info", dataResponseBody.toString());
+                        //Log.d("info", dataResponseBody.toString());
                     }
                 });
             } catch (NetworkOnMainThreadException ex) {
@@ -132,7 +134,7 @@ public class Api {
         }).start();
     }
 
-    public static void  AddCourse(String collegeName, String courseName,
+    public static void AddCourse(String collegeName, String courseName,
                                  String coursePhoto, String introduce, long endTime,
                                  String realName, long startTime) {
         new Thread(() -> {
@@ -182,13 +184,14 @@ public class Api {
     }
 
 
-    public static void SelectCourse(int courseId,int userId) {
+    public static void SelectCourse(int courseId, int userId) {
         new Thread(() -> {
 
             // url路径
-            String url = "http://47.107.52.7:88/member/sign/course/student/select?"+
+            String url = "http://47.107.52.7:88/member/sign/course/student/select?" +
                     "courseId=" + courseId +
-                    "&userId=" + userId;;
+                    "&userId=" + userId;
+            ;
 
             // 请求头
             Headers headers = new Headers.Builder()
@@ -200,7 +203,7 @@ public class Api {
             // 请求体
             // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
             Map<String, Object> bodyMap = new HashMap<>();
-            bodyMap.put("courseId",courseId);
+            bodyMap.put("courseId", courseId);
             bodyMap.put("userId", userId);
             // 将Map转换为字符串类型加入请求体中
             String body = Api.gson.toJson(bodyMap);
@@ -225,8 +228,8 @@ public class Api {
     }
 
     public static void Sign(long beginTime, String courseAddr,
-                                 int courseId, String courseName, long endTime,
-                                 int signCode, int total,int userId) {
+                            int courseId, String courseName, long endTime,
+                            int signCode, int total, int userId) {
         new Thread(() -> {
 
             // url路径
@@ -331,8 +334,8 @@ public class Api {
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Person> dataResponseBody = gson.fromJson(body, jsonType);
-                        MsgData.alterMsgData = new Msg(dataResponseBody.getCode(),dataResponseBody.getMsg());
-                        Log.d("info", dataResponseBody.toString());
+                        MsgData.alterMsgData = new Msg(dataResponseBody.getCode(), dataResponseBody.getMsg());
+                        //Log.d("info", dataResponseBody.toString());
                     }
                 });
             } catch (NetworkOnMainThreadException ex) {
@@ -341,4 +344,58 @@ public class Api {
         }).start();
     }
 
+    public static void PictureUpload(File file) {
+        new Thread(() -> {
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/image/upload";
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("appId", Api.appId)
+                    .add("appSecret", Api.appSecret)
+                    .add("Accept", "application/json, text/plain, */*")
+                    .build();
+
+            MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
+
+            RequestBody fileBody = RequestBody.Companion.create(file, MEDIA_TYPE_JSON);
+            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                    .addFormDataPart("file", file.getName(), fileBody)
+                    .build();
+
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .post(body)
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Type jsonType = new TypeToken<ResponseBody<Object>>() {
+                        }.getType();
+                        // 获取响应体的json串
+                        String body = Objects.requireNonNull(response.body()).string();
+                        Log.d("info", body);
+                        // 解析json串到自己封装的状态
+                        ResponseBody<Object> dataResponseBody = gson.fromJson(body, jsonType);
+                        PictureData.avatar = dataResponseBody.getData();
+                        //System.out.println(PictureData.avatar);
+                        PictureData.tempAvatar.setURL(PictureData.avatar.toString());
+                        //System.out.println("123");
+                    }
+                });
+            } catch (NetworkOnMainThreadException ex) {
+                ex.printStackTrace();
+            }
+        }).start();
+    }
 }

@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             Api.Login(username, password);
 
             try {
-                Thread.sleep(350);
+                Thread.sleep(750);
                 String msg = MsgData.loginMsgData.getMsg();
                 switch (msg) {
                     case "登录成功":

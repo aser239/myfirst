@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
+import com.squareup.picasso.Picasso;
 
 public class PersonInfoActivity extends AppCompatActivity {
     public static final String MESSAGE_STRING = "com.example.myapplication.Activity.PERSON_INFO";
@@ -24,8 +24,8 @@ public class PersonInfoActivity extends AppCompatActivity {
     private TextView tv_phone;
     private TextView tv_inSchoolTime;
     private TextView tv_email;
-    private  ImageView avatar;
-    public static String urlphoto;
+    private ImageView iv_avatar;
+    public static boolean isClickAvatar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class PersonInfoActivity extends AppCompatActivity {
 
         Init();
         InitData();
-        System.out.println(urlphoto);
     }
 
     private void Init() {
@@ -63,15 +62,13 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_phone = findViewById(R.id.tv_phone_info);
         tv_inSchoolTime = findViewById(R.id.tv_inSchoolTime_info);
         tv_email = findViewById(R.id.tv_email_info);
-        avatar = findViewById(R.id.ri_avatar);
+        iv_avatar = findViewById(R.id.ri_avatar);
 
         ImageView iv_avatar = findViewById(R.id.iv_avatar_arrowRight);
         iv_avatar.setOnClickListener(v -> {
+            PersonInfoActivity.isClickAvatar = true;
             Intent intent = new Intent(PersonInfoActivity.this, UploadActivity.class);
-            //intent.putExtra(MESSAGE_STRING, "姓名");
-            //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
 
@@ -150,7 +147,9 @@ public class PersonInfoActivity extends AppCompatActivity {
         TextView tv_email_title = findViewById(R.id.tv_email);
         tv_email_title.setText("邮箱");
 
-        final boolean is_man = true;  //判断是否为男性
+        if (LoginData.loginUser.getAvatar() != null) {
+            Picasso.get().load(LoginData.loginUser.getAvatar()).into(iv_avatar);
+        }
         tv_id.setText(String.valueOf(LoginData.loginUser.getId()));
         tv_username.setText(LoginData.loginUser.getUsername());
         tv_realName.setText(LoginData.loginUser.getRealName());
@@ -172,6 +171,5 @@ public class PersonInfoActivity extends AppCompatActivity {
             tv_inSchoolTime.setText(realStringDate);
         }
         tv_email.setText(LoginData.loginUser.getEmail());
-
     }
 }

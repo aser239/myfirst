@@ -94,7 +94,7 @@ public class AlterActivity extends AppCompatActivity {
         }
     }
 
-    private void LoadData(String type, String data) {
+    public static void LoadData(String type, String data) {
         String collegeName = LoginData.loginUser.getCollegeName();
         String realName = LoginData.loginUser.getRealName();
         boolean gender = LoginData.loginUser.getGender();
@@ -106,6 +106,9 @@ public class AlterActivity extends AppCompatActivity {
         String email = LoginData.loginUser.getEmail();
         int inSchoolTime = LoginData.loginUser.getInSchoolTime();
         switch (type) {
+            case "头像":
+                avatar = data;
+                break;
             case "院校":
                 collegeName = data;
                 break;
@@ -136,8 +139,11 @@ public class AlterActivity extends AppCompatActivity {
                 avatar, id, idNumber, userName, email, inSchoolTime);
     }
 
-    private void UpdateData(String type, String data) {
+    public static void UpdateData(String type, String data) {
         switch (type) {
+            case "头像":
+                LoginData.loginUser.setAvatar(data);
+                break;
             case "院校":
                 LoginData.loginUser.setCollegeName(data);
                 break;

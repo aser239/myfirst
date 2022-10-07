@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.myapplication.Activity.LoginActivity">
 
-
-
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="248dp"
-        android:layout_marginTop="48dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="60dp"
         android:layout_weight="1">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@drawable/ic_enroll"/>
-
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_person_pin_24"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -28,14 +25,14 @@
         android:layout_height="40dp"
         android:layout_marginTop="48dp">
 
-
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="1dp"
-            android:src="@drawable/ic_baseline_person_outline_24" />
+            android:src="@drawable/ic_baseline_person_outline_24"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/et_user"
@@ -45,12 +42,12 @@
             android:layout_gravity="center"
             android:layout_marginStart="48dp"
             android:layout_marginEnd="48dp"
-
             android:layout_marginBottom="0dp"
             android:hint="@string/login_username"
             android:inputType="text"
-            android:maxLines="1" />
-
+            android:maxLines="1"
+            android:textColorHint="#757575"
+            tools:ignore="Autofill,TouchTargetSizeCheck" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -64,7 +61,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="3dp"
-            android:src="@drawable/ic_outline_lock_24" />
+            android:src="@drawable/ic_outline_lock_24"
+            tools:ignore="ContentDescription" />
 
         <EditText
             android:id="@+id/et_pwd"
@@ -76,7 +74,9 @@
             android:layout_marginBottom="0dp"
             android:hint="@string/login_password"
             android:inputType="textPassword"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColorHint="#757575"
+            tools:ignore="Autofill,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/iv_pwd_switch"
@@ -84,10 +84,11 @@
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginEnd="18dp"
             android:layout_marginBottom="6dp"
-            android:src="@drawable/ic_baseline_visibility_off_24" />
+            android:src="@drawable/ic_baseline_visibility_off_24"
+            tools:ignore="ContentDescription" />
     </RelativeLayout>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -102,8 +103,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="4dp"
+            android:checked="false"
             android:text="@string/remember_password"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/enroll"
@@ -114,7 +117,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="8dp"
             android:text="@string/sign_up"
-            android:textColor="@color/purple_500" />
+            android:textColor="@color/purple_500"
+            tools:ignore="RelativeOverlap" />
 
 
     </RelativeLayout>
@@ -131,11 +135,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/btn_right"
+            android:background="@drawable/btn_left"
+            android:backgroundTint="@color/purple_500"
+            android:focusableInTouchMode="false"
             android:text="@string/login"
-            android:textSize="16sp"
             android:textColor="@android:color/white" />
     </RelativeLayout>
-
-
 </LinearLayout>

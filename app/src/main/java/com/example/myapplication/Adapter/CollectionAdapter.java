@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class CollectionAdapter extends ArrayAdapter<Course> {
@@ -52,15 +54,14 @@ public class CollectionAdapter extends ArrayAdapter<Course> {
             view = convertView;
             vh = (ViewHolder) view.getTag();
         }
-        Glide.with(mContext).load(goodUrls)
-                .into(vh.ivImage);
+        Glide.with(mContext).load(goodUrls).into(vh.ivImage);
         vh.txCourseName.setText(CourseName);
         return view;
     }
 
 
 
-    class ViewHolder {
+    static class ViewHolder {
         ImageView ivImage;
         TextView txCourseName;
 

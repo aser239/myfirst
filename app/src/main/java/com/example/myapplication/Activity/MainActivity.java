@@ -70,5 +70,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button personInfo = findViewById(R.id.bt_enterUserCenter);
+        personInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, PersonInfoActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(intent);
+        });
     }
 }

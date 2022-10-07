@@ -4,6 +4,9 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
     <application
         android:allowBackup="true"
@@ -17,20 +20,18 @@
         android:theme="@style/Theme.MyApplication.NoACtionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!--
-        <activity
-            android:name=".SignInformation"
+            android:name=".MessageActivity3"
             android:exported="false" />
-        -->
-        <!--<activity
+        <activity
+            android:name=".MessageActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.AlterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PersonInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".TeacherActivity.TeacherCourseListActivity"
             android:exported="false" />
         <activity
@@ -39,6 +40,15 @@
         <activity
             android:name=".Activity.EnrollActivity"
             android:exported="false" />
+        <activity
+            android:name=".Activity.WelcomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".TeacherActivity.TeacherCourseActivity" />
         <activity android:name=".StudentActivity.StudentCourseActivity" />
@@ -48,7 +58,11 @@
         <activity android:name=".TeacherActivity.TeacherSignInActivity" />
         <activity android:name=".StudentActivity.StudentCourseListActivity" />
         <activity android:name=".StudentActivity.StudentListActivity" />
-        <activity android:name=".TeacherActivity.SignInformationActivity" />-->
+        <activity android:name=".TeacherActivity.SignInformationActivity" />
+        <activity android:name=".Activity.UploadActivity" />
+        <activity android:name=".TeacherActivity.UnfinishedCourseActivity" />
+        <activity android:name=".Activity.MessageActivity2" />
+        <activity android:name=".Activity.MessageActivity3" />
     </application>
 
 </manifest>

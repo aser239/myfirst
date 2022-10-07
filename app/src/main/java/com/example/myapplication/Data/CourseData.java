@@ -8,6 +8,6 @@ import com.example.myapplication.javaBean.Records2Detail;
 public class CourseData {
     public static Course Course = null;
     public static CourseDetail Detail = null;
-    public static Records2 Record = null;
+    public static Records2 Records2 = null;
 
 }

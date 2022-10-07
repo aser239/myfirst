@@ -7,11 +7,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".StudentActivity.StudentListActivity">
-
-    <EditText
-        android:id="@+id/Cousrid222"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/CourseID22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="课程主键ID："
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_CourseID22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/CourseID22"
+            android:inputType="text"
+            android:maxLines="1"
+            android:selectAllOnFocus="true" />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btdian"

@@ -18,50 +18,62 @@
             android:layout_height="wrap_content"
             android:text="返回"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
+                android:id="@+id/collegeName2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+
                 android:text="院校名："
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/et_collegeName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/collegeName2"
                 android:inputType="text"
-                android:selectAllOnFocus="true"
-                android:maxLines="1"/>
-        </LinearLayout>
+                android:maxLines="1"
+                android:selectAllOnFocus="true" />
 
-        <LinearLayout
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
+                android:id="@+id/CourseName2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+
                 android:text="课程名："
-                android:textSize="30sp"
-                />
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/et_courseName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/CourseName2"
+
                 android:inputType="text"
-                android:selectAllOnFocus="true"
                 android:maxLines="1"
-                />
-        </LinearLayout>
+                android:selectAllOnFocus="true" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_marginLeft="30dp"
@@ -72,22 +84,31 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/TX_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:inputType="textUri"
-                android:text="课程的图片资源链接："
+                android:text="课程图片："
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/et_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@+id/bt_photo"
+                android:layout_toEndOf="@+id/TX_photo"
                 android:gravity="center"
                 android:inputType="text"
-                android:maxLines="2"
-                android:selectAllOnFocus="true"
-                android:text="https://guet-lab.oss-cn-hangzhou.aliyuncs.com/api/2022/09/22/777f78b9-4b7d-401f-986a-7bc61f903201.jpg" />
+                android:maxLines="1"
+                android:selectAllOnFocus="true" />
+            <Button
+                android:id="@+id/bt_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="选择图片" />
+
 
 <!--            <Button-->
 <!--                android:layout_width="wrap_content"-->
@@ -107,6 +128,7 @@
                 android:id="@+id/tx_fiCourse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="课程结束时间："
                 android:textSize="20sp" />
 
@@ -130,53 +152,33 @@
                 android:text="选择时间" />
         </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
+                android:id="@+id/CourseIntroduce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+
                 android:inputType="textMultiLine"
                 android:text="课程简介："
-                android:textSize="30sp"
-                />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/et_introduce"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/CourseIntroduce"
                 android:inputType="text"
-                android:selectAllOnFocus="true"
                 android:maxLines="1"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="当前登录真实姓名："
-                android:textSize="30sp"
-                />
-
-            <EditText
-                android:id="@+id/et_realName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text"
-                android:selectAllOnFocus="true"
-                android:maxLines="1"/>
-        </LinearLayout>
+                android:selectAllOnFocus="true" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_marginLeft="30dp"
@@ -185,13 +187,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/RealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="当前登录真实姓名："
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/et_realName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/RealName"
+                android:inputType="text"
+                android:maxLines="1"
+                android:selectAllOnFocus="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/tx_stCourse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="课程开始时间："
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/et_stTime"
@@ -271,14 +300,13 @@
                 android:id="@+id/search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
                 android:layout_alignParentEnd="true"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="100dp"
                 android:text="查看课程"
                 android:textSize="20sp" />
-
         </RelativeLayout>
 
 

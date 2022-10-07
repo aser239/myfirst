@@ -8,10 +8,8 @@ import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
@@ -34,68 +32,57 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-//未结课程的详情
-public class MessageActivity extends AppCompatActivity {
-
-    private TextView etCollegeName2;
-    private TextView etCourseName2;
-    private TextView etCoursePhoto2;
-    private TextView etIntroduce2;
-    private TextView etEndTime2;
-    private TextView etRealName2;
-    private TextView etStartTime2;
+//全部课程的详情
+public class MessageActivity2 extends AppCompatActivity {
+    private TextView etCollegeName;
+    private TextView etCourseName;
+    private TextView etCoursePhoto;
+    private TextView etIntroduce;
+    private TextView etEndTime;
+    private TextView etRealName;
+    private TextView etStartTime;
     private TextView etId;
     private TextView etChoose;
     private TextView etUserName;
     private TextView etCreateTime;
-    private Button delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(R.layout.activity_message2);
 
         Intent intent = getIntent();
-        int info = Integer.parseInt(intent.getStringExtra(UnfinishedCourseActivity.UNFINISHED_MESSAGE_STRING));
+        int info = Integer.parseInt(intent.getStringExtra(TeacherCourseListActivity.COURSE_MESSAGE_STRING));
         Detail(info, LoginData.loginUser.getId());
 
     }
 
     public void init() {
 
-        etCollegeName2 = findViewById(R.id.tx_collegeName22);
-        etCourseName2 = findViewById(R.id.tx_courseName22);
-        etCoursePhoto2 = findViewById(R.id.tx_photo);
-        etIntroduce2 = findViewById(R.id.tx_introduce22);
-        etEndTime2 = findViewById(R.id.tx_fiTime22);
-        etRealName2 = findViewById(R.id.tx_realName2);
-        etStartTime2 = findViewById(R.id.tx_stTime2);
-        etId = findViewById(R.id.tx_id);
-        etChoose = findViewById(R.id.tx_choose);
-        etUserName = findViewById(R.id.tx_userName);
-        etCreateTime = findViewById(R.id.tx_CreateTime);
-        delete = findViewById(R.id.Delete);
+        etCollegeName = findViewById(R.id.tx_collegeName33);
+        etCourseName = findViewById(R.id.tx_courseName33);
+        etCoursePhoto = findViewById(R.id.tx_photo33);
+        etIntroduce = findViewById(R.id.tx_introduce33);
+        etEndTime = findViewById(R.id.tx_fiTime33);
+        etRealName = findViewById(R.id.tx_realName33);
+        etStartTime = findViewById(R.id.tx_stTime33);
+        etId = findViewById(R.id.tx_id33);
+        etChoose = findViewById(R.id.tx_choose33);
+        etUserName = findViewById(R.id.tx_userName33);
+        etCreateTime = findViewById(R.id.tx_CreateTime33);
 
 
-        etCollegeName2.setText(CourseData.Detail.getCollegeName());
-        etCourseName2.setText(CourseData.Detail.getCourseName());
-        etCoursePhoto2.setText(CourseData.Detail.getCoursePhoto());
-        etIntroduce2.setText(CourseData.Detail.getIntroduce());
-        etEndTime2.setText(String.valueOf(CourseData.Detail.getEndTime()));
-        etRealName2.setText(CourseData.Detail.getRealName());
-        etStartTime2.setText(String.valueOf(CourseData.Detail.getStartTime()));
+        etCollegeName.setText(CourseData.Detail.getCollegeName());
+        etCourseName.setText(CourseData.Detail.getCourseName());
+        etCoursePhoto.setText(CourseData.Detail.getCoursePhoto());
+        etIntroduce.setText(CourseData.Detail.getIntroduce());
+        etEndTime.setText(String.valueOf(CourseData.Detail.getEndTime()));
+        etRealName.setText(CourseData.Detail.getRealName());
+        etStartTime.setText(String.valueOf(CourseData.Detail.getStartTime()));
         etId.setText(String.valueOf(CourseData.Detail.getId()));
         etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
         etUserName.setText(CourseData.Detail.getUserName());
         etCreateTime.setText(String.valueOf(CourseData.Detail.getCreateTime()));
-
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Api.delete(CourseData.Detail.getId(), LoginData.loginUser.getId());
-                startActivity(new Intent(MessageActivity.this,UnfinishedCourseActivity.class));
-            }
-        });
 
     }
 
@@ -148,7 +135,7 @@ public class MessageActivity extends AppCompatActivity {
                     }.getType();
                     // 解析json串到自己封装的状态
                     ResponseBody<CourseDetail> dataResponseBody = gson.fromJson(body, jsonType);
-                    Log.d("未结课程详情：", dataResponseBody.getData().toString());
+                    Log.d("全部课程详情：", dataResponseBody.getData().toString());
                     CourseData.Detail = dataResponseBody.getData();
                     init();
                 }

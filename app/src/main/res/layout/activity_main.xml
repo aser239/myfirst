@@ -40,14 +40,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/bt_enterUserCenter22222"
-        android:text="学生签到列表"
-        android:textSize="30sp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/bt_enterUserCenter333"
@@ -55,7 +47,6 @@
         android:textSize="30sp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

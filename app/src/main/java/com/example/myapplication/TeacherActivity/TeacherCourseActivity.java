@@ -16,14 +16,13 @@ public class TeacherCourseActivity extends AppCompatActivity {
 
     private Button addCourse;
     private Button unfinishedCourse;
+    private Button finishedCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_course_teacher);
 
         addCourse = findViewById(R.id.enterTeacherAddCourse);
-        unfinishedCourse = findViewById(R.id.enterTeacherHaveNotClassList);
-
         addCourse.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -32,10 +31,19 @@ public class TeacherCourseActivity extends AppCompatActivity {
             }
         });
 
+        unfinishedCourse = findViewById(R.id.enterTeacherHaveNotClassList);
         unfinishedCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TeacherCourseActivity.this,UnfinishedCourseActivity.class));
+            }
+        });
+
+        finishedCourse = findViewById(R.id.enterTeacherHaveClassList);
+        finishedCourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TeacherCourseActivity.this,FinishedCourseActivity.class));
             }
         });
     }

@@ -1,6 +1,8 @@
 package com.example.myapplication.StudentActivity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
@@ -38,6 +41,7 @@ public class StudentSignInActivity extends AppCompatActivity {
     private EditText tv_sign_in_psw;
     private Button bt_sign_in;
     private Button signInReturnToMainActivity;
+    private Button btboo;
 
     private final Gson gson = new Gson();
 
@@ -59,6 +63,14 @@ public class StudentSignInActivity extends AppCompatActivity {
                 int signcode = Integer.parseInt(tv_sign_in_psw.getText().toString());
                 int signid = Integer.parseInt(SignId.getText().toString());
                 s_SignIn(signcode, LoginData.loginUser.getId(), signid);
+            }
+        });
+
+        btboo = findViewById(R.id.bt_enterUserCenter22222);
+        btboo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StudentSignInActivity.this, StudentListActivity.class));
             }
         });
 

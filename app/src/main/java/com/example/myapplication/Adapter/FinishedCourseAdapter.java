@@ -17,15 +17,15 @@ import com.example.myapplication.javaBean.Course;
 
 import java.util.List;
 
-public class UnfinishCourseAdapter extends ArrayAdapter<Course>{
+public class FinishedCourseAdapter extends ArrayAdapter<Course>{
     private final List<Course> mNewsData;
     private final Context mContext;
     private final int resourceId;
     private String goodUrls;
     private String CourseName;
 
-    public UnfinishCourseAdapter(Context context,
-                                int resourceId, List<Course> data) {
+    public FinishedCourseAdapter(Context context,
+                                 int resourceId, List<Course> data) {
         super(context, resourceId, data);
         this.mContext = context;
         this.mNewsData = data;
@@ -38,27 +38,27 @@ public class UnfinishCourseAdapter extends ArrayAdapter<Course>{
         goodUrls = news.getCoursePhoto();
         CourseName = news.getCourseName();
         View view ;
-        final UnfinishCourseAdapter.ViewHolder vh;
+        final FinishedCourseAdapter.ViewHolder vh;
         if (convertView == null) {
             view = LayoutInflater.from(getContext())
                     .inflate(resourceId, parent, false);
             vh = new ViewHolder();
-            vh.ivImage3 = view.findViewById(R.id.iv_image4);
-            vh.txCourseName3 = view.findViewById(R.id.tv_title4);
+            vh.ivImage = view.findViewById(R.id.iv_image5);
+            vh.txCourseName = view.findViewById(R.id.tv_title5);
             view.setTag(vh);
         } else {
             view = convertView;
             vh = (ViewHolder) view.getTag();
         }
         Glide.with(mContext).load(goodUrls)
-                .into(vh.ivImage3);
-        vh.txCourseName3.setText(CourseName);
+                .into(vh.ivImage);
+        vh.txCourseName.setText(CourseName);
         return view;
     }
 
 
     static class ViewHolder {
-        ImageView ivImage3;
-        TextView txCourseName3;
+        ImageView ivImage;
+        TextView txCourseName;
     }
 }

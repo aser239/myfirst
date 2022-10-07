@@ -98,9 +98,11 @@
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/activity_student_course_list.xml" value="0.18704710144927536" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/activity_student_list.xml" value="0.12335359675785208" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/activity_teacher_sign_in.xml" value="0.264" />
+        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/activity_upload.xml" value="0.12335359675785208" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/activity_user.xml" value="0.2526041666666667" />
+        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/activity_welcome.xml" value="0.12335359675785208" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/course_fragment.xml" value="0.25" />
-        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_course.xml" value="0.16" />
+        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_course.xml" value="0.2" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_dashboard.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_find.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_home.xml" value="0.264" />
@@ -108,6 +110,7 @@
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_notifications.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_sign.xml" value="0.21829710144927536" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/home_fragment.xml" value="0.25" />
+        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/list_item.xml" value="0.12335359675785208" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/sign_fragment.xml" value="0.25" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/start_for_fragment.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/user_fragment.xml" value="0.25" />

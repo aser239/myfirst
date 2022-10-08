@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
     private FrameLayout mNavContainer;
     private StudentCourseFragment mStudentCourseFragment;
     private StudentSignFragment mStudentSignFragment;
-    private MeFragment mMeFragment;
+    public static MeFragment mMeFragment;
     private TeacherCourseFragment mTeacherCourseFragment;
     private TeacherSigninFragment mTeacherSigninFragment;
 
@@ -33,6 +33,15 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        int id = getIntent().getIntExtra("id", 0);
+        if (id == 1) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_container,new MeFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
 
         mMeFragment = new MeFragment();
         mStudentSignFragment = new StudentSignFragment();
@@ -62,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.nav_item_me:
-                        switchFragment(mMeFragment);
+                            switchFragment(mMeFragment);
                         break;
                     case R.id.nav_item_sign:
                         if (LoginData.loginUser.getRoleId() == 1) {

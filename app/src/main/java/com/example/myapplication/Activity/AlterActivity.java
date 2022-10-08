@@ -30,6 +30,8 @@ public class AlterActivity extends AppCompatActivity {
         Alter_backward.setOnClickListener(v -> {
             Intent intent = new Intent(AlterActivity.this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            intent.putExtra("id",1);
             //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
             finish();
@@ -91,6 +93,9 @@ public class AlterActivity extends AppCompatActivity {
                         }
                     }
                 }
+                Intent intent1 = new Intent(AlterActivity.this, HomeActivity.class);
+                intent1.putExtra("id",1);
+                startActivity(intent1);
             });
         }
     }

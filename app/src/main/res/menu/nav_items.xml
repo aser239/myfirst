@@ -8,16 +8,15 @@
         android:title="@string/home"
         app:showAsAction="always" />-->
     <item
-        android:id="@+id/nav_item_course"
-        android:icon="@drawable/ic_course"
-        android:title="@string/course"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/nav_item_sign"
         android:icon="@drawable/ic_sign"
         android:title="@string/sign"
         app:showAsAction="always" />
-
+    <item
+        android:id="@+id/nav_item_course"
+        android:icon="@drawable/ic_course"
+        android:title="@string/course"
+        app:showAsAction="always" />
     <item
         android:id="@+id/nav_item_me"
         android:icon="@drawable/ic_me"

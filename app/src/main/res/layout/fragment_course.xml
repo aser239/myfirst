@@ -4,33 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.TeacherCourseFragment">
-
+    tools:context=".ui.CourseFragment">
 
     <Button
-        android:id="@+id/teacherCourseReturnMainActivity"
+        android:background="@drawable/shap_course"
+        android:id="@+id/returnMainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/shap_course"
         android:text="返回"/>
 
     <Button
         android:background="@drawable/shap_course"
-        android:id="@+id/enterTeacherHaveClassList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:id="@+id/enterSelectCourse111"
+        android:text="学生选课"
+        android:textSize="30sp"
+        android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        android:text="教师已结课课程列表"
-        android:textSize="30sp" />
-
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
     <Button
         android:background="@drawable/shap_course"
-        android:id="@+id/enterTeacherHaveNotClassList"
-        android:text="教师未结课课程列表"
+        android:id="@+id/enterDropCourse111"
+        android:text="学生退课"
         android:textSize="30sp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
@@ -40,15 +38,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
+
     <Button
         android:background="@drawable/shap_course"
-        android:id="@+id/enterTeacherAddCourse"
-        android:text="教师添加课程"
+        android:id="@+id/enterCourseList111"
+        android:text="学生查看课程列表"
         android:textSize="30sp"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="30dp"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>

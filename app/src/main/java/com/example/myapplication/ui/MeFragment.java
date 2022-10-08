@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
  */
 public class MeFragment extends Fragment implements View.OnClickListener {
 
-
+    public static boolean isClickAvatar = false;
     private TextView tv_id;
     private TextView tv_username;
     private TextView tv_realName;
@@ -115,6 +115,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         Intent intent = new Intent(getActivity(),AlterActivity.class);
         switch (view.getId()){
             case R.id.iv_avatar_arrowRight:
+                MeFragment.isClickAvatar=true;
                 startActivity(new Intent(getActivity(), UploadActivity.class));
                 break;
             case R.id.iv_arrow_right_realName:

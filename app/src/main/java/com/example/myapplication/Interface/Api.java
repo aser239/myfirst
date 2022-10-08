@@ -12,6 +12,7 @@ import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.javaBean.Msg;
 import com.example.myapplication.javaBean.Person;
+import com.example.myapplication.ui.MeFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -446,7 +447,7 @@ public class Api {
                         PictureData.picture = dataResponseBody.getData();
                         System.out.println(PictureData.picture);
                         System.out.println("123");
-                        if (PersonInfoActivity.isClickAvatar) {
+                        if (MeFragment.isClickAvatar) {
                             PictureData.tempAvatar.setURL(PictureData.picture.toString());
                         }
                         if (UploadActivity.isClickCoursePicture) {

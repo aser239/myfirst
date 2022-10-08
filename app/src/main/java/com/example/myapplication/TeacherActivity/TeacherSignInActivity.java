@@ -81,6 +81,7 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
                  int userID2 = Integer.parseInt(userId.getText().toString());
 
                 Api.Sign(startTime2,addr,CourseID,CourseName, endTime2,Code,1,userID2);
+                finish();
             }
         });
     }

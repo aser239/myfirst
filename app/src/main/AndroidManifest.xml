@@ -29,14 +29,14 @@
         <activity
             android:name=".TeacherActivity.TeacherCourseListActivity"
             android:exported="false" />
-        <!--<activity
+        <activity
             android:name=".Activity.LoginActivity"
-            android:exported="false" />-->
+            android:exported="false" />
         <activity
             android:name=".Activity.EnrollActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name=".Activity.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,7 +45,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.HomeActivity"/>
-        <activity android:name=".Activity.WelcomeActivity"/>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".TeacherActivity.TeacherCourseActivity" />
         <activity android:name=".StudentActivity.StudentCourseActivity" />

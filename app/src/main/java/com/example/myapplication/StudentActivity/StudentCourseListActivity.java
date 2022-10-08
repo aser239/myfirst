@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.MessageActivity2;
 import com.example.myapplication.Activity.MessageActivity3;
@@ -117,11 +118,15 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
                     Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
                     // 解析json串到自己封装的状态
                     dataResponseBody = gson.fromJson(body, jsonType);
-
-                    for (Course news:dataResponseBody.getData().getRecords()) {
-                        adapter2.add(news);
+                    if (dataResponseBody.getData()!=null) {
+                        for (Course news : dataResponseBody.getData().getRecords()) {
+                            adapter2.add(news);
+                        }
+                        adapter2.notifyDataSetChanged();
+                    }else {
+                        Toast.makeText(StudentCourseListActivity.this,"还没有选课！", Toast.LENGTH_SHORT).show();
                     }
-                    adapter2.notifyDataSetChanged();
+
                 }
             });
         }

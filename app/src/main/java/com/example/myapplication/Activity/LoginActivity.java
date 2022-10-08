@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 switch (msg) {
                     case "登录成功":
                         Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
                         break;
                     case "当前登录用户不存在":

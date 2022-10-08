@@ -14,6 +14,7 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
+import com.example.myapplication.ui.MeFragment;
 
 public class AlterActivity extends AppCompatActivity {
     @Override
@@ -27,7 +28,7 @@ public class AlterActivity extends AppCompatActivity {
     private void Init() {
         ImageView Alter_backward = findViewById(R.id.iv_backward_alter);
         Alter_backward.setOnClickListener(v -> {
-            Intent intent = new Intent(AlterActivity.this, PersonInfoActivity.class);
+            Intent intent = new Intent(AlterActivity.this, HomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
@@ -62,10 +63,10 @@ public class AlterActivity extends AppCompatActivity {
                     } else if (info.equals("手机号") && !IsPhoneNumber(newData)) {
                         Toast.makeText(AlterActivity.this, "手机号格式错误！",
                                 Toast.LENGTH_SHORT).show();
-                    } else if (info.equals("姓名") && !IsRealName(newData)) {
+                    }/* else if (info.equals("姓名") && !IsRealName(newData)) {
                         Toast.makeText(AlterActivity.this, "姓名信息错误！",
                                 Toast.LENGTH_SHORT).show();
-                    } else if (info.equals("入学时间") && !IsDate(newData)) {
+                    }*/ else if (info.equals("入学时间") && !IsDate(newData)) {
                         Toast.makeText(AlterActivity.this, "日期格式错误！",
                                 Toast.LENGTH_SHORT).show();
                     } else if (info.equals("性别") && !IsGender(newData)) {

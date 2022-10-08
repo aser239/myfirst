@@ -36,7 +36,7 @@ public class PersonInfoActivity extends AppCompatActivity {
         InitData();
     }
 
-    private void Init() {
+    public void Init() {
         Button login_exit = findViewById(R.id.login_exit);
         login_exit.setOnClickListener(v -> {
             Intent intent = new Intent(PersonInfoActivity.this, LoginActivity.class);
@@ -45,13 +45,13 @@ public class PersonInfoActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        ImageView personInfo_backward = findViewById(R.id.iv_backward);
+        /*ImageView personInfo_backward = findViewById(R.id.iv_backward);
         personInfo_backward.setOnClickListener(v -> {
             Intent intent = new Intent(PersonInfoActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
-        });
+        });*/
 
         tv_id = findViewById(R.id.tv_id_info);
         tv_username = findViewById(R.id.tv_username_info);
@@ -125,7 +125,7 @@ public class PersonInfoActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void InitData() {
+    public void InitData() {
         TextView tv_avatar_title = findViewById(R.id.tv_avatar);
         tv_avatar_title.setText("头像");
         TextView tv_id_title = findViewById(R.id.tv_id);

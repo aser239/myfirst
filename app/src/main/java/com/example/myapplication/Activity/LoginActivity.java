@@ -5,8 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.NetworkOnMainThreadException;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,17 +19,64 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Interface.Api;
+import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
+import com.example.myapplication.javaBean.Msg;
+import com.example.myapplication.javaBean.Person;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.Objects;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private Boolean bPwdSwitch = false;
     private EditText etPwd;
     private EditText etUser;
     private CheckBox cbRememberPwd;
+
+    private Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle bundle = msg.getData();
+            String loginMsg = bundle.getString("msg");
+            System.out.println(loginMsg);
+            switch (loginMsg) {
+                case "登录成功":
+                    Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    finish();
+                    break;
+                case "当前登录用户不存在":
+                    Toast.makeText(LoginActivity.this, "当前登录用户不存在！",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case "密码错误":
+                    Toast.makeText(LoginActivity.this, "密码错误！",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    Toast.makeText(LoginActivity.this, "登录失败！",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +122,10 @@ public class LoginActivity extends AppCompatActivity {
             if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
                 Toast.makeText(LoginActivity.this, "输入不能为空！", Toast.LENGTH_SHORT).show();
             }
-            Api.Login(username, password);
+            //Api.Login(username, password);
+            Login(username, password);
 
+            /*
             try {
                 Thread.sleep(750);
                 String msg = MsgData.loginMsgData.getMsg();
@@ -96,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
         });
     }
 
@@ -138,5 +192,60 @@ public class LoginActivity extends AppCompatActivity {
             etPwd.setText(password);
         }
         cbRememberPwd.setChecked(rememberPassword);
+    }
+
+    public void Login(String username, String password) {
+        new Thread(() -> {
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/user/login";
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("Accept", "application/json, text/plain, */*")
+                    .add("appId", Api.appId)
+                    .add("appSecret", Api.appSecret)
+                    .build();
+            // 请求体
+            // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
+            FormBody.Builder params = new FormBody.Builder();
+            params.add("username", username); //添加url参数
+            params.add("password", password); //添加url参数
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .post(params.build())
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Type jsonType = new TypeToken<ResponseBody<Person>>() {
+                        }.getType();
+                        // 获取响应体的json串
+                        String body = Objects.requireNonNull(response.body()).string();
+                        Log.d("info", body);
+                        // 解析json串到自己封装的状态
+                        ResponseBody<Person> dataResponseBody = Api.gson.fromJson(body, jsonType);
+                        MsgData.loginMsgData = new Msg(dataResponseBody.getCode(), dataResponseBody.getMsg());
+                        LoginData.loginUser = dataResponseBody.getData();
+                        Message message = new Message();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("msg",dataResponseBody.getMsg());
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    }
+                });
+            } catch (NetworkOnMainThreadException ex) {
+                ex.printStackTrace();
+            }
+        }).start();
     }
 }

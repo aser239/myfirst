@@ -12,7 +12,6 @@ import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.javaBean.Msg;
 import com.example.myapplication.javaBean.Person;
-import com.example.myapplication.ui.MeFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -36,11 +35,11 @@ import okhttp3.Response;
 
 public class Api {
     public static Gson gson = new Gson();
-    public static String appId = "d44f6a157edc4815b907124907b98e63";
-    public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
+    //public static String appId = "d44f6a157edc4815b907124907b98e63";
+    //public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
 
-//    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
-//    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
+    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
+    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
 
     public static void Enroll(String username, int roleId, String password) {
         new Thread(() -> {
@@ -447,7 +446,7 @@ public class Api {
                         PictureData.picture = dataResponseBody.getData();
                         System.out.println(PictureData.picture);
                         System.out.println("123");
-                        if (MeFragment.isClickAvatar) {
+                        if (PersonInfoActivity.isClickAvatar) {
                             PictureData.tempAvatar.setURL(PictureData.picture.toString());
                         }
                         if (UploadActivity.isClickCoursePicture) {

@@ -43,6 +43,7 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
     private EditText courseName;
     private EditText userId;
     private EditText signCode;
+    public static int CourseID3;
 
 
     Calendar calendar= Calendar.getInstance(Locale.CHINA);
@@ -123,6 +124,9 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
                         int CourseID2 = Integer.parseInt(CourseID);
                         int userID2 = Integer.parseInt(userID);
                         Api.Sign(startTime2, addr, CourseID2, CourseName, endTime2, Code, Total2, userID2);
+                        Toast.makeText(TeacherSignInActivity.this,"发起签到成功！", Toast.LENGTH_SHORT).show();
+                        TeacherSignInActivity.CourseID3 = CourseID2;
+                        System.out.println(TeacherSignInActivity.CourseID3 );
                         finish();
 
                     }

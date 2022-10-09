@@ -1,8 +1,10 @@
 package com.example.myapplication.StudentActivity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
@@ -13,10 +15,12 @@ import android.widget.Toast;
 
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
+import com.example.myapplication.Data.SignInformationData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
 import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
+import com.example.myapplication.TeacherActivity.TeacherSignInActivity;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.javaBean.CourseDetail;
 import com.example.myapplication.javaBean.Records;
@@ -36,11 +40,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class StudentListActivity extends AppCompatActivity {
-
-
     private Button btdian;
     private EditText courseId;
+    private ResponseBody<Records2> dataResponseBody;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,17 +52,27 @@ public class StudentListActivity extends AppCompatActivity {
 
         btdian = findViewById(R.id.btdian);
         courseId = findViewById(R.id.et_CourseID22);
+
+        System.out.println(TeacherCourseListActivity.courseId);
+
         btdian.setOnClickListener(new View.OnClickListener() {
+
 
             @Override
             public void onClick(View v) {
+                final String CourseID = courseId.getText().toString();
                 if (courseId.getText().toString().equals("")) {
                     Toast.makeText(StudentListActivity.this,"请输入课程ID！", Toast.LENGTH_SHORT).show();
-                }else {
-                    int courseId4 = Integer.parseInt(courseId.getText().toString());
-                    Student(courseId4,1,1,0, LoginData.loginUser.getId());
-                }
 
+                }else if (!Objects.equals(TeacherCourseListActivity.courseId, Integer.parseInt(CourseID))){
+                    Toast.makeText(StudentListActivity.this,"输入与所选课程ID不匹配！", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    int courseId4 = Integer.parseInt(CourseID);
+                    Student(courseId4, 1, 1, 0, LoginData.loginUser.getId());
+                    Toast.makeText(StudentListActivity.this,"获取userSignID成功！", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
 
@@ -110,7 +124,7 @@ public class StudentListActivity extends AppCompatActivity {
                     Type jsonType = new TypeToken<ResponseBody<Records2>>() {
                     }.getType();
                     // 解析json串到自己封装的状态
-                    ResponseBody<Records2> dataResponseBody = gson.fromJson(body, jsonType);
+                    dataResponseBody = gson.fromJson(body, jsonType);
                     CourseData.Records2 = dataResponseBody.getData();
                 }
             });

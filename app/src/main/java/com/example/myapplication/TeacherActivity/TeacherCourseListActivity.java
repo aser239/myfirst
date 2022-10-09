@@ -138,7 +138,7 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (LoginData.loginUser.getRoleId()==0){
-            courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
+            TeacherCourseListActivity.courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
             int courseId3 = courseId;
             if (dataResponseBody.getCode()==200) {
                 Api.SelectCourse(courseId3, LoginData.loginUser.getId());

@@ -2,9 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/b_3">
 
     <Button
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/shape_addcourse"
         android:id="@+id/Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/bt_stTime33"
             android:layout_toEndOf="@+id/etStTime33"
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:gravity="center"
             android:inputType="text"
             android:maxLines="1"
@@ -42,6 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_addcourse"
             android:text="选择时间" />
     </RelativeLayout>
 
@@ -67,6 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/bt_fiTime33"
             android:layout_toEndOf="@+id/etFiTime33"
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:gravity="center"
             android:inputType="text"
             android:maxLines="1"
@@ -77,6 +87,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_addcourse"
             android:text="选择时间" />
     </RelativeLayout>
 
@@ -94,6 +106,8 @@
             android:textSize="30sp"
             />
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/Addr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -115,6 +129,8 @@
             android:textSize="30sp"
             />
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/et_CourseID33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -137,6 +153,8 @@
             android:textSize="30sp"
             />
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/et_courseName33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -158,6 +176,8 @@
             android:textSize="30sp"
             />
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/Signpassword33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -179,6 +199,8 @@
             android:textSize="30sp"
             />
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/people"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -200,6 +222,8 @@
             android:textSize="30sp"
             />
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/userId33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -210,12 +234,13 @@
 
     <LinearLayout
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:background="@drawable/shape_addcourse"
             android:id="@+id/StartSign"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

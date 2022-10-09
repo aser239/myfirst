@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.myapplication.R;
-import com.example.myapplication.StudentActivity.StudentCourseActivity;
 import com.example.myapplication.StudentActivity.StudentCourseListActivity;
 import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
 

@@ -185,9 +185,7 @@ public class AlterActivity extends AppCompatActivity {
                 UpdateData(info, newData);
                 Toast.makeText(AlterActivity.this, "修改成功！",
                         Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AlterActivity.this, HomeActivity.class);
-                intent.putExtra("id", 1);
-                startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(AlterActivity.this, "修改失败！",
                         Toast.LENGTH_SHORT).show();

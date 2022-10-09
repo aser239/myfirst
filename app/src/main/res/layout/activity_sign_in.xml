@@ -4,13 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentActivity.StudentSignInActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/b_1">
 
     <Button
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_addcourse"
         android:id="@+id/Back4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="返回"/>
+
+    <Button
+        android:background="@drawable/shape_addcourse"
+        android:id="@+id/bt_enterUserCenter33"
+        android:text="学生查看签到课程"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,12 +44,17 @@
             android:textSize="35sp"/>
 
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/signId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_gravity="center_horizontal"
             android:inputType="text"/>
     </LinearLayout>
+
 
 
     <LinearLayout
@@ -50,24 +72,21 @@
             android:textSize="35sp"/>
 
         <EditText
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/tv_sign_in_psw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_gravity="center_horizontal"
             android:inputType="text"/>
     </LinearLayout>
 
-    <Button
-        android:background="@drawable/shap_sign"
-        android:id="@+id/bt_enterUserCenter33"
-        android:text="学生查看签到课程"
-        android:textSize="30sp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 
     <Button
+        android:alpha="0.6"
         android:id="@+id/bt_sign_in"
         android:background="@drawable/shap_circle"
         android:layout_gravity="center_horizontal"
@@ -76,6 +95,6 @@
         android:layout_marginTop="50dp"
         android:text="签到"
         android:textSize="50sp"
-        android:textColor="#ff66aa"/>
+        android:textColor="@color/black"/>
 
 </LinearLayout>

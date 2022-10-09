@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeacherActivity.TeacherCourseListActivity">
+    tools:context=".TeacherActivity.TeacherCourseListActivity"
+    android:background="@mipmap/b_1">
 
     <ListView
         android:id="@+id/lv_news_list222"
@@ -15,6 +16,5 @@
         android:scrollbars="none"
         android:divider="@color/purple_200"
         android:dividerHeight="2dp" />
-
 
 </LinearLayout>

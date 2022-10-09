@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     tools:context=".Activity.MessageActivity"
     android:orientation="vertical"
-    android:background="#ffffff"
+    android:background="@mipmap/b_3"
     >
 
     <LinearLayout
@@ -15,6 +15,9 @@
         android:orientation="vertical">
 
         <Button
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_addcourse"
             android:id="@+id/addCourseReturnToCourse11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,8 +37,10 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_collegeName22"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -54,8 +59,10 @@
                 android:textSize="20sp"
                 />
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_courseName22"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -77,8 +84,10 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_fiTime22"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
@@ -99,8 +108,10 @@
                 android:textSize="20sp"
                 />
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_introduce22"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -119,8 +130,10 @@
                 android:textSize="20sp"
                 />
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_realName2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -140,8 +153,10 @@
                 />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_stTime2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
@@ -162,8 +177,10 @@
                 />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_userName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
@@ -183,8 +200,10 @@
                 />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_CreateTime"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
@@ -204,8 +223,10 @@
                 />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_id"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
@@ -225,8 +246,10 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_photo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
@@ -247,18 +270,24 @@
                 />
 
             <TextView
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:id="@+id/tx_choose"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <Button
+            android:background="@drawable/shape_addcourse"
             android:id="@+id/Delete"
-            android:layout_width="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
             android:text="删除课程"/>
 

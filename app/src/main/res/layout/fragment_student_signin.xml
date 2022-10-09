@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.StudentSignFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/b_1">
 
     <Button
-        android:background="@drawable/shap_sign"
+        android:alpha="0.7"
+        android:background="@drawable/shap_button"
         android:id="@+id/bt_enterSignIn33"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-
+        android:layout_height="100dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="400dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
         android:text="签到"
-        android:textSize="30sp" />
+        android:textSize="32sp" />
 
 </LinearLayout>

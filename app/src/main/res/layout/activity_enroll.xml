@@ -161,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:text="已有账号？点击此登录"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/DodgerBlue"
                 tools:ignore="HardcodedText,RelativeOverlap" />
         </RadioGroup>
     </RelativeLayout>
@@ -176,8 +176,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/btn_right"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/shap_button"
             android:text="@string/enroll_account"
             android:textColor="#212121"
             android:textSize="16sp"

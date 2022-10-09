@@ -6,36 +6,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StudentActivity.StudentListActivity">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+    tools:context=".StudentActivity.StudentListActivity"
+    android:background="@mipmap/b_5">
 
-        <TextView
-            android:id="@+id/CourseID22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="课程主键ID："
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/et_CourseID22"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/CourseID22"
-            android:inputType="text"
-            android:maxLines="1"
-            android:selectAllOnFocus="true" />
-
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/btdian"
+    <TextView
+        android:id="@+id/CourseID22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点"
+        android:layout_gravity="center"
+        android:layout_marginTop="65dp"
+        android:text="课程主键ID"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/et_CourseID22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
+        android:layout_toEndOf="@+id/CourseID22"
+        android:alpha="0.6"
+        android:background="@drawable/shape_text"
+        android:inputType="text"
+        android:maxLines="1"
+        android:selectAllOnFocus="true" />
+
+
+
+    <Button
+        android:alpha="0.7"
+        android:background="@drawable/shape_addcourse"
+        android:id="@+id/btdian"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="32sp"
+        android:text="确定"
         />
 
 

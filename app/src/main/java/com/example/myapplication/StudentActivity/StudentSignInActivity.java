@@ -11,10 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.Activity.HomeActivity;
-import com.example.myapplication.Activity.MainActivity;
-import com.example.myapplication.Adapter.CollectionAdapter;
-import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;

@@ -3,22 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@mipmap/b_4">
 
     <LinearLayout
         android:id="@+id/layout_titleBar_alter"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
+            android:alpha="0.6"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_text"
             android:id="@+id/tv_title_alter"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ellipsize="marquee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:gravity="center_horizontal|center"
             android:text="title"
             android:textColor="@android:color/black"
@@ -27,23 +32,20 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/WhiteSmoke" />
-
     <LinearLayout
         android:id="@+id/layout_titleBar_alter_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:id="@+id/tv_title_alter_text"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:ellipsize="marquee"
             android:gravity="center_horizontal|center"
             android:text="title"
@@ -52,12 +54,13 @@
             tools:ignore="HardcodedText" />
 
         <EditText
+            android:alpha="0.6"
             android:id="@+id/et_title_alter_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:background="@null"
+            android:background="@drawable/shape_text"
             android:gravity="center_vertical|center"
             android:hint="text"
             android:paddingEnd="8dp"

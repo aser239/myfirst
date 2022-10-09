@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeacherActivity.FinishedCourseActivity">
+    tools:context=".TeacherActivity.FinishedCourseActivity"
+    android:background="@mipmap/b_1">
 
     <ListView
         android:id="@+id/lv_news_list55"

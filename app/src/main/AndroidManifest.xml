@@ -45,9 +45,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.HomeActivity"/>
-        <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".TeacherActivity.TeacherCourseActivity" />
-        <activity android:name=".StudentActivity.StudentCourseActivity" />
         <activity android:name=".TeacherActivity.AddCourseActivity" />
         <activity android:name=".Activity.MessageActivity" />
         <activity android:name=".StudentActivity.StudentSignInActivity" />

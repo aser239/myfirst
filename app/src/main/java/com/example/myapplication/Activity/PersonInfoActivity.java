@@ -30,7 +30,7 @@ public class PersonInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personinfo);
+//        setContentView(R.layout.activity_personinfo);
 
         Init();
         InitData();

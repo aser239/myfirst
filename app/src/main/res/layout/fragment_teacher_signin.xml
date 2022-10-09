@@ -8,18 +8,6 @@
 
     <Button
         android:background="@drawable/shap_sign"
-        android:id="@+id/bt_enterSignIn22"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="发起签到"
-        android:textSize="30sp" />
-    <Button
-        android:background="@drawable/shap_sign"
         android:id="@+id/bt_enterUserCenter22"
         android:text="老师查看签到"
         android:textSize="30sp"
@@ -27,8 +15,6 @@
         android:layout_marginLeft="30dp"
         android:layout_width="match_parent"
         android:layout_height="150dp" />
-
-
 
 
 </LinearLayout>

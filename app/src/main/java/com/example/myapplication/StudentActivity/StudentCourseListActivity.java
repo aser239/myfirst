@@ -125,6 +125,7 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
                         adapter2.notifyDataSetChanged();
                     }else {
                         Toast.makeText(StudentCourseListActivity.this,"还没有选课！", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
 
                 }

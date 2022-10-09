@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.UploadActivity;
 import com.example.myapplication.Data.PictureData;
@@ -82,17 +83,30 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // etCoursePhoto.setText("https://guet-lab.oss-cn-hangzhou.aliyuncs.com/api/2022/09/22/777f78b9-4b7d-401f-986a-7bc61f903201.jpg");
-                long endTime = Long.parseLong(etEndTime.getText().toString());
-                long startTime = Long.parseLong(etStartTime.getText().toString());
 
-                String CoursePhoto = etCoursePhoto.getText().toString();
-                String CollegeName = etCollegeName.getText().toString();
-                String CourseName = etCourseName.getText().toString();
-                String Introduce = etIntroduce.getText().toString();
-                String RealName = etRealName.getText().toString();
+                if (etEndTime.getText().toString().equals("")||
+                        etStartTime.getText().toString().equals("") ||
+                        etCoursePhoto.getText().toString().equals("")||
+                        etCollegeName.getText().toString().equals("")||
+                        etCourseName.getText().toString().equals("")||
+                        etIntroduce.getText().toString().equals("")||
+                        etRealName.getText().toString().equals("")
+                ){
+                    Toast.makeText(AddCourseActivity.this,"输入不能为空！", Toast.LENGTH_SHORT).show();
 
-                Api.AddCourse(CollegeName, CourseName, CoursePhoto, Introduce, endTime, RealName, startTime);
+                }else {
+                    long endTime = Long.parseLong(etEndTime.getText().toString());
+                    long startTime = Long.parseLong(etStartTime.getText().toString());
+
+                    String CoursePhoto = etCoursePhoto.getText().toString();
+                    String CollegeName = etCollegeName.getText().toString();
+                    String CourseName = etCourseName.getText().toString();
+                    String Introduce = etIntroduce.getText().toString();
+                    String RealName = etRealName.getText().toString();
+
+                    Api.AddCourse(CollegeName, CourseName, CoursePhoto, Introduce, endTime, RealName, startTime);
+                }
+
             }
         });
 

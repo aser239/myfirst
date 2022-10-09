@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Adapter.CollectionAdapter;
@@ -51,7 +52,6 @@ public class StudentSignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        tv_sign_in_id = findViewById(R.id.tv_sign_in_id);
         SignId = findViewById(R.id.signId);
         tv_sign_in_psw = findViewById(R.id.tv_sign_in_psw);
         bt_sign_in = findViewById(R.id.bt_sign_in);
@@ -60,14 +60,19 @@ public class StudentSignInActivity extends AppCompatActivity {
         bt_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int signcode = Integer.parseInt(tv_sign_in_psw.getText().toString());
-                int signid = Integer.parseInt(SignId.getText().toString());
-                s_SignIn(signcode, LoginData.loginUser.getId(), signid);
+                if (tv_sign_in_psw.getText().toString().equals("")||SignId.getText().toString().equals("")){
+                    Toast.makeText(StudentSignInActivity.this,"签到码或者签到表主键id不能为空！", Toast.LENGTH_SHORT).show();
+                }else {
+                    int signcode = Integer.parseInt(tv_sign_in_psw.getText().toString());
+                    int signid = Integer.parseInt(SignId.getText().toString());
+                    s_SignIn(signcode, LoginData.loginUser.getId(), signid);
+                }
+
             }
         });
 
-        btboo = findViewById(R.id.bt_enterUserCenter22222);
-        btboo.setOnClickListener(new View.OnClickListener() {
+        Button teaSign = findViewById(R.id.bt_enterUserCenter33);
+        teaSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StudentSignInActivity.this, StudentListActivity.class));

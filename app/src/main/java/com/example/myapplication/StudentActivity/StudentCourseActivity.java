@@ -27,7 +27,6 @@ public class StudentCourseActivity extends AppCompatActivity {
         btSelectCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(StudentCourseActivity.this, TeacherCourseListActivity.class));
             }
         });

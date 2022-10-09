@@ -97,6 +97,7 @@
             android:id="@+id/Addr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             />
     </LinearLayout>
 
@@ -114,9 +115,10 @@
             android:textSize="30sp"
             />
         <EditText
-            android:id="@+id/et_CourseID"
+            android:id="@+id/et_CourseID33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             />
     </LinearLayout>
 
@@ -135,9 +137,10 @@
             android:textSize="30sp"
             />
         <EditText
-            android:id="@+id/et_courseName2"
+            android:id="@+id/et_courseName33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             />
     </LinearLayout>
 
@@ -155,9 +158,10 @@
             android:textSize="30sp"
             />
         <EditText
-            android:id="@+id/Signpassword"
+            android:id="@+id/Signpassword33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             />
     </LinearLayout>
 
@@ -178,6 +182,7 @@
             android:id="@+id/people"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             />
     </LinearLayout>
 
@@ -195,9 +200,10 @@
             android:textSize="30sp"
             />
         <EditText
-            android:id="@+id/userId"
+            android:id="@+id/userId33"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="text"
             />
     </LinearLayout>
 

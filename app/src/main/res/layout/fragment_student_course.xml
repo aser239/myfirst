@@ -8,13 +8,6 @@
 
     <Button
         android:background="@drawable/shap_course"
-        android:id="@+id/returnMainActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="返回"/>
-
-    <Button
-        android:background="@drawable/shap_course"
         android:id="@+id/enterSelectCourse222"
         android:text="学生选课"
         android:textSize="30sp"

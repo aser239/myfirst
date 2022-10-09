@@ -13,9 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
+import com.example.myapplication.Data.SignInformationData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
 
@@ -23,6 +25,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 //老师端发起签到
 @RequiresApi(api = Build.VERSION_CODES.N)
@@ -59,29 +62,62 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
 
         CourseAddr = findViewById(R.id.Addr);
         total = findViewById(R.id.people);
-        courseId = findViewById(R.id.et_CourseID);
-        courseName = findViewById(R.id.et_courseName);
-        userId = findViewById(R.id.userId);
-        signCode = findViewById(R.id.Signpassword);
+        courseId = findViewById(R.id.et_CourseID33);
+        courseName = findViewById(R.id.et_courseName33);
+        userId = findViewById(R.id.userId33);
+        signCode = findViewById(R.id.Signpassword33);
 
         btStTime.setOnClickListener(this);
         btFiTime.setOnClickListener(this);
-        System.out.println("661");
 
 
         StartSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 long endTime2 = Long.parseLong(etFiTime.getText().toString());
-                 long startTime2 = Long.parseLong(etStTime.getText().toString());
-                 String addr = CourseAddr.getText().toString();
-                 int CourseID = CourseData.Detail.getId();
-                 String CourseName = CourseData.Detail.getCourseName();
-                 int Code = Integer.parseInt(signCode.getText().toString());
-                 int userID2 = Integer.parseInt(userId.getText().toString());
+                if (etFiTime.getText().toString().equals("")||
+                        etStTime.getText().toString().equals("")||
+                        CourseAddr.getText().toString().equals("")||
+                        signCode.getText().toString().equals("")||
+                        userId.getText().toString().equals("")||
+                        courseId.getText().toString().equals("")||
+                        courseName.getText().toString().equals("")||
+                        total.getText().toString().equals("")
 
-                Api.Sign(startTime2,addr,CourseID,CourseName, endTime2,Code,1,userID2);
-                finish();
+                ){
+                    Toast.makeText(TeacherSignInActivity.this,"输入不能为空！", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    long endTime2 = Long.parseLong(etFiTime.getText().toString());
+                    long startTime2 = Long.parseLong(etStTime.getText().toString());
+                    String addr = CourseAddr.getText().toString();
+                    int Code = Integer.parseInt(signCode.getText().toString());
+                    String userID = userId.getText().toString();
+                    String CourseID = courseId.getText().toString();
+                    String CourseName = courseName.getText().toString();
+                    String Total = total.getText().toString();
+
+                    if (!Objects.equals(SignInformationData.Information.getCourseId(), Integer.parseInt(CourseID))){
+                        Toast.makeText(TeacherSignInActivity.this,"输入与所选课程ID不匹配！", Toast.LENGTH_SHORT).show();
+
+                    }else if (!Objects.equals(SignInformationData.Information.getCourseName(), CourseName)){
+                        Toast.makeText(TeacherSignInActivity.this,"输入与所选课程名不匹配！", Toast.LENGTH_SHORT).show();
+
+                    } else if (!Objects.equals(SignInformationData.Information.getCourseNum(), Total)||Total.equals("0")){
+                        Toast.makeText(TeacherSignInActivity.this,"输入与选课人数不匹配或者未选课！", Toast.LENGTH_SHORT).show();
+
+                    }else if(!Objects.equals(LoginData.loginUser.getId(), Integer.parseInt(userID))){
+                        Toast.makeText(TeacherSignInActivity.this,"输入与用户ID不匹配！", Toast.LENGTH_SHORT).show();
+
+
+                    }else {
+                        int Total2 = Integer.parseInt(Total);
+                        int CourseID2 = Integer.parseInt(CourseID);
+                        int userID2 = Integer.parseInt(userID);
+                        Api.Sign(startTime2, addr, CourseID2, CourseName, endTime2, Code, Total2, userID2);
+                        finish();
+
+                    }
+                }
             }
         });
     }

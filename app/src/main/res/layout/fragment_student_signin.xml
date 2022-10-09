@@ -18,14 +18,5 @@
         android:layout_marginBottom="30dp"
         android:text="签到"
         android:textSize="30sp" />
-    <Button
-        android:background="@drawable/shap_sign"
-        android:id="@+id/bt_enterUserCenter33"
-        android:text="学生查看签到课程"
-        android:textSize="30sp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
 
 </LinearLayout>

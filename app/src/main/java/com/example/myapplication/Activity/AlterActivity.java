@@ -48,7 +48,7 @@ public class AlterActivity extends AppCompatActivity {
             tv_title_alter_text.setText(info);
             if (info.equals("性别")) {
                 et_title_alter_text.setHint(info + "格式：男 或 女");
-            } else if (info.equals("入学时间")) {
+            } else if (info.equals("入校时间")) {
                 et_title_alter_text.setHint("时间格式：yyyyMMDD");
             } else {
                 et_title_alter_text.setHint("请输入" + info);
@@ -68,7 +68,7 @@ public class AlterActivity extends AppCompatActivity {
                     }/* else if (info.equals("姓名") && !IsRealName(newData)) {
                         Toast.makeText(AlterActivity.this, "姓名信息错误！",
                                 Toast.LENGTH_SHORT).show();
-                    }*/ else if (info.equals("入学时间") && !IsDate(newData)) {
+                    }*/ else if (info.equals("入校时间") && !IsDate(newData)) {
                         Toast.makeText(AlterActivity.this, "日期格式错误！",
                                 Toast.LENGTH_SHORT).show();
                     } else if (info.equals("性别") && !IsGender(newData)) {
@@ -131,7 +131,7 @@ public class AlterActivity extends AppCompatActivity {
             case "手机号":
                 phone = data;
                 break;
-            case "学号":
+            case "工号":
                 idNumber = Integer.parseInt(data);
                 break;
             case "邮箱":
@@ -166,13 +166,13 @@ public class AlterActivity extends AppCompatActivity {
             case "手机号":
                 LoginData.loginUser.setPhone(data);
                 break;
-            case "学号":
+            case "工号":
                 LoginData.loginUser.setIdNumber(Integer.parseInt(data));
                 break;
             case "邮箱":
                 LoginData.loginUser.setEmail(data);
                 break;
-            case "入学时间":
+            case "入校时间":
                 LoginData.loginUser.setInSchoolTime(Integer.parseInt(data));
                 break;
         }

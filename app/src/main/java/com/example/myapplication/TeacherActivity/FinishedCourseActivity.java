@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.Adapter.FinishedCourseAdapter;
 import com.example.myapplication.Adapter.UnfinishCourseAdapter;
@@ -14,6 +15,7 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
+import com.example.myapplication.StudentActivity.StudentSignInActivity;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.javaBean.Records;
 import com.google.gson.Gson;
@@ -110,11 +112,15 @@ public class FinishedCourseActivity extends AppCompatActivity {
                     Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
                     // 解析json串到自己封装的状态
                     dataResponseBody = gson.fromJson(body, jsonType);
-
-                    for (Course news:dataResponseBody.getData().getRecords()) {
-                        adapter4.add(news);
+                    if (dataResponseBody.getData()!=null){
+                        for (Course news:dataResponseBody.getData().getRecords()) {
+                            adapter4.add(news);
+                        }
+                        adapter4.notifyDataSetChanged();
+                    }else {
+                        Toast.makeText(FinishedCourseActivity.this,"未有已结课课程！", Toast.LENGTH_SHORT).show();
                     }
-                    adapter4.notifyDataSetChanged();
+
                 }
             });
         }

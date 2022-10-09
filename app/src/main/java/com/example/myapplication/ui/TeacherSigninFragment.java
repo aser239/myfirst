@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.MainActivity;
+import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
 import com.example.myapplication.StudentActivity.StudentSignInActivity;
@@ -71,20 +73,16 @@ public class TeacherSigninFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_teacher_signin, container, false);
 
-        Button Sign = view.findViewById(R.id.bt_enterSignIn22);
-        Sign.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                    startActivity(new Intent(getActivity(), TeacherSignInActivity.class));
-            }
-        });
-
         Button teaSign = view.findViewById(R.id.bt_enterUserCenter22);
         teaSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SignInformationActivity.class));
+                if (CourseData.Detail != null) {
+                    startActivity(new Intent(getActivity(), SignInformationActivity.class));
+                }else {
+                    Toast.makeText(getActivity(),"需先查看课程详情！", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         // Inflate the layout for this fragment

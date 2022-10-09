@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
@@ -51,8 +52,13 @@ public class StudentListActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                int courseId4 = Integer.parseInt(courseId.getText().toString());
-                Student(courseId4,1,1,0, LoginData.loginUser.getId());
+                if (courseId.getText().toString().equals("")) {
+                    Toast.makeText(StudentListActivity.this,"请输入课程ID！", Toast.LENGTH_SHORT).show();
+                }else {
+                    int courseId4 = Integer.parseInt(courseId.getText().toString());
+                    Student(courseId4,1,1,0, LoginData.loginUser.getId());
+                }
+
             }
         });
 

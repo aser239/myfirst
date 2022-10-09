@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.MessageActivity;
 import com.example.myapplication.Adapter.CollectionAdapter;
@@ -117,10 +118,12 @@ public class UnfinishedCourseActivity extends AppCompatActivity implements Adapt
                     // 解析json串到自己封装的状态
                     dataResponseBody = gson.fromJson(body, jsonType);
 
-                    for (Course news:dataResponseBody.getData().getRecords()) {
+                    for (Course news : dataResponseBody.getData().getRecords()) {
                         adapter3.add(news);
                     }
                     adapter3.notifyDataSetChanged();
+
+
                 }
             });
         }

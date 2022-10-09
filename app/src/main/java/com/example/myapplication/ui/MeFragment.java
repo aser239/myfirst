@@ -85,7 +85,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-       final View view = inflater.inflate(R.layout.fragment_me, container, false);
+        final View view = inflater.inflate(R.layout.fragment_me, container, false);
 
         Button login_exit = view.findViewById(R.id.login_exit);
         ImageView iv_avatar = view.findViewById(R.id.iv_avatar_arrowRight);
@@ -112,8 +112,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(getActivity(),AlterActivity.class);
-        switch (view.getId()){
+        Intent intent = new Intent(getActivity(), AlterActivity.class);
+        switch (view.getId()) {
             case R.id.iv_avatar_arrowRight:
                 MeFragment.isClickAvatar=true;
                 startActivity(new Intent(getActivity(), UploadActivity.class));
@@ -123,7 +123,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.iv_arrow_right_idNumber:
-                intent.putExtra(MESSAGE_STRING, "学号");
+                intent.putExtra(MESSAGE_STRING, "工号");
                 startActivity(intent);
                 break;
             case R.id.iv_arrow_right_gender:
@@ -139,7 +139,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.iv_arrow_right_inSchoolTime:
-                intent.putExtra(MESSAGE_STRING, "入学时间");
+                intent.putExtra(MESSAGE_STRING, "入校时间");
                 startActivity(intent);
                 break;
             case R.id.iv_arrow_right_email:
@@ -147,7 +147,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.login_exit:
-                Intent intent1 =new Intent(getActivity(), LoginActivity.class);
+                Intent intent1 = new Intent(getActivity(), LoginActivity.class);
                 intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
@@ -183,12 +183,12 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         tv_collegeName.setText(LoginData.loginUser.getCollegeName());
         tv_phone.setText(LoginData.loginUser.getPhone());
         String tempStringDate = String.valueOf(LoginData.loginUser.getInSchoolTime());
-        if (tempStringDate.equals("0")) {
-            tv_inSchoolTime.setText("");
-        } else {
+        if (tempStringDate.length() == 8) {
             String realStringDate = tempStringDate.substring(0, 4) + "-" + tempStringDate.substring(4, 6)
                     + "-" + tempStringDate.substring(6, 8);
             tv_inSchoolTime.setText(realStringDate);
+        } else {
+            tv_inSchoolTime.setText("");
         }
         tv_email.setText(LoginData.loginUser.getEmail());
         super.onResume();

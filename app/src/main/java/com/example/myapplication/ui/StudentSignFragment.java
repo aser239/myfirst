@@ -79,13 +79,6 @@ public class StudentSignFragment extends Fragment {
             }
         });
 
-        Button teaSign = view.findViewById(R.id.bt_enterUserCenter33);
-        teaSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), StudentListActivity.class));
-            }
-        });
         // Inflate the layout for this fragment
         return view;
     }

@@ -1,14 +1,21 @@
 package com.example.myapplication.TeacherActivity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
+import com.example.myapplication.Data.SignInformationData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
@@ -35,7 +42,17 @@ public class SignInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_information);
 
+        Button Sign = findViewById(R.id.bt_enterSignIn22);
+        Sign.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignInformationActivity.this, TeacherSignInActivity.class));
+            }
+        });
+
         page(CourseData.Detail.getId(), LoginData.loginUser.getId());
+
     }
 
     public static void page(int courseId, int userId) {
@@ -77,6 +94,7 @@ public class SignInformationActivity extends AppCompatActivity {
                         // 解析json串到自己封装的状态
                         Gson gson = new Gson();
                         ResponseBody<SignInformation> dataResponseBody = gson.fromJson(body, jsonType);
+                        SignInformationData.Information = dataResponseBody.getData();
                         Log.d("info", dataResponseBody.toString());
                     }
                 });

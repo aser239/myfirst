@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.Activity.MessageActivity;
 import com.example.myapplication.Activity.MessageActivity2;
@@ -19,6 +20,7 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
+import com.example.myapplication.StudentActivity.StudentCourseListActivity;
 import com.example.myapplication.ViewHolder.CollectionViewModel;
 import com.example.myapplication.javaBean.Course;
 import com.example.myapplication.javaBean.Records;
@@ -118,10 +120,16 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
                     Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
                     // 解析json串到自己封装的状态
                     dataResponseBody = gson.fromJson(body, jsonType);
-                    for (Course news:dataResponseBody.getData().getRecords()) {
-                        adapter.add(news);
+
+                    if (dataResponseBody.getData()!=null) {
+                        for (Course news : dataResponseBody.getData().getRecords()) {
+                            adapter.add(news);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }else {
+                        Toast.makeText(TeacherCourseListActivity.this,"还没有添加课程！", Toast.LENGTH_SHORT).show();
                     }
-                    adapter.notifyDataSetChanged();
+
                 }
             });
         }
@@ -132,8 +140,11 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
         if (LoginData.loginUser.getRoleId()==0){
             courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
             int courseId3 = courseId;
-            System.out.println(courseId3);
-            Api.SelectCourse(courseId3,LoginData.loginUser.getId());
+            if (dataResponseBody.getCode()==200) {
+                Api.SelectCourse(courseId3, LoginData.loginUser.getId());
+                Toast.makeText(TeacherCourseListActivity.this,"选课成功！", Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }else if (LoginData.loginUser.getRoleId()==1) {
             courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
             Intent intent = new Intent(TeacherCourseListActivity.this, MessageActivity2.class);

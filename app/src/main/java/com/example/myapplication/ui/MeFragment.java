@@ -115,7 +115,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         Intent intent = new Intent(getActivity(), AlterActivity.class);
         switch (view.getId()) {
             case R.id.iv_avatar_arrowRight:
-                MeFragment.isClickAvatar=true;
+                UploadActivity.isClickAvatar=true;
                 startActivity(new Intent(getActivity(), UploadActivity.class));
                 break;
             case R.id.iv_arrow_right_realName:

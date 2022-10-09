@@ -1,5 +1,6 @@
 package com.example.myapplication.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -20,6 +21,8 @@ import com.example.myapplication.Activity.WelcomeActivity;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -110,12 +113,16 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(getActivity(), AlterActivity.class);
+        new Thread(()->{
+
+        });
         switch (view.getId()) {
             case R.id.iv_avatar_arrowRight:
-                UploadActivity.isClickAvatar=true;
+                UploadActivity.isClickAvatar = true;
                 startActivity(new Intent(getActivity(), UploadActivity.class));
                 break;
             case R.id.iv_arrow_right_realName:
@@ -148,9 +155,15 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.login_exit:
                 Intent intent1 = new Intent(getActivity(), LoginActivity.class);
-                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
+                //MeFragment.this.requireActivity().finish();
+                requireActivity().finish();
+                //finishActivity();
+            default:
+                break;
         }
     }
 
@@ -193,5 +206,4 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         tv_email.setText(LoginData.loginUser.getEmail());
         super.onResume();
     }
-
 }

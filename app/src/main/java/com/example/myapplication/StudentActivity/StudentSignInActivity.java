@@ -65,8 +65,8 @@ public class StudentSignInActivity extends AppCompatActivity {
                     Toast.makeText(StudentSignInActivity.this,"签到码或者签到表主键id不能为空！", Toast.LENGTH_SHORT).show();
                 }else {
                     int signcode = Integer.parseInt(tv_sign_in_psw.getText().toString());
-                    int signid = Integer.parseInt(SignId.getText().toString());
-                    s_SignIn(signcode, LoginData.loginUser.getId(), signid);
+                    //int signid = Integer.parseInt(SignId.getText().toString());
+                    s_SignIn(signcode, LoginData.loginUser.getId(), StudentListActivity.mUserSignId);
                 }
 
             }

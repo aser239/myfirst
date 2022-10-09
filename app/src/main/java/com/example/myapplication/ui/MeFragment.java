@@ -30,8 +30,6 @@ import java.util.Objects;
  * create an instance of this fragment.
  */
 public class MeFragment extends Fragment implements View.OnClickListener {
-
-
     private TextView tv_id;
     private TextView tv_username;
     private TextView tv_realName;
@@ -42,7 +40,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView tv_inSchoolTime;
     private TextView tv_email;
     private ImageView iv_avatar;
-    public static final String MESSAGE_STRING = "com.example.myapplication.Activity.PERSON_INFO";
+    public static final String MESSAGE_STRING = "com.example.myapplication.ui.PERSON_INFO";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -169,10 +167,10 @@ public class MeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onResume() {
-        tv_id = getView().findViewById(R.id.tv_id_info);
-        tv_username = getView().findViewById(R.id.tv_username_info);
-        tv_realName = getView().findViewById(R.id.tv_realName_info);
-        tv_idNumber = getView().findViewById(R.id.tv_idNumber_info);
+        tv_id = requireView().findViewById(R.id.tv_id_info);
+        tv_username = requireView().findViewById(R.id.tv_username_info);
+        tv_realName = requireView().findViewById(R.id.tv_realName_info);
+        tv_idNumber = requireView().findViewById(R.id.tv_idNumber_info);
         tv_gender = getView().findViewById(R.id.tv_gender_info);
         tv_collegeName = getView().findViewById(R.id.tv_collegeName_info);
         tv_phone = getView().findViewById(R.id.tv_phone_info);

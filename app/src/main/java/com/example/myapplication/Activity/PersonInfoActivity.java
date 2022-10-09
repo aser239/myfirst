@@ -133,7 +133,7 @@ public class PersonInfoActivity extends AppCompatActivity {
         TextView tv_username_title = findViewById(R.id.tv_username);
         tv_username_title.setText("用户名");
         TextView tv_realName_title = findViewById(R.id.tv_realName);
-        tv_realName_title.setText("性名");
+        tv_realName_title.setText("姓名");
         TextView tv_idNumber_title = findViewById(R.id.tv_idNumber);
         tv_idNumber_title.setText("学号");
         TextView tv_gender_title = findViewById(R.id.tv_gender);
@@ -163,7 +163,7 @@ public class PersonInfoActivity extends AppCompatActivity {
         tv_collegeName.setText(LoginData.loginUser.getCollegeName());
         tv_phone.setText(LoginData.loginUser.getPhone());
         String tempStringDate = String.valueOf(LoginData.loginUser.getInSchoolTime());
-        if (tempStringDate.equals("0")) {
+        if (LoginData.loginUser.getInSchoolTime() == 0) {
             tv_inSchoolTime.setText("");
         } else {
             String realStringDate = tempStringDate.substring(0, 4) + "-" + tempStringDate.substring(4, 6)

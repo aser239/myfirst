@@ -24,6 +24,7 @@ import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
 import com.example.myapplication.TeacherActivity.AddCourseActivity;
 import com.example.myapplication.javaBean.Picture;
+import com.example.myapplication.ui.MeFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -48,6 +49,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+
 
         iv_upload = findViewById(R.id.bt_upload);
         iv_upload.setOnClickListener(this);
@@ -75,8 +77,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                                 try {
                                     Thread.sleep(750);
                                     //System.out.println(PictureData.tempAvatar.getURL());
-                                    if (PersonInfoActivity.isClickAvatar) {
-                                        PersonInfoActivity.isClickAvatar = false;
+                                    if (MeFragment.isClickAvatar) {
+                                        MeFragment.isClickAvatar = false;
                                         if (PictureData.tempAvatar.getURL() != null) {
                                             //System.out.println("123");
                                             AlterActivity.LoadData("头像", PictureData.tempAvatar.getURL());
@@ -120,6 +122,10 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
+                                Intent intent1 = new Intent(UploadActivity.this, HomeActivity.class);
+                                intent1.putExtra("id",1);
+                                startActivity(intent1);
+
                             });
                         }
                     }

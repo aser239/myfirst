@@ -2,21 +2,45 @@ package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.NetworkOnMainThreadException;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Data.LoginData;
-import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Interface.Api;
+import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.ui.MeFragment;
+import com.example.myapplication.javaBean.Data;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class AlterActivity extends AppCompatActivity {
+    private String info;
+    private String newData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,22 +50,11 @@ public class AlterActivity extends AppCompatActivity {
     }
 
     private void Init() {
-        ImageView Alter_backward = findViewById(R.id.iv_backward_alter);
-        Alter_backward.setOnClickListener(v -> {
-            Intent intent = new Intent(AlterActivity.this, HomeActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            intent.putExtra("id",1);
-            //intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            startActivity(intent);
-            finish();
-        });
-
         TextView tv_title_alter = findViewById(R.id.tv_title_alter);
         TextView tv_title_alter_text = findViewById(R.id.tv_title_alter_text);
         EditText et_title_alter_text = findViewById(R.id.et_title_alter_text);
         Intent intent = getIntent();
-        String info = intent.getStringExtra(PersonInfoActivity.MESSAGE_STRING);
+        info = intent.getStringExtra(PersonInfoActivity.MESSAGE_STRING);
         Button login_preservation = findViewById(R.id.login_preservation);
         if (info != null) {
             tv_title_alter.setText(info);
@@ -54,7 +67,7 @@ public class AlterActivity extends AppCompatActivity {
                 et_title_alter_text.setHint("请输入" + info);
             }
             login_preservation.setOnClickListener(v -> {
-                String newData = et_title_alter_text.getText().toString();
+                newData = et_title_alter_text.getText().toString();
                 if (newData.equals("")) {
                     Toast.makeText(AlterActivity.this, "输入不能为空！",
                             Toast.LENGTH_SHORT).show();
@@ -65,10 +78,10 @@ public class AlterActivity extends AppCompatActivity {
                     } else if (info.equals("手机号") && !IsPhoneNumber(newData)) {
                         Toast.makeText(AlterActivity.this, "手机号格式错误！",
                                 Toast.LENGTH_SHORT).show();
-                    }/* else if (info.equals("姓名") && !IsRealName(newData)) {
+                    } else if (info.equals("姓名") && !IsRealName(newData)) {
                         Toast.makeText(AlterActivity.this, "姓名信息错误！",
                                 Toast.LENGTH_SHORT).show();
-                    }*/ else if (info.equals("入学时间") && !IsDate(newData)) {
+                    } else if (info.equals("入学时间") && !IsDate(newData)) {
                         Toast.makeText(AlterActivity.this, "日期格式错误！",
                                 Toast.LENGTH_SHORT).show();
                     } else if (info.equals("性别") && !IsGender(newData)) {
@@ -76,31 +89,14 @@ public class AlterActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         LoadData(info, newData);
-                        try {
-                            Thread.sleep(750);
-                            if (MsgData.alterMsgData.getCode() == 200) {
-                                System.out.println("hello");
-                                UpdateData(info, newData);
-                                System.out.println("hello");
-                                Toast.makeText(AlterActivity.this, "修改成功！",
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(AlterActivity.this, "修改失败！",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+
                     }
                 }
-                Intent intent1 = new Intent(AlterActivity.this, HomeActivity.class);
-                intent1.putExtra("id",1);
-                startActivity(intent1);
             });
         }
     }
 
-    public static void LoadData(String type, String data) {
+    public void LoadData(String type, String data) {
         String collegeName = LoginData.loginUser.getCollegeName();
         String realName = LoginData.loginUser.getRealName();
         boolean gender = LoginData.loginUser.getGender();
@@ -141,11 +137,11 @@ public class AlterActivity extends AppCompatActivity {
                 inSchoolTime = Integer.parseInt(data);
                 break;
         }
-        Api.AlterUserInfo(collegeName, realName, gender, phone,
+        AlterUserInfo(collegeName, realName, gender, phone,
                 avatar, id, idNumber, userName, email, inSchoolTime);
     }
 
-    public static void UpdateData(String type, String data) {
+    public void UpdateData(String type, String data) {
         switch (type) {
             case "头像":
                 LoginData.loginUser.setAvatar(data);
@@ -176,6 +172,97 @@ public class AlterActivity extends AppCompatActivity {
                 LoginData.loginUser.setInSchoolTime(Integer.parseInt(data));
                 break;
         }
+    }
+
+    private final Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle bundle = msg.getData();
+            int alterCode = bundle.getInt("code");
+            if (alterCode == 200) {
+                System.out.println("hello");
+                UpdateData(info, newData);
+                Toast.makeText(AlterActivity.this, "修改成功！",
+                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AlterActivity.this, HomeActivity.class);
+                intent.putExtra("id", 1);
+                startActivity(intent);
+            } else {
+                Toast.makeText(AlterActivity.this, "修改失败！",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    private void AlterUserInfo(String collegeName, String realName,
+                               boolean gender, String phone, String avatar,
+                               int id, int idNumber, String userName,
+                               String email, int inSchoolTime) {
+        new Thread(() -> {
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/user/update";
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("Accept", "application/json, text/plain, */*")
+                    .add("appId", Api.appId)
+                    .add("appSecret", Api.appSecret)
+                    .add("Content-Type", "application/json")
+                    .build();
+            // 请求体
+            // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
+            Map<String, Object> bodyMap = new HashMap<>();
+            bodyMap.put("collegeName", collegeName);
+            bodyMap.put("realName", realName);
+            bodyMap.put("gender", gender);
+            bodyMap.put("phone", phone);
+            bodyMap.put("avatar", avatar);
+            bodyMap.put("id", id);
+            bodyMap.put("idNumber", idNumber);
+            bodyMap.put("userName", userName);
+            bodyMap.put("email", email);
+            bodyMap.put("inSchoolTime", inSchoolTime);
+            // 将Map转换为字符串类型加入请求体中
+            String body = Api.gson.toJson(bodyMap);
+            MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
+            RequestBody r = RequestBody.Companion.create(body, MEDIA_TYPE_JSON);
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .post(r)
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Type jsonType = new TypeToken<ResponseBody<Data>>() {
+                        }.getType();
+                        // 获取响应体的json串
+                        assert response.body() != null;
+                        String body = Objects.requireNonNull(response.body()).string();
+                        Log.d("info", body);
+                        // 解析json串到自己封装的状态
+                        ResponseBody<Data> dataResponseBody = Api.gson.fromJson(body, jsonType);
+                        Message message = new Message();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("code", dataResponseBody.getCode());
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    }
+                });
+            } catch (NetworkOnMainThreadException ex) {
+                ex.printStackTrace();
+            }
+        }).start();
     }
 
     private boolean IsEmail(String checkInfo) {

@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.NetworkOnMainThreadException;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
@@ -15,41 +19,52 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Data.LoginData;
-import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.Interface.Api;
+import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
 import com.example.myapplication.TeacherActivity.AddCourseActivity;
-import com.example.myapplication.javaBean.Picture;
-import com.example.myapplication.ui.MeFragment;
+import com.example.myapplication.javaBean.Data;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
+    public static boolean isClickCoursePicture = false;
+    public static boolean isClickAvatar = false;
     public File file;
     private ImageView iv_upload;
     private ActivityResultLauncher<Intent> mResultLauncher;
     private Context context;
     private Uri picUri;
     private Button bt_upload;
-    public static String URL;
-    public static boolean isClickCoursePicture = false;
 
-    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
-
 
         iv_upload = findViewById(R.id.bt_upload);
         iv_upload.setOnClickListener(this);
@@ -65,71 +80,196 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                         picUri = intent.getData();
                         try {
                             file = getFile(context, picUri);
-                            //System.out.println(file);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         if (picUri != null) {
                             iv_upload.setImageURI(picUri);
-                            //System.out.println("666");
-                            bt_upload.setOnClickListener(v -> {
-                                Api.PictureUpload(file);
-                                try {
-                                    Thread.sleep(750);
-                                    //System.out.println(PictureData.tempAvatar.getURL());
-                                    if (MeFragment.isClickAvatar) {
-                                        MeFragment.isClickAvatar = false;
-                                        if (PictureData.tempAvatar.getURL() != null) {
-                                            //System.out.println("123");
-                                            AlterActivity.LoadData("头像", PictureData.tempAvatar.getURL());
-                                            try {
-                                                Thread.sleep(500);
-                                                if (MsgData.alterMsgData.getCode() == 200) {
-                                                    System.out.println("hello");
-                                                    AlterActivity.UpdateData("头像", PictureData.tempAvatar
-                                                            .getURL());
-                                                    System.out.println("hello");
-                                                    Toast.makeText(UploadActivity.this, "修改成功！",
-                                                            Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    Toast.makeText(UploadActivity.this, "修改失败！",
-                                                            Toast.LENGTH_SHORT).show();
-                                                }
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-                                        } else {
-                                            Toast.makeText(UploadActivity.this, "修改失败！",
-                                                    Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                    System.out.println("123");
-                                    System.out.println(PictureData.coursePicture.getURL());
-                                    if (UploadActivity.isClickCoursePicture) {
-                                        UploadActivity.isClickCoursePicture = false;
-                                        if (PictureData.coursePicture.getURL() != null) {
-                                            AddCourseActivity.CoursePhoto(AddCourseActivity.etCoursePhoto, PictureData.coursePicture.getURL());
-                                            Toast.makeText(UploadActivity.this, "修改成功！",
-                                                    Toast.LENGTH_SHORT).show();
-                                            finish();
-                                        } else {
-                                            Toast.makeText(UploadActivity.this, "修改失败！",
-                                                    Toast.LENGTH_SHORT).show();
-                                            finish();
-                                        }
-                                    }
-                                    System.out.println(PictureData.coursePicture.getURL());
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                                Intent intent1 = new Intent(UploadActivity.this, HomeActivity.class);
-                                intent1.putExtra("id",1);
-                                startActivity(intent1);
-
-                            });
+                            bt_upload.setOnClickListener(v -> PictureUpload(file));
                         }
                     }
                 });
+    }
+
+    @SuppressLint("NewApi")
+    private final Handler handler1 = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle bundle = msg.getData();
+            String pictureUrl = bundle.getString("pictureURL");
+            if (pictureUrl == null) {
+                Toast.makeText(UploadActivity.this, "修改失败！",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                if (UploadActivity.isClickAvatar) {
+                    PictureData.tempAvatar.setURL(pictureUrl);
+                    LoadAvatar(PictureData.tempAvatar.getURL());
+                }
+                if (UploadActivity.isClickCoursePicture) {
+                    PictureData.coursePicture.setURL(pictureUrl);
+                    UploadActivity.isClickCoursePicture = false;
+                    AddCourseActivity.CoursePhoto(AddCourseActivity.etCoursePhoto,
+                            PictureData.coursePicture.getURL());
+                    Toast.makeText(UploadActivity.this, "修改成功！",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+            System.out.println(pictureUrl);
+        }
+    };
+
+    private final Handler handler2 = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle bundle = msg.getData();
+            int avatarCode = bundle.getInt("code");
+            if (avatarCode == 200) {
+                LoginData.loginUser.setAvatar(PictureData.tempAvatar.getURL());
+                System.out.println("hello");
+                Toast.makeText(UploadActivity.this, "修改成功！",
+                        Toast.LENGTH_SHORT).show();
+                finish();
+                /*
+                Intent intent = new Intent(UploadActivity.this, HomeActivity.class);
+                intent.putExtra("id", 1);
+                startActivity(intent);*/
+            } else {
+                Toast.makeText(UploadActivity.this, "修改失败！",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+
+    private void AlterUserInfo(String collegeName, String realName,
+                               boolean gender, String phone, String avatar,
+                               int id, int idNumber, String userName,
+                               String email, int inSchoolTime) {
+        new Thread(() -> {
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/user/update";
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("Accept", "application/json, text/plain, */*")
+                    .add("appId", Api.appId)
+                    .add("appSecret", Api.appSecret)
+                    .add("Content-Type", "application/json")
+                    .build();
+            // 请求体
+            // PS.用户也可以选择自定义一个实体类，然后使用类似fastjson的工具获取json串
+            Map<String, Object> bodyMap = new HashMap<>();
+            bodyMap.put("collegeName", collegeName);
+            bodyMap.put("realName", realName);
+            bodyMap.put("gender", gender);
+            bodyMap.put("phone", phone);
+            bodyMap.put("avatar", avatar);
+            bodyMap.put("id", id);
+            bodyMap.put("idNumber", idNumber);
+            bodyMap.put("userName", userName);
+            bodyMap.put("email", email);
+            bodyMap.put("inSchoolTime", inSchoolTime);
+            // 将Map转换为字符串类型加入请求体中
+            String body = Api.gson.toJson(bodyMap);
+            MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
+            RequestBody r = RequestBody.Companion.create(body, MEDIA_TYPE_JSON);
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .post(r)
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Type jsonType = new TypeToken<ResponseBody<Data>>() {
+                        }.getType();
+                        // 获取响应体的json串
+                        assert response.body() != null;
+                        String body = Objects.requireNonNull(response.body()).string();
+                        Log.d("info", body);
+                        // 解析json串到自己封装的状态
+                        ResponseBody<Data> dataResponseBody = Api.gson.fromJson(body, jsonType);
+                        Message message = new Message();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("code", dataResponseBody.getCode());
+                        message.setData(bundle);
+                        handler2.sendMessage(message);
+                    }
+                });
+            } catch (NetworkOnMainThreadException ex) {
+                ex.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void PictureUpload(File file) {
+        new Thread(() -> {
+            // url路径
+            String url = "http://47.107.52.7:88/member/sign/image/upload";
+            // 请求头
+            Headers headers = new Headers.Builder()
+                    .add("appId", Api.appId)
+                    .add("appSecret", Api.appSecret)
+                    .add("Accept", "application/json, text/plain, */*")
+                    .build();
+
+            MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
+
+            RequestBody fileBody = RequestBody.Companion.create(file, MEDIA_TYPE_JSON);
+            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                    .addFormDataPart("file", file.getName(), fileBody)
+                    .build();
+
+            //请求组合创建
+            Request request = new Request.Builder()
+                    .url(url)
+                    // 将请求头加至请求中
+                    .headers(headers)
+                    .post(body)
+                    .build();
+            try {
+                OkHttpClient client = new OkHttpClient();
+                //发起请求，传入callback进行回调
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Type jsonType = new TypeToken<ResponseBody<Object>>() {
+                        }.getType();
+                        // 获取响应体的json串
+                        String body = Objects.requireNonNull(response.body()).string();
+                        Log.d("info", body);
+                        // 解析json串到自己封装的状态
+                        ResponseBody<Object> dataResponseBody = Api.gson.fromJson(body, jsonType);
+                        PictureData.picture = dataResponseBody.getData();
+                        Message message = new Message();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("pictureURL", PictureData.picture.toString());
+                        message.setData(bundle);
+                        handler1.sendMessage(message);
+                        System.out.println(PictureData.picture);
+                        System.out.println("dataResponseBody.getCode())");
+                    }
+                });
+            } catch (NetworkOnMainThreadException ex) {
+                ex.printStackTrace();
+            }
+        }).start();
     }
 
     @Override
@@ -147,7 +287,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         try (InputStream ins = context.getContentResolver().openInputStream(picUri)) {
             createFileFromStream(ins, destinationFilename);
         } catch (Exception ex) {
-            //Log.e("Save File", ex.getMessage());
             ex.printStackTrace();
         }
         return destinationFilename;
@@ -177,5 +316,19 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         String name = returnCursor.getString(nameIndex);
         returnCursor.close();
         return name;
+    }
+
+    private void LoadAvatar(String avatar) {
+        String collegeName = LoginData.loginUser.getCollegeName();
+        String realName = LoginData.loginUser.getRealName();
+        boolean gender = LoginData.loginUser.getGender();
+        String phone = LoginData.loginUser.getPhone();
+        int id = LoginData.loginUser.getId();
+        int idNumber = LoginData.loginUser.getIdNumber();
+        String userName = LoginData.loginUser.getUsername();
+        String email = LoginData.loginUser.getEmail();
+        int inSchoolTime = LoginData.loginUser.getInSchoolTime();
+        AlterUserInfo(collegeName, realName, gender, phone,
+                avatar, id, idNumber, userName, email, inSchoolTime);
     }
 }

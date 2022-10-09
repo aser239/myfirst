@@ -49,47 +49,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUser;
     private CheckBox cbRememberPwd;
 
-    private Handler handler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            Bundle bundle = msg.getData();
-            String loginMsg = bundle.getString("msg");
-            System.out.println(loginMsg);
-            switch (loginMsg) {
-                case "登录成功":
-                    Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    finish();
-                    break;
-                case "当前登录用户不存在":
-                    Toast.makeText(LoginActivity.this, "当前登录用户不存在！",
-                            Toast.LENGTH_SHORT).show();
-                    break;
-                case "密码错误":
-                    Toast.makeText(LoginActivity.this, "密码错误！",
-                            Toast.LENGTH_SHORT).show();
-                    break;
-                default:
-                    Toast.makeText(LoginActivity.this, "登录失败！",
-                            Toast.LENGTH_SHORT).show();
-                    break;
-            }
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etPwd = findViewById(R.id.et_pwd);
         etUser = findViewById(R.id.et_user);
+        etPwd = findViewById(R.id.et_pwd);
         cbRememberPwd = findViewById(R.id.cb_remember_pwd);
 
+        //etPwd = findViewById(R.id.et_pwd);
         final ImageView ivPwdSwitch = findViewById(R.id.iv_pwd_switch);
-        etPwd = findViewById(R.id.et_pwd);
-
         ivPwdSwitch.setOnClickListener(view -> {
             bPwdSwitch = !bPwdSwitch;
             if (bPwdSwitch) {
@@ -120,37 +90,10 @@ public class LoginActivity extends AppCompatActivity {
             String username = etUser.getText().toString();
             String password = etPwd.getText().toString();
             if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-                Toast.makeText(LoginActivity.this, "输入不能为空！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "账号和密码不能为空！", Toast.LENGTH_SHORT).show();
+            } else {
+                Login(username, password);
             }
-            //Api.Login(username, password);
-            Login(username, password);
-
-            /*
-            try {
-                Thread.sleep(750);
-                String msg = MsgData.loginMsgData.getMsg();
-                switch (msg) {
-                    case "登录成功":
-                        Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                        finish();
-                        break;
-                    case "当前登录用户不存在":
-                        Toast.makeText(LoginActivity.this, "当前登录用户不存在！",
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case "密码错误":
-                        Toast.makeText(LoginActivity.this, "密码错误！",
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    default:
-                        Toast.makeText(LoginActivity.this, "登录失败！",
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
         });
     }
 
@@ -166,12 +109,13 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString(accountKey, account);
             editor.putString(passwordKey, password);
             editor.putBoolean(rememberPasswordKey, true);
+            editor.apply();
         } else {
             editor.remove(accountKey);
             editor.remove(passwordKey);
             editor.remove(rememberPasswordKey);
+            editor.apply();
         }
-        editor.apply();
     }
 
     public void Read_pwd() {
@@ -180,11 +124,9 @@ public class LoginActivity extends AppCompatActivity {
         String passwordKey = getResources().getString(R.string.login_password);
         String rememberPasswordKey = getResources().getString(R.string.login_remember_password);
         SharedPreferences spFile = getSharedPreferences(spFileName, Context.MODE_PRIVATE);
-
         String account = spFile.getString(accountKey, null);
         String password = spFile.getString(passwordKey, null);
         boolean rememberPassword = spFile.getBoolean(rememberPasswordKey, false);
-
         if (account != null && !TextUtils.isEmpty(account)) {
             etUser.setText(account);
         }
@@ -194,7 +136,36 @@ public class LoginActivity extends AppCompatActivity {
         cbRememberPwd.setChecked(rememberPassword);
     }
 
-    public void Login(String username, String password) {
+    private final Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle bundle = msg.getData();
+            String loginMsg = bundle.getString("msg");
+            System.out.println(loginMsg);
+            switch (loginMsg) {
+                case "登录成功":
+                    Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    finish();
+                    break;
+                case "当前登录用户不存在":
+                    Toast.makeText(LoginActivity.this, "当前登录用户不存在！",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case "密码错误":
+                    Toast.makeText(LoginActivity.this, "密码错误！",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    Toast.makeText(LoginActivity.this, "登录失败！",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
+
+    private void Login(String username, String password) {
         new Thread(() -> {
             // url路径
             String url = "http://47.107.52.7:88/member/sign/user/login";
@@ -234,11 +205,10 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Person> dataResponseBody = Api.gson.fromJson(body, jsonType);
-                        MsgData.loginMsgData = new Msg(dataResponseBody.getCode(), dataResponseBody.getMsg());
                         LoginData.loginUser = dataResponseBody.getData();
                         Message message = new Message();
                         Bundle bundle = new Bundle();
-                        bundle.putString("msg",dataResponseBody.getMsg());
+                        bundle.putString("msg", dataResponseBody.getMsg());
                         message.setData(bundle);
                         handler.sendMessage(message);
                     }

@@ -20,6 +20,7 @@ import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
 import com.example.myapplication.javaBean.Data;
+import com.example.myapplication.ui.MeFragment;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -54,14 +55,14 @@ public class AlterActivity extends AppCompatActivity {
         TextView tv_title_alter_text = findViewById(R.id.tv_title_alter_text);
         EditText et_title_alter_text = findViewById(R.id.et_title_alter_text);
         Intent intent = getIntent();
-        info = intent.getStringExtra(PersonInfoActivity.MESSAGE_STRING);
+        info = intent.getStringExtra(MeFragment.MESSAGE_STRING);
         Button login_preservation = findViewById(R.id.login_preservation);
         if (info != null) {
             tv_title_alter.setText(info);
             tv_title_alter_text.setText(info);
             if (info.equals("性别")) {
                 et_title_alter_text.setHint(info + "格式：男 或 女");
-            } else if (info.equals("入学时间")) {
+            } else if (info.equals("入校时间")) {
                 et_title_alter_text.setHint("时间格式：yyyyMMDD");
             } else {
                 et_title_alter_text.setHint("请输入" + info);
@@ -81,7 +82,7 @@ public class AlterActivity extends AppCompatActivity {
                     } else if (info.equals("姓名") && !IsRealName(newData)) {
                         Toast.makeText(AlterActivity.this, "姓名信息错误！",
                                 Toast.LENGTH_SHORT).show();
-                    } else if (info.equals("入学时间") && !IsDate(newData)) {
+                    } else if (info.equals("入校时间") && !IsDate(newData)) {
                         Toast.makeText(AlterActivity.this, "日期格式错误！",
                                 Toast.LENGTH_SHORT).show();
                     } else if (info.equals("性别") && !IsGender(newData)) {
@@ -89,14 +90,13 @@ public class AlterActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         LoadData(info, newData);
-
                     }
                 }
             });
         }
     }
 
-    public void LoadData(String type, String data) {
+    private void LoadData(String type, String data) {
         String collegeName = LoginData.loginUser.getCollegeName();
         String realName = LoginData.loginUser.getRealName();
         boolean gender = LoginData.loginUser.getGender();
@@ -108,9 +108,6 @@ public class AlterActivity extends AppCompatActivity {
         String email = LoginData.loginUser.getEmail();
         int inSchoolTime = LoginData.loginUser.getInSchoolTime();
         switch (type) {
-            case "头像":
-                avatar = data;
-                break;
             case "院校":
                 collegeName = data;
                 break;
@@ -127,7 +124,7 @@ public class AlterActivity extends AppCompatActivity {
             case "手机号":
                 phone = data;
                 break;
-            case "学号":
+            case "工号":
                 idNumber = Integer.parseInt(data);
                 break;
             case "邮箱":
@@ -141,11 +138,8 @@ public class AlterActivity extends AppCompatActivity {
                 avatar, id, idNumber, userName, email, inSchoolTime);
     }
 
-    public void UpdateData(String type, String data) {
+    private void UpdateData(String type, String data) {
         switch (type) {
-            case "头像":
-                LoginData.loginUser.setAvatar(data);
-                break;
             case "院校":
                 LoginData.loginUser.setCollegeName(data);
                 break;
@@ -162,13 +156,13 @@ public class AlterActivity extends AppCompatActivity {
             case "手机号":
                 LoginData.loginUser.setPhone(data);
                 break;
-            case "学号":
+            case "工号":
                 LoginData.loginUser.setIdNumber(Integer.parseInt(data));
                 break;
             case "邮箱":
                 LoginData.loginUser.setEmail(data);
                 break;
-            case "入学时间":
+            case "入校时间":
                 LoginData.loginUser.setInSchoolTime(Integer.parseInt(data));
                 break;
         }

@@ -12,6 +12,7 @@ import android.os.NetworkOnMainThreadException;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -23,11 +24,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Data.LoginData;
-import com.example.myapplication.Data.MsgData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Msg;
 import com.example.myapplication.javaBean.Person;
 import com.google.gson.reflect.TypeToken;
 
@@ -79,6 +78,20 @@ public class LoginActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
         });
+
+        View.OnFocusChangeListener etUserFocusChangedListener = (v, hasFocus) -> {
+            if (hasFocus) {
+                cbRememberPwd.setChecked(false);
+            }
+        };
+        etUser.setOnFocusChangeListener(etUserFocusChangedListener);
+
+        View.OnFocusChangeListener etPwdFocusChangedListener = (v, hasFocus) -> {
+            if (hasFocus) {
+                cbRememberPwd.setChecked(false);
+            }
+        };
+        etPwd.setOnFocusChangeListener(etPwdFocusChangedListener);
 
         cbRememberPwd.setOnClickListener(v -> RememberPwd(etUser.getText().toString(),
                 etPwd.getText().toString()));

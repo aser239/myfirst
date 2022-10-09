@@ -35,15 +35,11 @@ import okhttp3.Response;
 
 public class Api {
     public static Gson gson = new Gson();
-//    public static String appId = "d44f6a157edc4815b907124907b98e63";
-//    public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
+    //public static String appId = "d44f6a157edc4815b907124907b98e63";
+    //public static String appSecret = "24416e30b926e08a54c7f93fded9670b769f3";
 
-//    public static String appId = "aaf3870a62654c53829ee7593d2ee194";
-//    public static String appSecret = "4681256d3c496b8fe4c7c947ddbb1629eb419";
-
-    public static String appId = "4c9b3a55b5aa4f7e9602d64226ebd945";
-    public static String appSecret = "757254ca3212945d54c168fe48777e62eca41";
-
+    public static String appId = "3720c90dc4454c9aa47a9380ae115dbe";
+    public static String appSecret = "98652c54aa2522a694626af8deedba3a42669";
 
     public static void AddCourse(String collegeName, String courseName,
                                  String coursePhoto, String introduce, long endTime,
@@ -240,67 +236,6 @@ public class Api {
                 OkHttpClient client = new OkHttpClient();
                 //发起请求，传入callback进行回调
                 client.newCall(request).enqueue(ResponseBody.callback);
-            } catch (NetworkOnMainThreadException ex) {
-                ex.printStackTrace();
-            }
-        }).start();
-    }
-
-    public static void PictureUpload(File file) {
-        new Thread(() -> {
-            // url路径
-            String url = "http://47.107.52.7:88/member/sign/image/upload";
-            // 请求头
-            Headers headers = new Headers.Builder()
-                    .add("appId", Api.appId)
-                    .add("appSecret", Api.appSecret)
-                    .add("Accept", "application/json, text/plain, */*")
-                    .build();
-
-            MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; charset=utf-8");
-
-            RequestBody fileBody = RequestBody.Companion.create(file, MEDIA_TYPE_JSON);
-            RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                    .addFormDataPart("file", file.getName(), fileBody)
-                    .build();
-
-            //请求组合创建
-            Request request = new Request.Builder()
-                    .url(url)
-                    // 将请求头加至请求中
-                    .headers(headers)
-                    .post(body)
-                    .build();
-            try {
-                OkHttpClient client = new OkHttpClient();
-                //发起请求，传入callback进行回调
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                        Type jsonType = new TypeToken<ResponseBody<Object>>() {
-                        }.getType();
-                        // 获取响应体的json串
-                        String body = Objects.requireNonNull(response.body()).string();
-                        Log.d("info", body);
-                        // 解析json串到自己封装的状态
-                        ResponseBody<Object> dataResponseBody = gson.fromJson(body, jsonType);
-                        PictureData.picture = dataResponseBody.getData();
-                        System.out.println(PictureData.picture);
-                        System.out.println("123");
-                        if (PersonInfoActivity.isClickAvatar) {
-                            PictureData.tempAvatar.setURL(PictureData.picture.toString());
-                        }
-                        if (UploadActivity.isClickCoursePicture) {
-                            PictureData.coursePicture.setURL(PictureData.picture.toString());
-                        }
-                        System.out.println(PictureData.coursePicture.getURL());
-                    }
-                });
             } catch (NetworkOnMainThreadException ex) {
                 ex.printStackTrace();
             }

@@ -1,5 +1,6 @@
 package com.example.myapplication.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -21,14 +22,14 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class MeFragment extends Fragment implements View.OnClickListener {
-
-
     private TextView tv_id;
     private TextView tv_username;
     private TextView tv_realName;
@@ -39,7 +40,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private TextView tv_inSchoolTime;
     private TextView tv_email;
     private ImageView iv_avatar;
-    public static final String MESSAGE_STRING = "com.example.myapplication.Activity.PERSON_INFO";
+    public static final String MESSAGE_STRING = "com.example.myapplication.ui.PERSON_INFO";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -110,12 +111,16 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(getActivity(), AlterActivity.class);
+        new Thread(()->{
+
+        });
         switch (view.getId()) {
             case R.id.iv_avatar_arrowRight:
-                UploadActivity.isClickAvatar=true;
+                UploadActivity.isClickAvatar = true;
                 startActivity(new Intent(getActivity(), UploadActivity.class));
                 break;
             case R.id.iv_arrow_right_realName:
@@ -148,18 +153,24 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.login_exit:
                 Intent intent1 = new Intent(getActivity(), LoginActivity.class);
-                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                //intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
+                //MeFragment.this.requireActivity().finish();
+                requireActivity().finish();
+                //finishActivity();
+            default:
+                break;
         }
     }
 
     @Override
     public void onResume() {
-        tv_id = getView().findViewById(R.id.tv_id_info);
-        tv_username = getView().findViewById(R.id.tv_username_info);
-        tv_realName = getView().findViewById(R.id.tv_realName_info);
-        tv_idNumber = getView().findViewById(R.id.tv_idNumber_info);
+        tv_id = requireView().findViewById(R.id.tv_id_info);
+        tv_username = requireView().findViewById(R.id.tv_username_info);
+        tv_realName = requireView().findViewById(R.id.tv_realName_info);
+        tv_idNumber = requireView().findViewById(R.id.tv_idNumber_info);
         tv_gender = getView().findViewById(R.id.tv_gender_info);
         tv_collegeName = getView().findViewById(R.id.tv_collegeName_info);
         tv_phone = getView().findViewById(R.id.tv_phone_info);
@@ -193,5 +204,4 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         tv_email.setText(LoginData.loginUser.getEmail());
         super.onResume();
     }
-
 }

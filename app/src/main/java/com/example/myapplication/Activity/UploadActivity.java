@@ -99,7 +99,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             Bundle bundle = msg.getData();
             String pictureUrl = bundle.getString("pictureURL");
             if (pictureUrl == null) {
-                Toast.makeText(UploadActivity.this, "修改失败！",
+                Toast.makeText(UploadActivity.this, "上传失败！",
                         Toast.LENGTH_SHORT).show();
             } else {
                 if (UploadActivity.isClickAvatar) {
@@ -111,7 +111,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     UploadActivity.isClickCoursePicture = false;
                     AddCourseActivity.CoursePhoto(AddCourseActivity.etCoursePhoto,
                             PictureData.coursePicture.getURL());
-                    Toast.makeText(UploadActivity.this, "修改成功！",
+                    Toast.makeText(UploadActivity.this, "添加成功！",
                             Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -132,10 +132,6 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(UploadActivity.this, "修改成功！",
                         Toast.LENGTH_SHORT).show();
                 finish();
-                /*
-                Intent intent = new Intent(UploadActivity.this, HomeActivity.class);
-                intent.putExtra("id", 1);
-                startActivity(intent);*/
             } else {
                 Toast.makeText(UploadActivity.this, "修改失败！",
                         Toast.LENGTH_SHORT).show();

@@ -1,9 +1,11 @@
 package com.example.myapplication.javaBean;
 
+import androidx.annotation.NonNull;
+
 public class Records2Detail {
     private String courseName;
     private String courseAddr;
-    private int createTime;
+    private long createTime;
     private int userSignId;
 
     public String getCourseName() {
@@ -22,11 +24,11 @@ public class Records2Detail {
         this.courseAddr = courseAddr;
     }
 
-    public int getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(int createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 
@@ -38,13 +40,14 @@ public class Records2Detail {
         this.userSignId = userSignId;
     }
 
+    @NonNull
     @Override
     public String toString() {
-        return "Records2{" +
+        return "records{" +
                 "courseName='" + courseName + '\'' +
                 ", courseAddr='" + courseAddr + '\'' +
-                ", createTime=" + createTime +
-                ", userSignId=" + userSignId +
+                ", createTime='" + createTime + '\'' +
+                ", userSignId='" + userSignId +'\''+
                 '}';
     }
 }

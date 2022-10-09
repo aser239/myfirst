@@ -47,7 +47,7 @@ public class Course {
                 "courseName='" + courseName + '\'' +
                 ", coursePhoto='" + coursePhoto + '\'' +
                 ", collegeName='" + collegeName + '\'' +
-                ", courseId=" + courseId +
+                ", courseId='" + courseId + '\'' +
                 '}';
     }
 }

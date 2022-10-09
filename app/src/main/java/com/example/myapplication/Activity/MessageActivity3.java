@@ -49,6 +49,7 @@ public class MessageActivity3 extends AppCompatActivity {
     private TextView etUserName;
     private TextView etCreateTime;
     private Button quit;
+    private Button btBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class MessageActivity3 extends AppCompatActivity {
         etUserName = findViewById(R.id.tx_userName44);
         etCreateTime = findViewById(R.id.tx_CreateTime44);
         quit = findViewById(R.id.Quit);
+        btBack = findViewById(R.id.Back3);
 
 
         etCollegeName.setText(CourseData.Detail.getCollegeName());
@@ -88,6 +90,13 @@ public class MessageActivity3 extends AppCompatActivity {
         etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
         etUserName.setText(CourseData.Detail.getUserName());
         etCreateTime.setText(String.valueOf(CourseData.Detail.getCreateTime()));
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         quit.setOnClickListener(new View.OnClickListener() {
             @Override

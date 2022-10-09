@@ -49,6 +49,7 @@ public class MessageActivity extends AppCompatActivity {
     private TextView etUserName;
     private TextView etCreateTime;
     private Button delete;
+    private Button btBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class MessageActivity extends AppCompatActivity {
         etUserName = findViewById(R.id.tx_userName);
         etCreateTime = findViewById(R.id.tx_CreateTime);
         delete = findViewById(R.id.Delete);
+        btBack = findViewById(R.id.addCourseReturnToCourse11);
 
 
         etCollegeName2.setText(CourseData.Detail.getCollegeName());
@@ -93,7 +95,14 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Api.delete(CourseData.Detail.getId(), LoginData.loginUser.getId());
-                startActivity(new Intent(MessageActivity.this,UnfinishedCourseActivity.class));
+                finish();
+            }
+        });
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

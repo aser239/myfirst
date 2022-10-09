@@ -41,6 +41,12 @@ public class HomeActivity extends AppCompatActivity {
                     .replace(R.id.nav_container,new MeFragment())
                     .addToBackStack(null)
                     .commit();
+        }else if (id == 2){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.nav_container,new TeacherCourseFragment())
+                    .addToBackStack(null)
+                    .commit();
         }
 
         mMeFragment = new MeFragment();

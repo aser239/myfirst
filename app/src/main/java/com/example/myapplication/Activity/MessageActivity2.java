@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.myapplication.Data.CourseData;
@@ -34,6 +35,7 @@ import okhttp3.Response;
 
 //全部课程的详情
 public class MessageActivity2 extends AppCompatActivity {
+    private Button btBack;
     private TextView etCollegeName;
     private TextView etCourseName;
     private TextView etCoursePhoto;
@@ -70,6 +72,7 @@ public class MessageActivity2 extends AppCompatActivity {
         etChoose = findViewById(R.id.tx_choose33);
         etUserName = findViewById(R.id.tx_userName33);
         etCreateTime = findViewById(R.id.tx_CreateTime33);
+        btBack = findViewById(R.id.Back2);
 
 
         etCollegeName.setText(CourseData.Detail.getCollegeName());
@@ -83,6 +86,13 @@ public class MessageActivity2 extends AppCompatActivity {
         etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
         etUserName.setText(CourseData.Detail.getUserName());
         etCreateTime.setText(String.valueOf(CourseData.Detail.getCreateTime()));
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

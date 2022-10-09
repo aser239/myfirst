@@ -34,6 +34,7 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
     private Button btFiTime;
     private Button btStTime;
     private Button StartSign;
+    private Button btBack;
     private EditText etFiTime;
     private EditText etStTime;
     private EditText CourseAddr;
@@ -56,6 +57,7 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
         btStTime = findViewById(R.id.bt_stTime33);
         btFiTime = findViewById(R.id.bt_fiTime33);
         StartSign = findViewById(R.id.StartSign);
+        btBack = findViewById(R.id.Back);
 
         etStTime =  findViewById(R.id.et_stTime33);
         etFiTime = findViewById(R.id.et_fiTime33);
@@ -69,6 +71,13 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
 
         btStTime.setOnClickListener(this);
         btFiTime.setOnClickListener(this);
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         StartSign.setOnClickListener(new View.OnClickListener() {

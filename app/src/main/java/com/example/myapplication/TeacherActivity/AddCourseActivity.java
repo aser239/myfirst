@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.Activity.HomeActivity;
 import com.example.myapplication.Activity.UploadActivity;
 import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.Interface.Api;
@@ -36,6 +37,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
     private Button btnAdd;
     private Button btSearch;
     private Button btPhoto;
+    private Button btBack;
     public static EditText etCollegeName;
     public static EditText etCourseName;
     public static EditText etCoursePhoto;
@@ -43,6 +45,8 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
     public static EditText etEndTime;
     public static EditText etRealName;
     public static EditText etStartTime;
+
+    public static int ID = 0;
 
     Calendar calendar = Calendar.getInstance(Locale.CHINA);
 
@@ -57,6 +61,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         btnAdd = findViewById(R.id.confirmAddCourse);
         btSearch = findViewById(R.id.search);
         btPhoto = findViewById(R.id.bt_photo);
+        btBack = findViewById(R.id.addCourseReturnToCourse33);
 
         //txtDate= findViewById(R.id.txtDate);
         etEndTime = findViewById(R.id.et_fiTime);
@@ -69,11 +74,21 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
         btnDate1.setOnClickListener(this);
         btnDate2.setOnClickListener(this);
 
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(AddCourseActivity.this, HomeActivity.class);
+                intent2.putExtra("id",2);
+                startActivity(intent2);
+            }
+        });
+
         btPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UploadActivity.isClickCoursePicture = true;
                 Intent intent = new Intent(AddCourseActivity.this, UploadActivity.class);
+                ID = 3;
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

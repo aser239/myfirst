@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
  */
 public class MeFragment extends Fragment implements View.OnClickListener {
 
-    public static boolean isClickAvatar = false;
+
     private TextView tv_id;
     private TextView tv_username;
     private TextView tv_realName;

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.Activity.HomeActivity;
 import com.example.myapplication.Activity.MainActivity;
 import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Data.CourseData;
@@ -41,7 +42,7 @@ public class StudentSignInActivity extends AppCompatActivity {
     private EditText SignId;
     private EditText tv_sign_in_psw;
     private Button bt_sign_in;
-    private Button signInReturnToMainActivity;
+    private Button btBack;
     private Button btboo;
 
     private final Gson gson = new Gson();
@@ -55,7 +56,7 @@ public class StudentSignInActivity extends AppCompatActivity {
         SignId = findViewById(R.id.signId);
         tv_sign_in_psw = findViewById(R.id.tv_sign_in_psw);
         bt_sign_in = findViewById(R.id.bt_sign_in);
-        signInReturnToMainActivity = findViewById(R.id.signInReturnToMainActivity);
+        btBack = findViewById(R.id.Back4);
 
         bt_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +77,13 @@ public class StudentSignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StudentSignInActivity.this, StudentListActivity.class));
+            }
+        });
+
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

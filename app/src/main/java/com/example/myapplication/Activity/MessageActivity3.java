@@ -103,6 +103,7 @@ public class MessageActivity3 extends AppCompatActivity {
             public void onClick(View v) {
                 Api.quit(CourseData.Detail.getId(), LoginData.loginUser.getId());
                 startActivity(new Intent(MessageActivity3.this, StudentCourseListActivity.class));
+                finish();
             }
         });
 

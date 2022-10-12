@@ -1,4 +1,4 @@
-package com.example.myapplication.StudentActivity;
+package com.example.myapplication.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,17 +12,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.myapplication.Activity.MessageActivity2;
-import com.example.myapplication.Activity.MessageActivity3;
-import com.example.myapplication.Activity.SignlistActivity;
-import com.example.myapplication.Adapter.StudentCourseAdapter;
+import com.example.myapplication.Adapter.SignlistAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
-import com.example.myapplication.javaBean.Course;
-import com.example.myapplication.javaBean.Records;
+import com.example.myapplication.StudentActivity.StudentCourseListActivity;
+import com.example.myapplication.javaBean.Records2;
+import com.example.myapplication.javaBean.Records2Detail;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -39,43 +36,45 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class StudentCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    public static final String STUDENTCOURSE_MESSAGE_STRING = "com.example.myapplication.Activity.STUDENTCOURSE_INFO";
-    private StudentCourseAdapter adapter2;
-    private List<Course> newsData2;
-    private ListView lvNewsList2;
-    public static int courseId;
-    private ResponseBody<Records> dataResponseBody;
-    public static boolean flag = false;
+public class SignlistActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    public static final String UNFINISHED_MESSAGE_STRING = "com.example.myapplication.Activity.UNFINISHED_INFO";
+    private SignlistAdapter adapter;
+    private List<Records2Detail> newsData;
+    private ListView lvNewsList;
+    private ResponseBody<Records2> dataResponseBody;
+    public static int userSignID;
 
-    public StudentCourseListActivity(){
+    public SignlistActivity() {
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_course_list);
-        lvNewsList2 = findViewById(R.id.lv_news_list3);
+        setContentView(R.layout.activity_signlist);
+        lvNewsList = findViewById(R.id.lv_news_list66);
 
-        initData2();
-        lvNewsList2.setOnItemClickListener(this);
-    }
-
-    private void initData2() {
-        newsData2 = new ArrayList<>();
-        adapter2 = new StudentCourseAdapter(StudentCourseListActivity.this,
-                R.layout.list_item2, newsData2);
-
-        lvNewsList2.setAdapter(adapter2);
-        getCourse(1,5, LoginData.loginUser.getId());
+        initData();
+        lvNewsList.setOnItemClickListener(this);
 
     }
 
-    public void getCourse(int current, int size,int userId) {
+    private void initData() {
+        newsData = new ArrayList<>();
+        adapter = new SignlistAdapter(SignlistActivity.this,
+                R.layout.list_item5, newsData);
+
+        lvNewsList.setAdapter(adapter);
+        Sign(StudentCourseListActivity.courseId,1,5, 0,LoginData.loginUser.getId());
+
+    }
+
+
+    public void Sign(int courseId,int current, int size,int status,int userId) {
         // url路径
-        String url = "http://47.107.52.7:88/member/sign/course/student?"+
-                "current=" + current +
+        String url = "http://47.107.52.7:88/member/sign/course/student/signList?"+
+                "courseId="+courseId+
+                "&current=" + current +
                 "&size=" + size+
+                "&status="+status+
                 "&userId="+userId;
         // 请求头
         Headers headers = new Headers.Builder()
@@ -99,7 +98,6 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
             ex.printStackTrace();
         }
     }
-
     public final Callback callback = new Callback() {
         @Override
         public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -111,25 +109,27 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
 
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
-            Log.d("学生选课列表：", body);
+            Log.d("签到课程列表：", body);
 
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Gson gson = new Gson();
-                    Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
+                    Type jsonType = new TypeToken<ResponseBody<Records2>>() {}.getType();
                     // 解析json串到自己封装的状态
                     dataResponseBody = gson.fromJson(body, jsonType);
 
-                    if (dataResponseBody.getData()!=null) {
-                        for (Course news : dataResponseBody.getData().getRecords()) {
-                            adapter2.add(news);
+                    if (dataResponseBody.getData() != null){
+                        for (Records2Detail news : dataResponseBody.getData().getRecords()) {
+                            adapter.add(news);
                         }
-                        adapter2.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
+
                     }else {
-                        Toast.makeText(StudentCourseListActivity.this,"还没有选课！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignlistActivity.this,"课程未发起签到！", Toast.LENGTH_SHORT).show();
                         finish();
                     }
+
 
                 }
             });
@@ -138,15 +138,7 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
-        if (flag) {
-            startActivity(new Intent(StudentCourseListActivity.this, SignlistActivity.class));
-            finish();
-        }else {
-            Intent intent = new Intent(StudentCourseListActivity.this, MessageActivity3.class);
-            intent.putExtra(STUDENTCOURSE_MESSAGE_STRING, Integer.toString(courseId));
-            startActivity(intent);
-            finish();
-        }
+        userSignID = dataResponseBody.getData().getRecords().get(position).getUserSignId();
+        finish();
     }
 }

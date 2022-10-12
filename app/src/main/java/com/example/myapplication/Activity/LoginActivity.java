@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Data.LoginData;
@@ -57,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         etPwd = findViewById(R.id.et_pwd);
         cbRememberPwd = findViewById(R.id.cb_remember_pwd);
 
-        //etPwd = findViewById(R.id.et_pwd);
         final ImageView ivPwdSwitch = findViewById(R.id.iv_pwd_switch);
         ivPwdSwitch.setOnClickListener(view -> {
             bPwdSwitch = !bPwdSwitch;
@@ -122,13 +123,12 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString(accountKey, account);
             editor.putString(passwordKey, password);
             editor.putBoolean(rememberPasswordKey, true);
-            editor.apply();
         } else {
             editor.remove(accountKey);
             editor.remove(passwordKey);
             editor.remove(rememberPasswordKey);
-            editor.apply();
         }
+        editor.apply();
     }
 
     public void Read_pwd() {

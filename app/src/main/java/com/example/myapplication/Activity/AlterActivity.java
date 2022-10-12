@@ -79,10 +79,7 @@ public class AlterActivity extends AppCompatActivity {
                     } else if (info.equals("手机号") && !IsPhoneNumber(newData)) {
                         Toast.makeText(AlterActivity.this, "手机号格式错误！",
                                 Toast.LENGTH_SHORT).show();
-                    } else if (info.equals("姓名") && !IsRealName(newData)) {
-                        Toast.makeText(AlterActivity.this, "姓名信息错误！",
-                                Toast.LENGTH_SHORT).show();
-                    } else if (info.equals("入校时间") && !IsDate(newData)) {
+                    }  else if (info.equals("入校时间") && !IsDate(newData)) {
                         Toast.makeText(AlterActivity.this, "日期格式错误！",
                                 Toast.LENGTH_SHORT).show();
                     } else if (info.equals("性别") && !IsGender(newData)) {

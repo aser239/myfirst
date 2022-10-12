@@ -112,6 +112,7 @@ public class FinishedCourseActivity extends AppCompatActivity {
                     Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
                     // 解析json串到自己封装的状态
                     dataResponseBody = gson.fromJson(body, jsonType);
+
                     if (dataResponseBody.getData()!=null){
                         for (Course news:dataResponseBody.getData().getRecords()) {
                             adapter4.add(news);

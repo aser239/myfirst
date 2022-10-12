@@ -6,7 +6,7 @@
     <!-- 圆角-->
     <corners android:radius="30dp"/>
     <!--设置边框线的宽度和颜色-->
-    <stroke android:width="3dp" android:color="@color/colorPrimaryDark"/>
+    <stroke android:width="3dp" android:color="#00574B"/>
 
     <padding
         android:bottom="15dp"

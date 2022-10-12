@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication.NoACtionBar"
         tools:targetApi="31">
-
+        <activity
+            android:name=".SignlistActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.AlterActivity"
             android:exported="false" />
@@ -44,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.HomeActivity"/>
+        <activity android:name=".Activity.HomeActivity" />
         <activity android:name=".TeacherActivity.AddCourseActivity" />
         <activity android:name=".Activity.MessageActivity" />
         <activity android:name=".StudentActivity.StudentSignInActivity" />
@@ -57,6 +59,7 @@
         <activity android:name=".Activity.MessageActivity2" />
         <activity android:name=".Activity.MessageActivity3" />
         <activity android:name=".TeacherActivity.FinishedCourseActivity" />
+        <activity android:name=".Activity.SignlistActivity" />
     </application>
 
 </manifest>

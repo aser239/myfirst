@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.Activity.SignlistActivity;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
@@ -57,12 +58,12 @@ public class StudentSignInActivity extends AppCompatActivity {
         bt_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tv_sign_in_psw.getText().toString().equals("")||SignId.getText().toString().equals("")){
+                if (tv_sign_in_psw.getText().toString().equals("")){
                     Toast.makeText(StudentSignInActivity.this,"签到码或者签到表主键id不能为空！", Toast.LENGTH_SHORT).show();
                 }else {
                     int signcode = Integer.parseInt(tv_sign_in_psw.getText().toString());
                     //int signid = Integer.parseInt(SignId.getText().toString());
-                    s_SignIn(signcode, LoginData.loginUser.getId(), StudentListActivity.mUserSignId);
+                    s_SignIn(signcode, LoginData.loginUser.getId(), SignlistActivity.userSignID);
                 }
 
             }
@@ -72,7 +73,8 @@ public class StudentSignInActivity extends AppCompatActivity {
         teaSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StudentSignInActivity.this, StudentListActivity.class));
+                StudentCourseListActivity.flag =true;
+                startActivity(new Intent(StudentSignInActivity.this, StudentCourseListActivity.class));
             }
         });
 

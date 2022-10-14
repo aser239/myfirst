@@ -1,10 +1,10 @@
 package com.example.myapplication.TeacherActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
@@ -12,14 +12,18 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapplication.Activity.MessageActivity2;
 import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
-import com.example.myapplication.R;
 import com.example.myapplication.JavaBean.Course;
+import com.example.myapplication.JavaBean.Data;
 import com.example.myapplication.JavaBean.Records;
+import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -67,7 +71,7 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
                 R.layout.list_item, newsData);
 
         lvNewsList.setAdapter(adapter);
-        getMyCourses(1, 5);
+        getMyCourses(1,10);
     }
 
     public void getMyCourses(int current, int size) {
@@ -137,12 +141,7 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
             TeacherCourseListActivity.courseId = dataResponseBody.getData().getRecords().
                     get(position).getCourseId();
             int courseId3 = courseId;
-            if (dataResponseBody.getCode() == 200) {
-                SelectCourse(courseId3, LoginData.loginUser.getId());
-                Toast.makeText(TeacherCourseListActivity.this, "选课成功！",
-                        Toast.LENGTH_SHORT).show();
-                finish();
-            }
+            SelectCourse(courseId3, LoginData.loginUser.getId());
         } else if (LoginData.loginUser.getRoleId() == 1) {
             courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
             Intent intent = new Intent(TeacherCourseListActivity.this, MessageActivity2.class);
@@ -150,6 +149,23 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
             startActivity(intent);
         }
     }
+
+    private final Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle bundle = msg.getData();
+            int alterCode = bundle.getInt("code");
+            if (alterCode == 200) {
+                Toast.makeText(TeacherCourseListActivity.this, "选课成功！",
+                        Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                Toast.makeText(TeacherCourseListActivity.this, "请勿重复选课！",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
     public void SelectCourse(int courseId, int userId) {
         new Thread(() -> {
@@ -183,7 +199,29 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
             try {
                 OkHttpClient client = new OkHttpClient();
                 //发起请求，传入callback进行回调
-                client.newCall(request).enqueue(ResponseBody.callback);
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        Type jsonType = new TypeToken<ResponseBody<Data>>() {
+                        }.getType();
+                        // 获取响应体的json串
+                        assert response.body() != null;
+                        String body = Objects.requireNonNull(response.body()).string();
+                        Log.d("修改用户信息：", body);
+                        // 解析json串到自己封装的状态
+                        ResponseBody<Data> dataResponseBody = Api.gson.fromJson(body, jsonType);
+                        Message message = new Message();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("code", dataResponseBody.getCode());
+                        message.setData(bundle);
+                        handler.sendMessage(message);
+                    }
+                });
             } catch (NetworkOnMainThreadException ex) {
                 ex.printStackTrace();
             }

@@ -40,7 +40,7 @@ public class MessageActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message3);
+
 
         Intent intent = getIntent();
         int info = Integer.parseInt(intent.getStringExtra(StudentCourseListActivity.STUDENT_COURSE_MESSAGE_STRING));

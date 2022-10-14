@@ -18,6 +18,7 @@ import com.example.myapplication.Activity.SignListActivity;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
+import com.example.myapplication.JavaBean.Data;
 import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -124,16 +125,15 @@ public class StudentSignInActivity extends AppCompatActivity {
         @Override
         public void onResponse(@NonNull Call call, Response response) throws IOException {
             //TODO 请求成功处理
-            Type jsonType = new TypeToken<ResponseBody<Object>>() {
+            Type jsonType = new TypeToken<ResponseBody<Data>>() {
             }.getType();
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
             Log.d("info", body);
             // 解析json串到自己封装的状态
-            ResponseBody<Object> dataResponseBody = gson.fromJson(body, jsonType);
+            ResponseBody<Data> dataResponseBody = gson.fromJson(body, jsonType);
             Message message = new Message();
             Bundle bundle = new Bundle();
-            bundle.putString("msg", dataResponseBody.getMsg());
             bundle.putInt("code", dataResponseBody.getCode());
             message.setData(bundle);
             handler.sendMessage(message);
@@ -145,14 +145,14 @@ public class StudentSignInActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             Bundle bundle = msg.getData();
-            String info = bundle.getString("msg");
             int code = bundle.getInt("code");
-            if (info.equals("签到时间不在规定范围内")) {
+            if (code == 500) {
                 Toast.makeText(StudentSignInActivity.this, "签到时间不在规定范围内！",
                         Toast.LENGTH_SHORT).show();
-            } else if (code == 200 & info.equals("")) {
+            } else if (code == 200) {
                 Toast.makeText(StudentSignInActivity.this, "签到成功！",
                         Toast.LENGTH_SHORT).show();
+                finish();
             } else {
                 Toast.makeText(StudentSignInActivity.this, "签到失败！",
                         Toast.LENGTH_SHORT).show();

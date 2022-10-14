@@ -64,7 +64,7 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
                 R.layout.list_item2, newsData2);
 
         lvNewsList2.setAdapter(adapter2);
-        getCourse(1, 5, LoginData.loginUser.getId());
+        getCourse(1, 10, LoginData.loginUser.getId());
 
     }
 

@@ -56,9 +56,8 @@ public class FinishedCourseActivity extends AppCompatActivity {
                 R.layout.list_item4, newsData4);
 
         lvNewsList4.setAdapter(adapter4);
-        MyCourses(1, 5, LoginData.loginUser.getId());
+        MyCourses(1, 10, LoginData.loginUser.getId());
     }
-
 
     public void MyCourses(int current, int size, int userId) {
         // url路径

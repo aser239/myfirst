@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/b_2"
+    android:background="@mipmap/b_6"
     android:orientation="vertical"
     tools:context=".Fragment.TeacherCourseFragment">
 
@@ -15,7 +15,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/shap_course"
+        android:background="@drawable/shap_button"
         android:text="教师已结课课程列表"
         android:textSize="30sp" />
 
@@ -27,7 +27,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/shap_course"
+        android:background="@drawable/shap_button"
         android:text="教师未结课课程列表"
         android:textSize="30sp" />
 
@@ -39,7 +39,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/shap_course"
+        android:background="@drawable/shap_button"
         android:text="教师添加课程"
         android:textSize="30sp" />
 </LinearLayout>

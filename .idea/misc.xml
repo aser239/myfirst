@@ -130,7 +130,10 @@
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_me.xml" value="0.264" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_notifications.xml" value="0.25364583333333335" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_sign.xml" value="0.16391787277011108" />
+        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_student_course.xml" value="0.14221014492753623" />
+        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_student_signin.xml" value="0.14221014492753623" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_teacher_course.xml" value="0.264" />
+        <entry key="..\:/Programming/myfirst/app/src/main/res/layout/fragment_teacher_signin.xml" value="0.14221014492753623" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/home_fragment.xml" value="0.25" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/list_item.xml" value="0.12335359675785208" />
         <entry key="..\:/Programming/myfirst/app/src/main/res/layout/list_item2.xml" value="0.12335359675785208" />

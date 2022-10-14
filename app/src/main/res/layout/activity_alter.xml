@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@mipmap/b_4">
+    android:background="@mipmap/b_4"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/layout_titleBar_alter"
@@ -16,19 +16,19 @@
         android:orientation="horizontal">
 
         <TextView
-            android:alpha="0.6"
-            android:layout_gravity="center"
-            android:background="@drawable/shape_text"
             android:id="@+id/tv_title_alter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:gravity="center_horizontal|center"
             android:text="title"
             android:textColor="@android:color/black"
             android:textSize="24sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText,TextContrastCheck" />
 
     </LinearLayout>
 
@@ -40,33 +40,33 @@
         android:orientation="horizontal">
 
         <TextView
-            android:alpha="0.6"
-            android:background="@drawable/shape_text"
             android:id="@+id/tv_title_alter_text"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:alpha="0.6"
+            android:background="@drawable/shape_text"
             android:ellipsize="marquee"
             android:gravity="center_horizontal|center"
             android:text="title"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
+            android:textSize="18sp"
+            tools:ignore="HardcodedText,TextContrastCheck" />
 
         <EditText
-            android:alpha="0.6"
             android:id="@+id/et_title_alter_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
+            android:alpha="0.6"
             android:background="@drawable/shape_text"
             android:gravity="center_vertical|center"
             android:hint="text"
             android:paddingEnd="8dp"
             android:textColorHint="#546E7A"
             android:textSize="18sp"
-            tools:ignore="Autofill,HardcodedText,RtlSymmetry,TextFields" />
+            tools:ignore="Autofill,HardcodedText,RtlSymmetry,TextFields,TextContrastCheck" />
 
     </LinearLayout>
 
@@ -82,6 +82,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="500dp"
         android:text="@string/preservation"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
 </LinearLayout>

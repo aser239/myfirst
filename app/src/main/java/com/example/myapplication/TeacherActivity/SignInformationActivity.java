@@ -11,7 +11,6 @@ import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
@@ -19,24 +18,22 @@ import com.example.myapplication.Data.SignInformationData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Person;
-import com.example.myapplication.javaBean.SignInformation;
+import com.example.myapplication.JavaBean.SignInformation;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public class SignInformationActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,20 +44,20 @@ public class SignInformationActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignInformationActivity.this, TeacherSignInActivity.class));
+                startActivity(new Intent(SignInformationActivity.this,
+                        TeacherSignInActivity.class));
+                finish();
             }
         });
 
         page(CourseData.Detail.getId(), LoginData.loginUser.getId());
-
     }
 
     public static void page(int courseId, int userId) {
         new Thread(() -> {
-
             // url路径
-            String url = "http://47.107.52.7:88/member/sign/course/teacher/page?"+"courseId="+courseId+"&userId="+userId;
-
+            String url = "http://47.107.52.7:88/member/sign/course/teacher/page?" + "courseId=" +
+                    courseId + "&userId=" + userId;
             // 请求头
             Headers headers = new Headers.Builder()
                     .add("Accept", "application/json, text/plain, */*")
@@ -89,7 +86,7 @@ public class SignInformationActivity extends AppCompatActivity {
                         Type jsonType = new TypeToken<ResponseBody<SignInformation>>() {
                         }.getType();
                         // 获取响应体的json串
-                        String body = response.body().string();
+                        String body = Objects.requireNonNull(response.body()).string();
                         Log.d("info", body);
                         // 解析json串到自己封装的状态
                         Gson gson = new Gson();

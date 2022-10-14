@@ -5,7 +5,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
     <application
@@ -32,6 +34,9 @@
             android:name=".Activity.EnrollActivity"
             android:exported="false" />
         <activity
+            android:name=".TeacherActivity.SelectSignInCourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.WelcomeActivity"
             android:exported="true">
             <intent-filter>
@@ -53,7 +58,6 @@
         <activity android:name=".Activity.MessageActivity2" />
         <activity android:name=".Activity.MessageActivity3" />
         <activity android:name=".TeacherActivity.FinishedCourseActivity" />
-        <activity android:name=".Activity.SignlistActivity" />
+        <activity android:name=".Activity.SignListActivity" />
     </application>
-
 </manifest>

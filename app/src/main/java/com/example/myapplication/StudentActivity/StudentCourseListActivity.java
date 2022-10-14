@@ -12,17 +12,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.myapplication.Activity.MessageActivity2;
 import com.example.myapplication.Activity.MessageActivity3;
-import com.example.myapplication.Activity.SignlistActivity;
+import com.example.myapplication.Activity.SignListActivity;
 import com.example.myapplication.Adapter.StudentCourseAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
-import com.example.myapplication.javaBean.Course;
-import com.example.myapplication.javaBean.Records;
+import com.example.myapplication.JavaBean.Course;
+import com.example.myapplication.JavaBean.Records;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -40,15 +38,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class StudentCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    public static final String STUDENTCOURSE_MESSAGE_STRING = "com.example.myapplication.Activity.STUDENTCOURSE_INFO";
+    public static final String STUDENT_COURSE_MESSAGE_STRING = "com.example.myapplication.Activity.STUDENT_COURSE_INFO";
     private StudentCourseAdapter adapter2;
-    private List<Course> newsData2;
     private ListView lvNewsList2;
     public static int courseId;
     private ResponseBody<Records> dataResponseBody;
     public static boolean flag = false;
 
-    public StudentCourseListActivity(){
+    public StudentCourseListActivity() {
     }
 
     @Override
@@ -62,21 +59,21 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
     }
 
     private void initData2() {
-        newsData2 = new ArrayList<>();
+        List<Course> newsData2 = new ArrayList<>();
         adapter2 = new StudentCourseAdapter(StudentCourseListActivity.this,
                 R.layout.list_item2, newsData2);
 
         lvNewsList2.setAdapter(adapter2);
-        getCourse(1,5, LoginData.loginUser.getId());
+        getCourse(1, 5, LoginData.loginUser.getId());
 
     }
 
-    public void getCourse(int current, int size,int userId) {
+    public void getCourse(int current, int size, int userId) {
         // url路径
-        String url = "http://47.107.52.7:88/member/sign/course/student?"+
+        String url = "http://47.107.52.7:88/member/sign/course/student?" +
                 "current=" + current +
-                "&size=" + size+
-                "&userId="+userId;
+                "&size=" + size +
+                "&userId=" + userId;
         // 请求头
         Headers headers = new Headers.Builder()
                 .add("appId", Api.appId)
@@ -113,25 +110,23 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
             String body = Objects.requireNonNull(response.body()).string();
             Log.d("学生选课列表：", body);
 
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Gson gson = new Gson();
-                    Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
-                    // 解析json串到自己封装的状态
-                    dataResponseBody = gson.fromJson(body, jsonType);
+            runOnUiThread(() -> {
+                Gson gson = new Gson();
+                Type jsonType = new TypeToken<ResponseBody<Records>>() {
+                }.getType();
+                // 解析json串到自己封装的状态
+                dataResponseBody = gson.fromJson(body, jsonType);
 
-                    if (dataResponseBody.getData()!=null) {
-                        for (Course news : dataResponseBody.getData().getRecords()) {
-                            adapter2.add(news);
-                        }
-                        adapter2.notifyDataSetChanged();
-                    }else {
-                        Toast.makeText(StudentCourseListActivity.this,"还没有选课！", Toast.LENGTH_SHORT).show();
-                        finish();
+                if (dataResponseBody.getData() != null) {
+                    for (Course news : dataResponseBody.getData().getRecords()) {
+                        adapter2.add(news);
                     }
-
+                    adapter2.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(StudentCourseListActivity.this, "还没有选课！", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
+
             });
         }
     };
@@ -140,11 +135,11 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
         if (flag) {
-            startActivity(new Intent(StudentCourseListActivity.this, SignlistActivity.class));
+            startActivity(new Intent(StudentCourseListActivity.this, SignListActivity.class));
             finish();
-        }else {
+        } else {
             Intent intent = new Intent(StudentCourseListActivity.this, MessageActivity3.class);
-            intent.putExtra(STUDENTCOURSE_MESSAGE_STRING, Integer.toString(courseId));
+            intent.putExtra(STUDENT_COURSE_MESSAGE_STRING, Integer.toString(courseId));
             startActivity(intent);
             finish();
         }

@@ -3,13 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/b_2"
     android:orientation="vertical"
-    tools:context=".ui.TeacherCourseFragment"
-    android:background="@mipmap/b_2">
-
+    tools:context=".Fragment.TeacherCourseFragment">
 
     <Button
-        android:background="@drawable/shap_course"
         android:id="@+id/enterTeacherHaveClassList"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -17,6 +15,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/shap_course"
         android:text="教师已结课课程列表"
         android:textSize="30sp" />
 
@@ -33,14 +32,14 @@
         android:textSize="30sp" />
 
     <Button
-        android:background="@drawable/shap_course"
         android:id="@+id/enterTeacherAddCourse"
-        android:text="教师添加课程"
-        android:textSize="30sp"
-        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        android:background="@drawable/shap_course"
+        android:text="教师添加课程"
+        android:textSize="30sp" />
 </LinearLayout>

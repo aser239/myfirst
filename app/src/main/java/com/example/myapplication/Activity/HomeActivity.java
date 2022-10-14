@@ -1,34 +1,30 @@
 package com.example.myapplication.Activity;
 
-import androidx.annotation.NonNull;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
-
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
-import com.example.myapplication.ui.StudentCourseFragment;
-import com.example.myapplication.ui.StudentSignFragment;
-import com.example.myapplication.ui.MeFragment;
-import com.example.myapplication.ui.TeacherCourseFragment;
-import com.example.myapplication.ui.TeacherSigninFragment;
+import com.example.myapplication.Fragment.MeFragment;
+import com.example.myapplication.Fragment.StudentCourseFragment;
+import com.example.myapplication.Fragment.StudentSignFragment;
+import com.example.myapplication.Fragment.TeacherCourseFragment;
+import com.example.myapplication.Fragment.TeacherSignInFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeActivity extends AppCompatActivity {
-
-    private BottomNavigationView mNavView ;
-    private FrameLayout mNavContainer;
     private StudentCourseFragment mStudentCourseFragment;
     private StudentSignFragment mStudentSignFragment;
+    @SuppressLint("StaticFieldLeak")
     public static MeFragment mMeFragment;
     private TeacherCourseFragment mTeacherCourseFragment;
-    private TeacherSigninFragment mTeacherSigninFragment;
+    private TeacherSignInFragment mTeacherSignInFragment;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,13 +34,13 @@ public class HomeActivity extends AppCompatActivity {
         if (id == 1) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.nav_container,new MeFragment())
+                    .replace(R.id.nav_container, new MeFragment())
                     .addToBackStack(null)
                     .commit();
-        }else if (id == 2){
+        } else if (id == 2) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.nav_container,new TeacherCourseFragment())
+                    .replace(R.id.nav_container, new TeacherCourseFragment())
                     .addToBackStack(null)
                     .commit();
         }
@@ -53,49 +49,41 @@ public class HomeActivity extends AppCompatActivity {
         mStudentSignFragment = new StudentSignFragment();
         mStudentCourseFragment = new StudentCourseFragment();
         mTeacherCourseFragment = new TeacherCourseFragment();
-        mTeacherSigninFragment = new TeacherSigninFragment();
-        mNavContainer = findViewById(R.id.nav_container);
-        mNavView=findViewById(R.id.nav_view);
+        mTeacherSignInFragment = new TeacherSignInFragment();
+        BottomNavigationView mNavView = findViewById(R.id.nav_view);
 
         if (LoginData.loginUser.getRoleId() == 1) {
             switchFragment(mTeacherCourseFragment);
-        }else if (LoginData.loginUser.getRoleId() == 0){
+        } else if (LoginData.loginUser.getRoleId() == 0) {
             switchFragment(mStudentCourseFragment);
         }
 
-
-        mNavView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (item.getItemId()){
-                    case R.id.nav_item_course:
-                        if (LoginData.loginUser.getRoleId() == 1) {
-                            switchFragment(mTeacherCourseFragment);
-                        }else if (LoginData.loginUser.getRoleId() == 0){
-                            switchFragment(mStudentCourseFragment);
-                        }
-                        break;
-                    case R.id.nav_item_me:
-                            switchFragment(mMeFragment);
-                        break;
-                    case R.id.nav_item_sign:
-                        if (LoginData.loginUser.getRoleId() == 1) {
-                            switchFragment(mTeacherSigninFragment);
-                        }else if (LoginData.loginUser.getRoleId() == 0){
-                            switchFragment(mStudentSignFragment);
-                        }
-                        break;
-                }
-                return true;
+        mNavView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_item_course:
+                    if (LoginData.loginUser.getRoleId() == 1) {
+                        switchFragment(mTeacherCourseFragment);
+                    } else if (LoginData.loginUser.getRoleId() == 0) {
+                        switchFragment(mStudentCourseFragment);
+                    }
+                    break;
+                case R.id.nav_item_me:
+                    switchFragment(mMeFragment);
+                    break;
+                case R.id.nav_item_sign:
+                    if (LoginData.loginUser.getRoleId() == 1) {
+                        switchFragment(mTeacherSignInFragment);
+                    } else if (LoginData.loginUser.getRoleId() == 0) {
+                        switchFragment(mStudentSignFragment);
+                    }
+                    break;
             }
+            return true;
         });
-
     }
 
-    private void switchFragment(Fragment fragment){
+    private void switchFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.nav_container,fragment).commitNow();
+        transaction.replace(R.id.nav_container, fragment).commitNow();
     }
-
 }

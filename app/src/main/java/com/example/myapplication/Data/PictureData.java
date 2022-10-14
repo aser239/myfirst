@@ -1,6 +1,6 @@
 package com.example.myapplication.Data;
 
-import com.example.myapplication.javaBean.Picture;
+import com.example.myapplication.JavaBean.Picture;
 
 public class PictureData {
     public static Object picture = null;

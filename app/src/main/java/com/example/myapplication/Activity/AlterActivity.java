@@ -19,8 +19,8 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Data;
-import com.example.myapplication.ui.MeFragment;
+import com.example.myapplication.JavaBean.Data;
+import com.example.myapplication.Fragment.MeFragment;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class AlterActivity extends AppCompatActivity {
             tv_title_alter.setText(info);
             tv_title_alter_text.setText(info);
             if (info.equals("性别")) {
-                et_title_alter_text.setHint(info + "格式：男 或 女");
+                et_title_alter_text.setHint("格式：男 女 or male female");
             } else if (info.equals("入校时间")) {
                 et_title_alter_text.setHint("时间格式：yyyyMMDD");
             } else {
@@ -79,7 +79,7 @@ public class AlterActivity extends AppCompatActivity {
                     } else if (info.equals("手机号") && !IsPhoneNumber(newData)) {
                         Toast.makeText(AlterActivity.this, "手机号格式错误！",
                                 Toast.LENGTH_SHORT).show();
-                    }  else if (info.equals("入校时间") && !IsDate(newData)) {
+                    } else if (info.equals("入校时间") && !IsDate(newData)) {
                         Toast.makeText(AlterActivity.this, "日期格式错误！",
                                 Toast.LENGTH_SHORT).show();
                     } else if (info.equals("性别") && !IsGender(newData)) {
@@ -112,9 +112,9 @@ public class AlterActivity extends AppCompatActivity {
                 realName = data;
                 break;
             case "性别":
-                if (data.equals("男")) {
+                if (data.equals("男") | data.equals("male")) {
                     gender = true;
-                } else if (data.equals("女")) {
+                } else if (data.equals("女") | data.equals("female")) {
                     gender = false;
                 }
                 break;
@@ -144,9 +144,9 @@ public class AlterActivity extends AppCompatActivity {
                 LoginData.loginUser.setRealName(data);
                 break;
             case "性别":
-                if (data.equals("男")) {
+                if (data.equals("男") | data.equals("male")) {
                     LoginData.loginUser.setGender(true);
-                } else if (data.equals("女")) {
+                } else if (data.equals("女") | data.equals("female")) {
                     LoginData.loginUser.setGender(false);
                 }
                 break;
@@ -172,7 +172,6 @@ public class AlterActivity extends AppCompatActivity {
             Bundle bundle = msg.getData();
             int alterCode = bundle.getInt("code");
             if (alterCode == 200) {
-                System.out.println("hello");
                 UpdateData(info, newData);
                 Toast.makeText(AlterActivity.this, "修改成功！",
                         Toast.LENGTH_SHORT).show();
@@ -238,7 +237,7 @@ public class AlterActivity extends AppCompatActivity {
                         // 获取响应体的json串
                         assert response.body() != null;
                         String body = Objects.requireNonNull(response.body()).string();
-                        Log.d("info", body);
+                        Log.d("修改用户信息：", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Data> dataResponseBody = Api.gson.fromJson(body, jsonType);
                         Message message = new Message();
@@ -264,11 +263,6 @@ public class AlterActivity extends AppCompatActivity {
         return checkInfo.matches(regex);
     }
 
-    private boolean IsRealName(String checkInfo) {
-        String regex = "^[\u4e00-\u9fa5]{2,4}$";
-        return checkInfo.matches(regex);
-    }
-
     private boolean IsDate(String checkInfo) {
         String regex = "((\\d{3}[1-9]|\\d{2}[1-9]\\d|\\d[1-9]\\d{2}|[1-9]\\d{3})(((0[13578]|1[02])(0[1-9]|[12]\\d|3[01]))|((0[469]|11)(0[1-9]|[12]\\d|30))|(02(0[1-9]|[1]\\d|2[0-8]))))|(((\\d{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))0229)";
         return checkInfo.matches(regex);
@@ -277,6 +271,8 @@ public class AlterActivity extends AppCompatActivity {
     private boolean IsGender(String checkInfo) {
         boolean f1 = checkInfo.matches("男");
         boolean f2 = checkInfo.matches("女");
-        return (f1 & !f2) | (!f1 & f2);
+        boolean f3 = checkInfo.matches("male");
+        boolean f4 = checkInfo.matches("female");
+        return ((f1 & !f2) | (!f1 & f2)) | ((f3 & !f4) | (!f3 & f4));
     }
 }

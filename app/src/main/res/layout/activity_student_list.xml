@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/b_5"
     android:orientation="vertical"
-    tools:context=".StudentActivity.StudentListActivity"
-    android:background="@mipmap/b_5">
+    tools:context=".StudentActivity.StudentListActivity">
 
     <TextView
         android:id="@+id/CourseID22"
@@ -25,27 +23,23 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="15dp"
-        android:layout_toEndOf="@+id/CourseID22"
         android:alpha="0.6"
+        android:autofillHints=""
         android:background="@drawable/shape_text"
         android:inputType="text"
         android:maxLines="1"
-        android:selectAllOnFocus="true" />
-
-
+        android:selectAllOnFocus="true"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:alpha="0.7"
-        android:background="@drawable/shape_addcourse"
         android:id="@+id/btdian"
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
-        android:textSize="32sp"
+        android:alpha="0.7"
+        android:background="@drawable/shape_addcourse"
         android:text="确定"
-        />
-
-
+        android:textSize="32sp" />
 </LinearLayout>

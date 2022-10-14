@@ -10,31 +10,27 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Course;
+import com.example.myapplication.JavaBean.Course;
 
 import java.util.List;
 
 public class StudentCourseAdapter extends ArrayAdapter<Course> {
-    private final List<Course> mNewsData;
     private final Context mContext;
     private final int resourceId;
-    private String goodUrls;
-    private String CourseName;
 
     public StudentCourseAdapter(Context context,
-                             int resourceId, List<Course> data) {
+                                int resourceId, List<Course> data) {
         super(context, resourceId, data);
         this.mContext = context;
-        this.mNewsData = data;
         this.resourceId = resourceId;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Course news = getItem(position);
-        goodUrls = news.getCoursePhoto();
-        CourseName = news.getCourseName();
-        View view ;
+        String goodUrls = news.getCoursePhoto();
+        String courseName = news.getCourseName();
+        View view;
         final StudentCourseAdapter.ViewHolder vh;
         if (convertView == null) {
             view = LayoutInflater.from(getContext())
@@ -49,11 +45,9 @@ public class StudentCourseAdapter extends ArrayAdapter<Course> {
         }
         Glide.with(mContext).load(goodUrls)
                 .into(vh.ivImage2);
-        vh.txCourseName2.setText(CourseName);
+        vh.txCourseName2.setText(courseName);
         return view;
     }
-
-
 
     static class ViewHolder {
         ImageView ivImage2;

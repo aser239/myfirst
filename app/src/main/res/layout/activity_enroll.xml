@@ -162,7 +162,7 @@
                 android:layout_marginStart="40dp"
                 android:text="已有账号？点击此登录"
                 android:textColor="@color/DodgerBlue"
-                tools:ignore="HardcodedText,RelativeOverlap" />
+                tools:ignore="HardcodedText,RelativeOverlap,TextContrastCheck" />
         </RadioGroup>
     </RelativeLayout>
 

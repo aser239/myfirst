@@ -3,32 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/b_2"
     android:orientation="vertical"
-    tools:context=".ui.StudentCourseFragment"
-    android:background="@mipmap/b_2">
+    tools:context=".Fragment.StudentCourseFragment">
 
     <Button
-        android:background="@drawable/shap_course"
         android:id="@+id/enterSelectCourse222"
-        android:text="学生选课"
-        android:textSize="32sp"
-        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
-
+        android:background="@drawable/shap_course"
+        android:text="学生选课"
+        android:textSize="32sp" />
 
     <Button
-        android:background="@drawable/shap_course"
         android:id="@+id/enterCourseList222"
-        android:text="学生查看课程列表"
-        android:textSize="32sp"
-        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
-
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shap_course"
+        android:text="学生查看课程列表"
+        android:textSize="32sp" />
 </LinearLayout>

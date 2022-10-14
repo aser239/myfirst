@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.WelcomeActivity"
     android:background="@mipmap/b_welcome"
-    >
+    tools:context=".Activity.WelcomeActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        tools:ignore="UselessParent">
+
         <TextView
-            android:alpha="0.5"
-            android:layout_marginTop="50dp"
-            android:text="课堂考勤系统"
             android:id="@+id/tv"
             android:layout_width="40sp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:alpha="0.5"
+            android:text="课堂考勤系统"
             android:textColor="@color/black"
             android:textSize="40sp" />
     </RelativeLayout>

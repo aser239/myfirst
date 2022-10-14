@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/b_5"
     android:orientation="vertical"
-    tools:context=".Activity.UploadActivity"
-    android:background="@mipmap/b_5">
+    tools:context=".Activity.UploadActivity">
 
     <ImageView
         android:id="@+id/bt_upload"
@@ -17,14 +17,13 @@
         tools:ignore="ContentDescription" />
 
     <Button
-        android:background="@drawable/shape_addcourse"
         android:id="@+id/bt_upload_ok"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="100dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="50dp"
+        android:background="@drawable/shape_addcourse"
         android:text="确定上传"
         android:textSize="24sp" />
-
 </LinearLayout>

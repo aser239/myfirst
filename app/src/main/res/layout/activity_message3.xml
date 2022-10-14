@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Activity.MessageActivity3"
-    android:orientation="vertical"
     android:background="@mipmap/b_3"
-    >
+    android:orientation="vertical"
+    tools:context=".Activity.MessageActivity3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,21 +13,22 @@
         android:orientation="vertical">
 
         <Button
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/shape_addcourse"
             android:id="@+id/Back3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="返回"/>
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_addcourse"
+            android:text="返回" />
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,43 +36,44 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_collegeName44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="课程名："
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
+
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_courseName44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
         </LinearLayout>
 
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -84,213 +84,214 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_fiTime44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
-
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
+                android:minHeight="48dp"
                 android:text="课程简介："
                 android:textSize="20sp"
-                />
+                tools:ignore="TextViewEdits" />
+
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_introduce44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="当前登录真实姓名："
-                android:textSize="20sp"
-                />
+                android:text="创建者真实姓名："
+                android:textSize="20sp" />
+
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_realName44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="课程开始时间："
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_stTime44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
-
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="用户名："
-                android:textSize="20sp"
-                />
+                android:text="创建者用户名："
+                android:textSize="20sp" />
 
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_userName44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
-
         </LinearLayout>
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="创建时间："
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_CreateTime44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
-
         </LinearLayout>
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="主键ID："
-                android:textSize="20sp"
-                />
-
-            <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
-                android:id="@+id/tx_id44"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="课程图片："
                 android:textSize="20sp" />
 
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
-                android:id="@+id/tx_photo44"
+                android:id="@+id/tx_id44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
-
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="课程图片："
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/tx_photo44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hasSelect3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="是否已选择当前课程："
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
-                android:alpha="0.6"
-                android:background="@drawable/shape_text"
                 android:id="@+id/tx_choose44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:background="@drawable/shape_text"
                 android:textSize="18sp" />
-
-
         </LinearLayout>
 
         <Button
-            android:background="@drawable/shape_addcourse"
             android:id="@+id/Quit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="50dp"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_horizontal"
-            android:text="退出课程"/>
-
+            android:background="@drawable/shape_addcourse"
+            android:text="退出课程" />
     </LinearLayout>
 </ScrollView>

@@ -7,21 +7,18 @@ import android.os.Message;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
+import com.example.myapplication.JavaBean.Course;
+import com.example.myapplication.JavaBean.Records;
+import com.example.myapplication.JavaBean.Records2;
+import com.example.myapplication.JavaBean.Records2Detail;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Course;
-import com.example.myapplication.javaBean.Records;
-import com.example.myapplication.javaBean.Records2;
-import com.example.myapplication.javaBean.Records2Detail;
-import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -37,8 +34,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class StudentListActivity extends AppCompatActivity {
-    private Button btdian;
-    private EditText courseId;
     private ResponseBody<Records2> records2ResponseBody;
     private ResponseBody<Records> recordsResponseBody;
     private static ArrayList<Integer> studentJoinedCourseId;
@@ -51,12 +46,9 @@ public class StudentListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
 
-        btdian = findViewById(R.id.btdian);
-        courseId = findViewById(R.id.et_CourseID22);
+        Button bt_dian = findViewById(R.id.btdian);
 
-        btdian.setOnClickListener(v -> {
-            StudentGetJoinedCourse(LoginData.loginUser.getId());
-        });
+        bt_dian.setOnClickListener(v -> StudentGetJoinedCourse(LoginData.loginUser.getId()));
     }
 
     private final Handler handler1 = new Handler(Looper.getMainLooper()) {

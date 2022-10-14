@@ -10,14 +10,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapter.FinishedCourseAdapter;
-import com.example.myapplication.Adapter.UnfinishCourseAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.StudentActivity.StudentSignInActivity;
-import com.example.myapplication.javaBean.Course;
-import com.example.myapplication.javaBean.Records;
+import com.example.myapplication.JavaBean.Course;
+import com.example.myapplication.JavaBean.Records;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -35,15 +33,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class FinishedCourseActivity extends AppCompatActivity {
-
     private FinishedCourseAdapter adapter4;
-    private List<Course> newsData4;
     private ListView lvNewsList4;
     public static int courseId;
     private ResponseBody<Records> dataResponseBody;
 
     public FinishedCourseActivity() {
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,25 +48,23 @@ public class FinishedCourseActivity extends AppCompatActivity {
         lvNewsList4 = findViewById(R.id.lv_news_list55);
 
         initData();
-
     }
 
     private void initData() {
-        newsData4 = new ArrayList<>();
+        List<Course> newsData4 = new ArrayList<>();
         adapter4 = new FinishedCourseAdapter(FinishedCourseActivity.this,
                 R.layout.list_item4, newsData4);
 
         lvNewsList4.setAdapter(adapter4);
-        MyCourses(1,5, LoginData.loginUser.getId());
-
+        MyCourses(1, 5, LoginData.loginUser.getId());
     }
 
 
-    public void MyCourses(int current, int size,int userId) {
+    public void MyCourses(int current, int size, int userId) {
         // url路径
-        String url = "http://47.107.52.7:88/member/sign/course/teacher/finished?"+
+        String url = "http://47.107.52.7:88/member/sign/course/teacher/finished?" +
                 "current=" + current +
-                "&size=" + size+"&userId="+userId;
+                "&size=" + size + "&userId=" + userId;
         // 请求头
         Headers headers = new Headers.Builder()
                 .add("appId", Api.appId)
@@ -92,6 +87,7 @@ public class FinishedCourseActivity extends AppCompatActivity {
             ex.printStackTrace();
         }
     }
+
     public final Callback callback = new Callback() {
         @Override
         public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -105,23 +101,21 @@ public class FinishedCourseActivity extends AppCompatActivity {
             String body = Objects.requireNonNull(response.body()).string();
             Log.d("未结课程列表：", body);
 
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Gson gson = new Gson();
-                    Type jsonType = new TypeToken<ResponseBody<Records>>() {}.getType();
-                    // 解析json串到自己封装的状态
-                    dataResponseBody = gson.fromJson(body, jsonType);
+            runOnUiThread(() -> {
+                Gson gson = new Gson();
+                Type jsonType = new TypeToken<ResponseBody<Records>>() {
+                }.getType();
+                // 解析json串到自己封装的状态
+                dataResponseBody = gson.fromJson(body, jsonType);
 
-                    if (dataResponseBody.getData()!=null){
-                        for (Course news:dataResponseBody.getData().getRecords()) {
-                            adapter4.add(news);
-                        }
-                        adapter4.notifyDataSetChanged();
-                    }else {
-                        Toast.makeText(FinishedCourseActivity.this,"未有已结课课程！", Toast.LENGTH_SHORT).show();
+                if (dataResponseBody.getData() != null) {
+                    for (Course news : dataResponseBody.getData().getRecords()) {
+                        adapter4.add(news);
                     }
-
+                    adapter4.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(FinishedCourseActivity.this, "未有已结课课程！",
+                            Toast.LENGTH_SHORT).show();
                 }
             });
         }

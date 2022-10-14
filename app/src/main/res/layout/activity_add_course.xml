@@ -2,10 +2,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".TeacherActivity.AddCourseActivity"
+    android:layout_height="match_parent"
+    android:background="@mipmap/b_3"
     android:orientation="vertical"
-    android:background="@mipmap/b_3">
+    tools:context=".TeacherActivity.AddCourseActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,18 +13,18 @@
         android:orientation="vertical">
 
         <Button
-            android:background="@drawable/shape_addcourse"
             android:id="@+id/addCourseReturnToCourse33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="返回"/>
+            android:background="@drawable/shape_addcourse"
+            android:text="返回" />
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -32,7 +32,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-
                 android:text="院校名："
                 android:textSize="20sp" />
 
@@ -41,19 +40,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/collegeName2"
+                android:autofillHints=""
                 android:inputType="text"
                 android:maxLines="1"
-                android:selectAllOnFocus="true" />
-
-
+                android:selectAllOnFocus="true"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -61,7 +60,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-
                 android:text="课程名："
                 android:textSize="20sp" />
 
@@ -70,18 +68,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/CourseName2"
-
+                android:autofillHints=""
                 android:inputType="text"
                 android:maxLines="1"
-                android:selectAllOnFocus="true" />
+                android:selectAllOnFocus="true"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -90,8 +89,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:inputType="textUri"
+                android:minHeight="48dp"
                 android:text="课程图片："
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="TextViewEdits" />
 
             <EditText
                 android:id="@+id/et_photo"
@@ -99,10 +100,13 @@
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@+id/bt_photo"
                 android:layout_toEndOf="@+id/TX_photo"
+                android:autofillHints=""
                 android:gravity="center"
                 android:inputType="text"
                 android:maxLines="1"
-                android:selectAllOnFocus="true" />
+                android:minHeight="48dp"
+                android:selectAllOnFocus="true"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/bt_photo"
@@ -111,20 +115,14 @@
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/shape_addcourse"
                 android:text="选择图片" />
-
-
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:text="跳转至图片上传" />-->
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -139,29 +137,32 @@
                 android:id="@+id/et_fiTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_toStartOf="@+id/bt_fiTime"
                 android:layout_toEndOf="@+id/tx_fiCourse"
+                android:autofillHints=""
                 android:gravity="center"
                 android:inputType="text"
                 android:maxLines="1"
-                android:selectAllOnFocus="true" />
+                android:minHeight="48dp"
+                android:selectAllOnFocus="true"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
             <Button
-                android:background="@drawable/shape_addcourse"
                 android:id="@+id/bt_fiTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="选择时间" />
+                android:background="@drawable/shape_addcourse"
+                android:text="选择时间"
+                tools:ignore="DuplicateSpeakableTextCheck" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -169,53 +170,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-
                 android:inputType="textMultiLine"
                 android:text="课程简介："
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="TextViewEdits,TouchTargetSizeCheck" />
 
             <EditText
                 android:id="@+id/et_introduce"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@+id/CourseIntroduce"
+                android:autofillHints=""
                 android:inputType="text"
                 android:maxLines="1"
-                android:selectAllOnFocus="true" />
+                android:selectAllOnFocus="true"
+                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/RealName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="当前登录真实姓名："
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/et_realName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toEndOf="@+id/RealName"
-                android:inputType="text"
-                android:maxLines="1"
-                android:selectAllOnFocus="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
@@ -234,10 +211,13 @@
                 android:layout_marginEnd="2dp"
                 android:layout_toStartOf="@+id/bt_stTime"
                 android:layout_toEndOf="@+id/tx_stCourse"
+                android:autofillHints=""
                 android:gravity="center"
                 android:inputType="text"
+                android:maxLines="1"
+                android:minHeight="48dp"
                 android:selectAllOnFocus="true"
-                android:maxLines="1" />
+                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/bt_stTime"
@@ -247,44 +227,6 @@
                 android:background="@drawable/shape_addcourse"
                 android:text="选择时间" />
         </RelativeLayout>
-
-<!--        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="用户ID："
-                android:textSize="30sp"
-                />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="用户名："
-                android:textSize="30sp"
-                />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-        </LinearLayout>-->
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -315,7 +257,5 @@
                 android:text="查看课程"
                 android:textSize="20sp" />
         </RelativeLayout>
-
-
     </LinearLayout>
 </ScrollView>

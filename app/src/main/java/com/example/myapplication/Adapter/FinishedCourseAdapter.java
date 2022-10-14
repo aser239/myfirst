@@ -4,40 +4,33 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.bumptech.glide.Glide;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Course;
+import com.example.myapplication.JavaBean.Course;
 
 import java.util.List;
 
-public class FinishedCourseAdapter extends ArrayAdapter<Course>{
-    private final List<Course> mNewsData;
+public class FinishedCourseAdapter extends ArrayAdapter<Course> {
     private final Context mContext;
     private final int resourceId;
-    private String goodUrls;
-    private String CourseName;
 
     public FinishedCourseAdapter(Context context,
                                  int resourceId, List<Course> data) {
         super(context, resourceId, data);
         this.mContext = context;
-        this.mNewsData = data;
         this.resourceId = resourceId;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Course news = getItem(position);
-        goodUrls = news.getCoursePhoto();
-        CourseName = news.getCourseName();
-        View view ;
+        String goodUrls = news.getCoursePhoto();
+        String courseName = news.getCourseName();
+        View view;
         final FinishedCourseAdapter.ViewHolder vh;
         if (convertView == null) {
             view = LayoutInflater.from(getContext())
@@ -52,10 +45,9 @@ public class FinishedCourseAdapter extends ArrayAdapter<Course>{
         }
         Glide.with(mContext).load(goodUrls)
                 .into(vh.ivImage);
-        vh.txCourseName.setText(CourseName);
+        vh.txCourseName.setText(courseName);
         return view;
     }
-
 
     static class ViewHolder {
         ImageView ivImage;

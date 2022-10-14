@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SignlistActivity"
+    tools:context=".Activity.SignListActivity"
     android:background="@mipmap/b_1">
 
     <ListView
@@ -16,5 +14,4 @@
         android:scrollbars="none"
         android:divider="@color/purple_200"
         android:dividerHeight="2dp" />
-
 </LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!--<item
         android:id="@+id/nav_item_home"
@@ -12,18 +12,17 @@
         android:id="@+id/nav_item_course"
         android:icon="@drawable/ic_course"
         android:title="@string/course"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/nav_item_sign"
         android:icon="@drawable/ic_sign"
         android:title="@string/sign"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/nav_item_me"
         android:icon="@drawable/ic_me"
         android:title="@string/me"
-        app:showAsAction="always" />
-
+        app:showAsAction="ifRoom" />
 </menu>

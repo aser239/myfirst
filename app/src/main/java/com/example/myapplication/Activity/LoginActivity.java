@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,14 +21,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.javaBean.Person;
+import com.example.myapplication.JavaBean.Person;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
@@ -215,7 +213,7 @@ public class LoginActivity extends AppCompatActivity {
                         }.getType();
                         // 获取响应体的json串
                         String body = Objects.requireNonNull(response.body()).string();
-                        Log.d("info", body);
+                        Log.d("登录信息：", body);
                         // 解析json串到自己封装的状态
                         ResponseBody<Person> dataResponseBody = Api.gson.fromJson(body, jsonType);
                         LoginData.loginUser = dataResponseBody.getData();

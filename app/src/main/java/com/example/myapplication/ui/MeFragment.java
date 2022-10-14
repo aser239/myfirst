@@ -15,14 +15,10 @@ import android.widget.TextView;
 
 import com.example.myapplication.Activity.AlterActivity;
 import com.example.myapplication.Activity.LoginActivity;
-import com.example.myapplication.Activity.PersonInfoActivity;
 import com.example.myapplication.Activity.UploadActivity;
-import com.example.myapplication.Activity.WelcomeActivity;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -50,7 +50,6 @@ public class StudentSignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        SignId = findViewById(R.id.signId);
         tv_sign_in_psw = findViewById(R.id.tv_sign_in_psw);
         bt_sign_in = findViewById(R.id.bt_sign_in);
         btBack = findViewById(R.id.Back4);

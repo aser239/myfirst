@@ -135,5 +135,6 @@ public class UnfinishedCourseActivity extends AppCompatActivity implements Adapt
         Intent intent = new Intent(UnfinishedCourseActivity.this, MessageActivity.class);
         intent.putExtra(UNFINISHED_MESSAGE_STRING,Integer.toString(courseId));
         startActivity(intent);
+        finish();
     }
 }

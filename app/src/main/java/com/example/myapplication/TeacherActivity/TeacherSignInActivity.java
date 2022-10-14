@@ -65,8 +65,6 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
 
         CourseAddr = findViewById(R.id.Addr);
         total = findViewById(R.id.people);
-        courseId = findViewById(R.id.et_CourseID33);
-        courseName = findViewById(R.id.et_courseName33);
         userId = findViewById(R.id.userId33);
         signCode = findViewById(R.id.Signpassword33);
 
@@ -89,8 +87,6 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
                         CourseAddr.getText().toString().equals("")||
                         signCode.getText().toString().equals("")||
                         userId.getText().toString().equals("")||
-                        courseId.getText().toString().equals("")||
-                        courseName.getText().toString().equals("")||
                         total.getText().toString().equals("")
 
                 ){
@@ -102,17 +98,9 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
                     String addr = CourseAddr.getText().toString();
                     int Code = Integer.parseInt(signCode.getText().toString());
                     String userID = userId.getText().toString();
-                    String CourseID = courseId.getText().toString();
-                    String CourseName = courseName.getText().toString();
                     String Total = total.getText().toString();
 
-                    if (!Objects.equals(SignInformationData.Information.getCourseId(), Integer.parseInt(CourseID))){
-                        Toast.makeText(TeacherSignInActivity.this,"输入与所选课程ID不匹配！", Toast.LENGTH_SHORT).show();
-
-                    }else if (!Objects.equals(SignInformationData.Information.getCourseName(), CourseName)){
-                        Toast.makeText(TeacherSignInActivity.this,"输入与所选课程名不匹配！", Toast.LENGTH_SHORT).show();
-
-                    } else if (!Objects.equals(SignInformationData.Information.getCourseNum(), Total)||Total.equals("0")){
+                    if (!Objects.equals(SignInformationData.Information.getCourseNum(), Total)||Total.equals("0")){
                         Toast.makeText(TeacherSignInActivity.this,"输入与选课人数不匹配或者未选课！", Toast.LENGTH_SHORT).show();
 
                     }else if(!Objects.equals(LoginData.loginUser.getId(), Integer.parseInt(userID))){
@@ -121,12 +109,9 @@ public class TeacherSignInActivity extends AppCompatActivity implements View.OnC
 
                     }else {
                         int Total2 = Integer.parseInt(Total);
-                        int CourseID2 = Integer.parseInt(CourseID);
                         int userID2 = Integer.parseInt(userID);
-                        Api.Sign(startTime2, addr, CourseID2, CourseName, endTime2, Code, Total2, userID2);
+                        Api.Sign(startTime2, addr, SignInformationData.Information.getCourseId(),SignInformationData.Information.getCourseName(), endTime2, Code, Total2, userID2);
                         Toast.makeText(TeacherSignInActivity.this,"发起签到成功！", Toast.LENGTH_SHORT).show();
-                        TeacherSignInActivity.CourseID3 = CourseID2;
-                        System.out.println(TeacherSignInActivity.CourseID3 );
                         finish();
 
                     }

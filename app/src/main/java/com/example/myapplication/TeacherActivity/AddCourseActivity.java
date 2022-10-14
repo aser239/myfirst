@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.Activity.HomeActivity;
 import com.example.myapplication.Activity.UploadActivity;
+import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Data.PictureData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.R;
@@ -118,8 +119,13 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                     String CourseName = etCourseName.getText().toString();
                     String Introduce = etIntroduce.getText().toString();
                     String RealName = etRealName.getText().toString();
-
-                    Api.AddCourse(CollegeName, CourseName, CoursePhoto, Introduce, endTime, RealName, startTime);
+                    if (!RealName.equals(LoginData.loginUser.getRealName())){
+                        Toast.makeText(AddCourseActivity.this,"真实姓名未设置或者输入不匹配！", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Api.AddCourse(CollegeName, CourseName, CoursePhoto, Introduce, endTime, RealName, startTime);
+                        Toast.makeText(AddCourseActivity.this, "添加课程成功！", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
 
             }

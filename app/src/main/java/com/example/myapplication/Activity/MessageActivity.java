@@ -147,8 +147,6 @@ public class MessageActivity extends AppCompatActivity {
 
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
-            Log.d("详情：", body);
-
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {

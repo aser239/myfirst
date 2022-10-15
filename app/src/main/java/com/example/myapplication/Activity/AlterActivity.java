@@ -52,14 +52,12 @@ public class AlterActivity extends AppCompatActivity {
 
     private void Init() {
         TextView tv_title_alter = findViewById(R.id.tv_title_alter);
-        TextView tv_title_alter_text = findViewById(R.id.tv_title_alter_text);
         EditText et_title_alter_text = findViewById(R.id.et_title_alter_text);
         Intent intent = getIntent();
         info = intent.getStringExtra(MeFragment.MESSAGE_STRING);
         Button login_preservation = findViewById(R.id.login_preservation);
         if (info != null) {
             tv_title_alter.setText(info);
-            tv_title_alter_text.setText(info);
             if (info.equals("性别")) {
                 et_title_alter_text.setHint("格式：男 女 or male female");
             } else if (info.equals("入校时间")) {

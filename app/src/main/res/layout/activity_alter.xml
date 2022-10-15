@@ -19,7 +19,6 @@
             android:id="@+id/tv_title_alter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:alpha="0.6"
@@ -41,7 +40,7 @@
 
         <TextView
             android:id="@+id/tv_title_alter_text"
-            android:layout_width="100dp"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:alpha="0.6"
@@ -55,10 +54,10 @@
 
         <EditText
             android:id="@+id/et_title_alter_text"
-            android:layout_width="0dp"
+            android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
+            android:layout_marginStart="50dp"
+            android:layout_gravity="center"
             android:alpha="0.6"
             android:background="@drawable/shape_text"
             android:gravity="center_vertical|center"
@@ -76,11 +75,12 @@
         android:background="@color/WhiteSmoke" />
 
     <Button
+        android:background="@drawable/shap_button"
         android:id="@+id/login_preservation"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="500dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp"
         android:text="@string/preservation"
         android:textColor="@color/black"
         tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />

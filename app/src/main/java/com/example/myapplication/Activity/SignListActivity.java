@@ -60,7 +60,7 @@ public class SignListActivity extends AppCompatActivity implements AdapterView.O
                 R.layout.list_item5, newsData);
 
         lvNewsList.setAdapter(adapter);
-        Sign(StudentCourseListActivity.courseId, 1, 5, 0, LoginData.loginUser.getId());
+        Sign(StudentCourseListActivity.courseId, 1, 10, 0, LoginData.loginUser.getId());
     }
 
     public void Sign(int courseId, int current, int size, int status, int userId) {

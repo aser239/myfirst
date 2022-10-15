@@ -67,7 +67,7 @@ public class UnfinishedCourseActivity extends AppCompatActivity implements Adapt
                 R.layout.list_item3, newsData3);
 
         lvNewsList3.setAdapter(adapter3);
-        MyCourses(1, 5, LoginData.loginUser.getId());
+        MyCourses(1, 10, LoginData.loginUser.getId());
     }
 
     public void MyCourses(int current, int size, int userId) {

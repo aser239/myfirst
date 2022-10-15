@@ -18,6 +18,7 @@ import com.example.myapplication.Activity.SignListActivity;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
+import com.example.myapplication.JavaBean.Data;
 import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -124,13 +125,13 @@ public class StudentSignInActivity extends AppCompatActivity {
         @Override
         public void onResponse(@NonNull Call call, Response response) throws IOException {
             //TODO 请求成功处理
-            Type jsonType = new TypeToken<ResponseBody<Object>>() {
+            Type jsonType = new TypeToken<ResponseBody<Data>>() {
             }.getType();
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
             Log.d("info", body);
             // 解析json串到自己封装的状态
-            ResponseBody<Object> dataResponseBody = gson.fromJson(body, jsonType);
+            ResponseBody<Data> dataResponseBody = gson.fromJson(body, jsonType);
             Message message = new Message();
             Bundle bundle = new Bundle();
             bundle.putInt("code", dataResponseBody.getCode());
@@ -151,6 +152,7 @@ public class StudentSignInActivity extends AppCompatActivity {
             } else if (code == 200) {
                 Toast.makeText(StudentSignInActivity.this, "签到成功！",
                         Toast.LENGTH_SHORT).show();
+                finish();
             } else {
                 Toast.makeText(StudentSignInActivity.this, "签到失败！",
                         Toast.LENGTH_SHORT).show();

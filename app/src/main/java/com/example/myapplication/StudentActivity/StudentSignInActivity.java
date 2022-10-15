@@ -134,6 +134,7 @@ public class StudentSignInActivity extends AppCompatActivity {
             Message message = new Message();
             Bundle bundle = new Bundle();
             bundle.putInt("code", dataResponseBody.getCode());
+            bundle.putString("info", dataResponseBody.getMsg());
             message.setData(bundle);
             handler.sendMessage(message);
         }
@@ -145,13 +146,17 @@ public class StudentSignInActivity extends AppCompatActivity {
             super.handleMessage(msg);
             Bundle bundle = msg.getData();
             int code = bundle.getInt("code");
-            if (code == 500) {
+            String info = bundle.getString("info");
+            if (code == 500 && info.equals("签到时间不在规定范围内")) {
                 Toast.makeText(StudentSignInActivity.this, "签到时间不在规定范围内！",
                         Toast.LENGTH_SHORT).show();
             } else if (code == 200) {
                 Toast.makeText(StudentSignInActivity.this, "签到成功！",
                         Toast.LENGTH_SHORT).show();
                 finish();
+            } else if (code == 500 && info.equals("签到码错误")) {
+                Toast.makeText(StudentSignInActivity.this, "签到码错误！",
+                        Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(StudentSignInActivity.this, "签到失败！",
                         Toast.LENGTH_SHORT).show();

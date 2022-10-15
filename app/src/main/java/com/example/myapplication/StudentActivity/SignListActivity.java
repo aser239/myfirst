@@ -36,7 +36,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-@RequiresApi(api = Build.VERSION_CODES.N)
 public class SignListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private SignListAdapter adapter;
     private ListView lvNewsList;
@@ -46,6 +45,7 @@ public class SignListActivity extends AppCompatActivity implements AdapterView.O
     public SignListActivity() {
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +56,7 @@ public class SignListActivity extends AppCompatActivity implements AdapterView.O
         lvNewsList.setOnItemClickListener(this);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void initData() {
         List<StudentSignListDetail> newsData = new ArrayList<>();
         adapter = new SignListAdapter(SignListActivity.this,

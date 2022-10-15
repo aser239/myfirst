@@ -20,6 +20,6 @@ public class WelcomeActivity extends AppCompatActivity {
             Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        }, 1500);//延迟1.5s后发送handler信息
+        }, 1500);  //延迟1.5s后发送handler信息
     }
 }

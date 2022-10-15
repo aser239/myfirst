@@ -37,7 +37,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-@RequiresApi(api = Build.VERSION_CODES.N)
 public class StudentCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     public static final String STUDENT_COURSE_MESSAGE_STRING = "com.example.myapplication.Activity.STUDENT_COURSE_INFO";
     private StudentCourseAdapter adapter2;
@@ -132,6 +131,7 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
         }
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();

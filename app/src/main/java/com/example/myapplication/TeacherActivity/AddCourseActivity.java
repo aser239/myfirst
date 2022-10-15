@@ -17,7 +17,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Activity.HomeActivity;
-import com.example.myapplication.Activity.MessageActivity;
 import com.example.myapplication.Activity.UploadActivity;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
@@ -137,7 +136,7 @@ public class AddCourseActivity extends AppCompatActivity implements View.OnClick
                 } else {
                     AddCourseActivity.endTime = dateToStamp(year + "-" + month + "-" + day);
                 }
-                Time.setText(MessageActivity.getTimeStampString(dateToStamp(year + "-" + month + "-" + day)));
+                Time.setText(UnfinishedCourseDetailActivity.getTimeStampString(dateToStamp(year + "-" + month + "-" + day)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }

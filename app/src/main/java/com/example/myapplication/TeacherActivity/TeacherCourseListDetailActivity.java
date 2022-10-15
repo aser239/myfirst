@@ -1,4 +1,4 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.TeacherActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.TeacherActivity.TeacherCourseListActivity;
 import com.example.myapplication.JavaBean.CourseDetail;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -36,11 +35,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 //全部课程的详情
-public class MessageActivity2 extends AppCompatActivity {
+public class TeacherCourseListDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message2);
+        setContentView(R.layout.activity_teachercourselistdetail);
 
         Intent intent = getIntent();
         int info = Integer.parseInt(intent.getStringExtra(TeacherCourseListActivity.COURSE_MESSAGE_STRING));
@@ -73,13 +72,13 @@ public class MessageActivity2 extends AppCompatActivity {
         etCourseName.setText(CourseData.Detail.getCourseName());
         Picasso.get().load(CourseData.Detail.getCoursePhoto()).into(etCoursePhoto);
         etIntroduce.setText(CourseData.Detail.getIntroduce());
-        etEndTime.setText(MessageActivity.getTimeStampString(CourseData.Detail.getEndTime()));
+        etEndTime.setText(UnfinishedCourseDetailActivity.getTimeStampString(CourseData.Detail.getEndTime()));
         etRealName.setText(CourseData.Detail.getRealName());
-        etStartTime.setText(MessageActivity.getTimeStampString(CourseData.Detail.getStartTime()));
+        etStartTime.setText(UnfinishedCourseDetailActivity.getTimeStampString(CourseData.Detail.getStartTime()));
         etId.setText(String.valueOf(CourseData.Detail.getId()));
         etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
         etUserName.setText(CourseData.Detail.getUserName());
-        etCreateTime.setText(MessageActivity.getTimeStampString(CourseData.Detail.getCreateTime()));
+        etCreateTime.setText(UnfinishedCourseDetailActivity.getTimeStampString(CourseData.Detail.getCreateTime()));
 
         btBack.setOnClickListener(v -> finish());
     }

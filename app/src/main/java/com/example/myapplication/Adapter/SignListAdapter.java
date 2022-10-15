@@ -1,30 +1,34 @@
 package com.example.myapplication.Adapter;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.myapplication.Activity.MessageActivity;
+import androidx.annotation.RequiresApi;
+
+import com.example.myapplication.JavaBean.StudentSignListDetail;
 import com.example.myapplication.R;
-import com.example.myapplication.JavaBean.Records2Detail;
+import com.example.myapplication.TeacherActivity.TeacherSignInActivity;
 
 import java.util.List;
 
-public class SignListAdapter extends ArrayAdapter<Records2Detail> {
+@RequiresApi(api = Build.VERSION_CODES.N)
+public class SignListAdapter extends ArrayAdapter<StudentSignListDetail> {
     private final int resourceId;
 
     public SignListAdapter(Context context,
-                           int resourceId, List<Records2Detail> data) {
+                           int resourceId, List<StudentSignListDetail> data) {
         super(context, resourceId, data);
         this.resourceId = resourceId;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Records2Detail news = getItem(position);
+        StudentSignListDetail news = getItem(position);
         String courseName = news.getCourseName();
         String courseAddr = news.getCourseAddr();
         long createTime = news.getCreateTime();
@@ -44,7 +48,7 @@ public class SignListAdapter extends ArrayAdapter<Records2Detail> {
         }
         vh.txCourseName1.setText(courseName);
         vh.txCourseName2.setText(courseAddr);
-        vh.txCourseName3.setText(MessageActivity.getTimeStampString(createTime));
+        vh.txCourseName3.setText(TeacherSignInActivity.getTimeStampString(createTime));
         return view;
     }
 

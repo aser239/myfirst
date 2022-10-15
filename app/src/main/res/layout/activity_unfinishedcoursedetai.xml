@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@mipmap/b_3"
     android:orientation="vertical"
-    tools:context=".Activity.MessageActivity">
+    tools:context=".TeacherActivity.UnfinishedCourseDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

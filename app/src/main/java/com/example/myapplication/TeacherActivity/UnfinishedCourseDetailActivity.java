@@ -1,10 +1,8 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.TeacherActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +18,16 @@ import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
-import com.example.myapplication.R;
-import com.example.myapplication.StudentActivity.StudentCourseListActivity;
 import com.example.myapplication.JavaBean.CourseDetail;
+import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 import okhttp3.Call;
@@ -39,79 +37,59 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-//学生选课的详情
-public class MessageActivity3 extends AppCompatActivity {
+//未结课程的详情
+public class UnfinishedCourseDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message3);
+        setContentView(R.layout.activity_unfinishedcoursedetai);
 
         Intent intent = getIntent();
-        int info = Integer.parseInt(intent.getStringExtra(StudentCourseListActivity.STUDENT_COURSE_MESSAGE_STRING));
+        int info = Integer.parseInt(intent.getStringExtra(UnfinishedCourseActivity.UNFINISHED_MESSAGE_STRING));
         Detail(info, LoginData.loginUser.getId());
     }
 
     public void init() {
-        TextView etCollegeName = findViewById(R.id.tx_collegeName44);
-        TextView etCourseName = findViewById(R.id.tx_courseName44);
-        ImageView etCoursePhoto = findViewById(R.id.tx_photo44);
-        TextView etIntroduce = findViewById(R.id.tx_introduce44);
-        TextView etEndTime = findViewById(R.id.tx_fiTime44);
-        TextView etRealName = findViewById(R.id.tx_realName44);
-        TextView etStartTime = findViewById(R.id.tx_stTime44);
-        TextView etId = findViewById(R.id.tx_id44);
-        TextView etChoose = findViewById(R.id.tx_choose44);
-        TextView etUserName = findViewById(R.id.tx_userName44);
-        TextView etCreateTime = findViewById(R.id.tx_CreateTime44);
-        Button quit = findViewById(R.id.Quit);
-        Button btBack = findViewById(R.id.Back3);
-        LinearLayout hasSelect = findViewById(R.id.hasSelect3);
-
+        TextView etCollegeName2 = findViewById(R.id.tx_collegeName22);
+        TextView etCourseName2 = findViewById(R.id.tx_courseName22);
+        ImageView etCoursePhoto2 = findViewById(R.id.tx_photo);
+        TextView etIntroduce2 = findViewById(R.id.tx_introduce22);
+        TextView etEndTime2 = findViewById(R.id.tx_fiTime22);
+        TextView etRealName2 = findViewById(R.id.tx_realName2);
+        TextView etStartTime2 = findViewById(R.id.tx_stTime2);
+        TextView etId = findViewById(R.id.tx_id);
+        TextView etChoose = findViewById(R.id.tx_choose);
+        TextView etUserName = findViewById(R.id.tx_userName);
+        TextView etCreateTime = findViewById(R.id.tx_CreateTime);
+        Button delete = findViewById(R.id.Delete);
+        Button btBack = findViewById(R.id.addCourseReturnToCourse11);
+        LinearLayout hasSelect = findViewById(R.id.hasSelect1);
 
         if (LoginData.loginUser.getRoleId() == 1) {
             hasSelect.setVisibility(View.GONE);
         } else {
             etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
-            //hasSelect.setVisibility(View.VISIBLE);
+            //hasSelect1.setVisibility(View.VISIBLE);
         }
 
-        etCollegeName.setText(CourseData.Detail.getCollegeName());
-        etCourseName.setText(CourseData.Detail.getCourseName());
-        Picasso.get().load(CourseData.Detail.getCoursePhoto()).into(etCoursePhoto);
-        etIntroduce.setText(CourseData.Detail.getIntroduce());
-        etEndTime.setText(MessageActivity.getTimeStampString(CourseData.Detail.getEndTime()));
-        etRealName.setText(CourseData.Detail.getRealName());
-        etStartTime.setText(MessageActivity.getTimeStampString(CourseData.Detail.getStartTime()));
+        etCollegeName2.setText(CourseData.Detail.getCollegeName());
+        etCourseName2.setText(CourseData.Detail.getCourseName());
+        Picasso.get().load(CourseData.Detail.getCoursePhoto()).into(etCoursePhoto2);
+        etIntroduce2.setText(CourseData.Detail.getIntroduce());
+        etEndTime2.setText(getTimeStampString(CourseData.Detail.getEndTime()));
+        etRealName2.setText(CourseData.Detail.getRealName());
+        etStartTime2.setText(getTimeStampString(CourseData.Detail.getStartTime()));
         etId.setText(String.valueOf(CourseData.Detail.getId()));
-        etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
         etUserName.setText(CourseData.Detail.getUserName());
-        etCreateTime.setText(MessageActivity.getTimeStampString(CourseData.Detail.getCreateTime()));
+        etCreateTime.setText(getTimeStampString(CourseData.Detail.getCreateTime()));
 
-        btBack.setOnClickListener(v -> finish());
-
-        quit.setOnClickListener(v -> {
-            Quit(CourseData.Detail.getId(), LoginData.loginUser.getId());
-            startActivity(new Intent(MessageActivity3.this, StudentCourseListActivity.class));
+        delete.setOnClickListener(v -> {
+            delete(CourseData.Detail.getId(), LoginData.loginUser.getId());
             finish();
         });
-    }
 
-    private final Handler handler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            Bundle bundle = msg.getData();
-            int code = bundle.getInt("code");
-            System.out.println(code);
-            System.out.println(CourseData.Detail);
-            if (code == 200) {
-                init();
-            } else {
-                Toast.makeText(MessageActivity3.this, "查看失败！",
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
-    };
+        btBack.setOnClickListener(v -> finish());
+    }
 
     public void Detail(int courseId, int userId) {
         // url路径
@@ -151,29 +129,23 @@ public class MessageActivity3 extends AppCompatActivity {
         public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
-            Log.d("详情：", body);
-
             runOnUiThread(() -> {
                 Gson gson = new Gson();
                 Type jsonType = new TypeToken<ResponseBody<CourseDetail>>() {
                 }.getType();
                 // 解析json串到自己封装的状态
                 ResponseBody<CourseDetail> dataResponseBody = gson.fromJson(body, jsonType);
-                Log.d("学生课程详情：", dataResponseBody.getData().toString());
+                Log.d("未结课程详情：", dataResponseBody.getData().toString());
                 CourseData.Detail = dataResponseBody.getData();
-                Message message = new Message();
-                Bundle bundle = new Bundle();
-                bundle.putInt("code", dataResponseBody.getCode());
-                message.setData(bundle);
-                handler.sendMessage(message);
+                init();
             });
         }
     };
 
-    public static void Quit(int courseId, int userId) {
+    public void delete(int courseId, int userId) {
         new Thread(() -> {
             // url路径
-            String url = "http://47.107.52.7:88/member/sign/course/student/drop?" + "courseId="
+            String url = "http://47.107.52.7:88/member/sign/course/teacher?" + "courseId="
                     + courseId + "&userId=" + userId;
             // 请求头
             Headers headers = new Headers.Builder()
@@ -181,6 +153,7 @@ public class MessageActivity3 extends AppCompatActivity {
                     .add("appSecret", Api.appSecret)
                     .add("Accept", "application/json, text/plain, */*")
                     .build();
+
             //请求组合创建
             Request request = new Request.Builder()
                     .url(url)
@@ -196,5 +169,14 @@ public class MessageActivity3 extends AppCompatActivity {
                 ex.printStackTrace();
             }
         }).start();
+    }
+
+    //时间戳转换时间
+    public static String getTimeStampString(long time) {
+        Date date = new Date(time);
+        // 格式化日期
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf =
+                new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(date);
     }
 }

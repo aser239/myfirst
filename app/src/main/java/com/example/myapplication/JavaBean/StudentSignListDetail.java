@@ -2,7 +2,7 @@ package com.example.myapplication.JavaBean;
 
 import androidx.annotation.NonNull;
 
-public class Records2Detail {
+public class StudentSignListDetail {
     private String courseName;
     private String courseAddr;
     private long createTime;

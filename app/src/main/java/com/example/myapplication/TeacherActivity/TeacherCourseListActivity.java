@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Activity.MessageActivity2;
 import com.example.myapplication.Adapter.CollectionAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
@@ -144,7 +143,7 @@ public class TeacherCourseListActivity extends AppCompatActivity implements Adap
             SelectCourse(courseId3, LoginData.loginUser.getId());
         } else if (LoginData.loginUser.getRoleId() == 1) {
             courseId = dataResponseBody.getData().getRecords().get(position).getCourseId();
-            Intent intent = new Intent(TeacherCourseListActivity.this, MessageActivity2.class);
+            Intent intent = new Intent(TeacherCourseListActivity.this, TeacherCourseListDetailActivity.class);
             intent.putExtra(COURSE_MESSAGE_STRING, Integer.toString(courseId));
             startActivity(intent);
         }

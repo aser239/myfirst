@@ -54,7 +54,7 @@
             android:autofillHints=""
             android:background="@drawable/shape_text"
             android:inputType="text"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="LabelFor,SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <Button

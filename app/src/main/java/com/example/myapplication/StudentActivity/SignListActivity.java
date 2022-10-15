@@ -1,8 +1,10 @@
-package com.example.myapplication.Activity;
+package com.example.myapplication.StudentActivity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
@@ -16,9 +18,8 @@ import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
 import com.example.myapplication.Interface.ResponseBody;
 import com.example.myapplication.R;
-import com.example.myapplication.StudentActivity.StudentCourseListActivity;
 import com.example.myapplication.JavaBean.Records2;
-import com.example.myapplication.JavaBean.Records2Detail;
+import com.example.myapplication.JavaBean.StudentSignListDetail;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -35,6 +36,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class SignListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private SignListAdapter adapter;
     private ListView lvNewsList;
@@ -55,7 +57,7 @@ public class SignListActivity extends AppCompatActivity implements AdapterView.O
     }
 
     private void initData() {
-        List<Records2Detail> newsData = new ArrayList<>();
+        List<StudentSignListDetail> newsData = new ArrayList<>();
         adapter = new SignListAdapter(SignListActivity.this,
                 R.layout.list_item5, newsData);
 
@@ -115,7 +117,7 @@ public class SignListActivity extends AppCompatActivity implements AdapterView.O
                 dataResponseBody = gson.fromJson(body, jsonType);
 
                 if (dataResponseBody.getData() != null) {
-                    for (Records2Detail news : dataResponseBody.getData().getRecords()) {
+                    for (StudentSignListDetail news : dataResponseBody.getData().getRecords()) {
                         adapter.add(news);
                     }
                     adapter.notifyDataSetChanged();

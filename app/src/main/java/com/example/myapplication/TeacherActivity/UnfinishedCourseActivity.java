@@ -14,7 +14,6 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Activity.MessageActivity;
 import com.example.myapplication.Adapter.UnFinishCourseAdapter;
 import com.example.myapplication.Data.CourseData;
 import com.example.myapplication.Data.LoginData;
@@ -202,7 +201,7 @@ public class UnfinishedCourseActivity extends AppCompatActivity implements Adapt
             UnfinishedCourseActivity.isSelectCourseSignIn = false;
             Detail(courseId, LoginData.loginUser.getId());
         } else {
-            Intent intent = new Intent(UnfinishedCourseActivity.this, MessageActivity.class);
+            Intent intent = new Intent(UnfinishedCourseActivity.this, UnfinishedCourseDetailActivity.class);
             intent.putExtra(UNFINISHED_MESSAGE_STRING, Integer.toString(courseId));
             startActivity(intent);
             finish();

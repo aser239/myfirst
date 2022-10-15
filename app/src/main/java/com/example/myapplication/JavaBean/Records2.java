@@ -6,13 +6,13 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 public class Records2 {
-    private List<Records2Detail> records;
+    private List<StudentSignListDetail> records;
 
-    public List<Records2Detail> getRecords() {
+    public List<StudentSignListDetail> getRecords() {
         return records;
     }
 
-    public void setRecords(List<Records2Detail> records) {
+    public void setRecords(List<StudentSignListDetail> records) {
         this.records = records;
     }
 

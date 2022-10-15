@@ -1,9 +1,11 @@
 package com.example.myapplication.StudentActivity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
@@ -12,8 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.myapplication.Activity.MessageActivity3;
-import com.example.myapplication.Activity.SignListActivity;
 import com.example.myapplication.Adapter.StudentCourseAdapter;
 import com.example.myapplication.Data.LoginData;
 import com.example.myapplication.Interface.Api;
@@ -37,6 +37,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class StudentCourseListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     public static final String STUDENT_COURSE_MESSAGE_STRING = "com.example.myapplication.Activity.STUDENT_COURSE_INFO";
     private StudentCourseAdapter adapter2;
@@ -138,7 +139,7 @@ public class StudentCourseListActivity extends AppCompatActivity implements Adap
             startActivity(new Intent(StudentCourseListActivity.this, SignListActivity.class));
             finish();
         } else {
-            Intent intent = new Intent(StudentCourseListActivity.this, MessageActivity3.class);
+            Intent intent = new Intent(StudentCourseListActivity.this, StudentCourseListDetailActivity.class);
             intent.putExtra(STUDENT_COURSE_MESSAGE_STRING, Integer.toString(courseId));
             startActivity(intent);
             finish();

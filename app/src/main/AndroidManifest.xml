@@ -25,39 +25,65 @@
             android:name=".Activity.AlterActivity"
             android:exported="false" />
         <activity
-            android:name=".TeacherActivity.TeacherCourseListActivity"
-            android:exported="false" />
-        <activity
             android:name=".Activity.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.EnrollActivity"
             android:exported="false" />
         <activity
-            android:name=".TeacherActivity.SelectSignInCourseActivity"
+            android:name=".Activity.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.UploadActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.WelcomeActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.HomeActivity" />
-        <activity android:name=".TeacherActivity.AddCourseActivity" />
-        <activity android:name=".Activity.MessageActivity" />
-        <activity android:name=".StudentActivity.StudentSignInActivity" />
-        <activity android:name=".TeacherActivity.TeacherSignInActivity" />
-        <activity android:name=".StudentActivity.StudentCourseListActivity" />
-        <activity android:name=".StudentActivity.StudentListActivity" />
-        <activity android:name=".TeacherActivity.SignInformationActivity" />
-        <activity android:name=".Activity.UploadActivity" />
-        <activity android:name=".TeacherActivity.UnfinishedCourseActivity" />
-        <activity android:name=".Activity.MessageActivity2" />
-        <activity android:name=".Activity.MessageActivity3" />
-        <activity android:name=".TeacherActivity.FinishedCourseActivity" />
-        <activity android:name=".Activity.SignListActivity" />
+        <activity
+            android:name=".TeacherActivity.TeacherCourseListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.SelectSignInCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.AddCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.FinishedCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.UnfinishedCourseDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.TeacherSignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.SignInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.UnfinishedCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity.TeacherCourseListDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentActivity.StudentCourseListDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentActivity.SignListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentActivity.StudentSignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentActivity.StudentCourseListActivity"
+            android:exported="false" />
     </application>
 </manifest>

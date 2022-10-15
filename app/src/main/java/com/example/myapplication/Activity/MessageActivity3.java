@@ -2,6 +2,9 @@ package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +44,7 @@ public class MessageActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_message3);
 
         Intent intent = getIntent();
         int info = Integer.parseInt(intent.getStringExtra(StudentCourseListActivity.STUDENT_COURSE_MESSAGE_STRING));
@@ -63,11 +67,12 @@ public class MessageActivity3 extends AppCompatActivity {
         Button btBack = findViewById(R.id.Back3);
         LinearLayout hasSelect = findViewById(R.id.hasSelect3);
 
+
         if (LoginData.loginUser.getRoleId() == 1) {
             hasSelect.setVisibility(View.GONE);
         } else {
             etChoose.setText(String.valueOf(CourseData.Detail.isHasSelect()));
-            //hasSelect1.setVisibility(View.VISIBLE);
+            //hasSelect.setVisibility(View.VISIBLE);
         }
 
         etCollegeName.setText(CourseData.Detail.getCollegeName());
@@ -90,6 +95,23 @@ public class MessageActivity3 extends AppCompatActivity {
             finish();
         });
     }
+
+    private final Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Bundle bundle = msg.getData();
+            int code = bundle.getInt("code");
+            System.out.println(code);
+            System.out.println(CourseData.Detail);
+            if (code == 200) {
+                init();
+            } else {
+                Toast.makeText(MessageActivity3.this, "查看失败！",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
     public void Detail(int courseId, int userId) {
         // url路径
@@ -127,7 +149,6 @@ public class MessageActivity3 extends AppCompatActivity {
 
         @Override
         public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
             // 获取响应体的json串
             String body = Objects.requireNonNull(response.body()).string();
             Log.d("详情：", body);
@@ -140,7 +161,11 @@ public class MessageActivity3 extends AppCompatActivity {
                 ResponseBody<CourseDetail> dataResponseBody = gson.fromJson(body, jsonType);
                 Log.d("学生课程详情：", dataResponseBody.getData().toString());
                 CourseData.Detail = dataResponseBody.getData();
-                init();
+                Message message = new Message();
+                Bundle bundle = new Bundle();
+                bundle.putInt("code", dataResponseBody.getCode());
+                message.setData(bundle);
+                handler.sendMessage(message);
             });
         }
     };

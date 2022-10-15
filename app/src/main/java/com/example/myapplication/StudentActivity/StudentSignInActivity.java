@@ -133,7 +133,6 @@ public class StudentSignInActivity extends AppCompatActivity {
             ResponseBody<Object> dataResponseBody = gson.fromJson(body, jsonType);
             Message message = new Message();
             Bundle bundle = new Bundle();
-            bundle.putString("msg", dataResponseBody.getMsg());
             bundle.putInt("code", dataResponseBody.getCode());
             message.setData(bundle);
             handler.sendMessage(message);
@@ -145,12 +144,11 @@ public class StudentSignInActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             Bundle bundle = msg.getData();
-            String info = bundle.getString("msg");
             int code = bundle.getInt("code");
-            if (info.equals("签到时间不在规定范围内")) {
+            if (code == 500) {
                 Toast.makeText(StudentSignInActivity.this, "签到时间不在规定范围内！",
                         Toast.LENGTH_SHORT).show();
-            } else if (code == 200 & info.equals("")) {
+            } else if (code == 200) {
                 Toast.makeText(StudentSignInActivity.this, "签到成功！",
                         Toast.LENGTH_SHORT).show();
             } else {

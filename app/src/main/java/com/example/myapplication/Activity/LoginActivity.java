@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, EnrollActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intent);
+            finish();
         });
 
         View.OnFocusChangeListener etUserFocusChangedListener = (v, hasFocus) -> {
